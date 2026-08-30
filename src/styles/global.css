@@ -149,12 +149,15 @@ blockquote {
   top: 1.5rem;
   left: 0; right: 0;
   z-index: 10;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;   /* logo · 中間 menu · 右側工具 */
   align-items: center;
   gap: .75rem;
-  padding: 0 3rem;
+  padding: 0 1.75rem;
 }
+.site-nav .nav-home { justify-self: start; }
+.site-nav .nav-center { justify-self: center; }
+.site-nav .nav-util { justify-self: end; display: flex; align-items: center; gap: .6rem; }
 .nav-pill {
   background: var(--near-white);
   border-radius: 999px;
@@ -172,7 +175,6 @@ blockquote {
   text-decoration: none;
 }
 .nav-home .mark { color: var(--signal-purple); font-size: .7rem; }
-.nav-right { display: flex; align-items: center; gap: .6rem; }
 .site-nav nav { display: flex; align-items: center; gap: .15rem; padding: .3rem .4rem; }
 .site-nav nav a {
   font-size: .85rem;
@@ -260,8 +262,16 @@ blockquote {
   :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: inline-flex; }
 }
 
-@media (max-width: 640px) {
-  .site-nav { padding: 0 1rem; top: 1rem; flex-wrap: wrap; gap: .5rem; }
+@media (max-width: 720px) {
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+    top: 1rem;
+    gap: .5rem;
+  }
+  .site-nav .nav-center { order: 3; width: 100%; justify-content: center; }
 }
 
 /* =========================================================================
@@ -297,23 +307,23 @@ blockquote {
    首頁 landing
    ========================================================================= */
 
-/* ---- 上層：粉調漸層 hero（沿用累積自由本金：mid-surface → dusty-rose）---- */
+/* ---- 上層：粉調漸層 hero（右下 dusty-rose 保留；左上換成乾淨的淡粉）----
+   想調左上角，改 --hero-tl 即可：
+   #f5ede9 淡粉奶油（現用）／ #f3e6e3 更明顯的粉 ／ #f7f2ef 幾乎白 */
 .home-hero {
+  --hero-tl: #f5ede9;
+  --hero-br: #a8868c;
   position: sticky;
   top: 0;
   z-index: 0;
-  background: linear-gradient(to bottom right, var(--mid-surface), var(--dusty-rose));
+  background: linear-gradient(150deg, var(--hero-tl), var(--hero-br));
   padding: 7rem 1.5rem 5.5rem;
   overflow: hidden;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .home-hero {
-    background: linear-gradient(to bottom right, #2b2521, #4a3739);
-  }
+  :root:not([data-theme="light"]) .home-hero { --hero-tl: #211c1b; --hero-br: #4a3438; }
 }
-:root[data-theme="dark"] .home-hero {
-  background: linear-gradient(to bottom right, #2b2521, #4a3739);
-}
+:root[data-theme="dark"] .home-hero { --hero-tl: #211c1b; --hero-br: #4a3438; }
 .hero-inner {
   max-width: var(--measure-wide);
   margin: 0 auto;
@@ -398,13 +408,20 @@ blockquote {
   flex-direction: column;
   gap: .4rem;
   background: var(--lifted);
-  border: 1px solid var(--border);
+  border: 0;
   border-radius: 20px;
-  padding: 1.1rem 1.25rem;
+  padding: 1.15rem 1.3rem;
   text-decoration: none;
-  transition: box-shadow .15s;
+  transition: box-shadow .18s, transform .18s;
 }
-a.work-card:hover { box-shadow: var(--shadow-1); }
+a.work-card:hover {
+  box-shadow: rgba(0, 0, 0, .12) 0 16px 40px -8px;
+  transform: translateY(-2px);
+}
+:root[data-theme="dark"] a.work-card:hover { box-shadow: rgba(0, 0, 0, .55) 0 16px 40px -8px; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) a.work-card:hover { box-shadow: rgba(0, 0, 0, .55) 0 16px 40px -8px; }
+}
 .wc-head { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
 .wc-title { font-weight: 500; font-size: 1.02rem; color: var(--ink-slate); line-height: 1.35; }
 .wc-desc { margin: 0; font-size: .88rem; color: var(--slate-anchor); line-height: 1.6; }
@@ -414,8 +431,7 @@ a.work-card:hover { box-shadow: var(--shadow-1); }
   display: inline-flex; align-items: center; gap: .3rem;
   font-size: .8rem; font-weight: 500; text-decoration: none; color: var(--signal-purple);
 }
-.work-more { margin: 1rem 0 0; }
-.work-more a { font-weight: 500; text-decoration: none; }
+.work-more { margin: 1.5rem 0 0; }
 
 @media (max-width: 560px) {
   .work-grid { grid-template-columns: 1fr; }
@@ -457,12 +473,13 @@ a.work-card:hover { box-shadow: var(--shadow-1); }
   font-size: .98rem;
 }
 
-/* ---- 履歷文件卡：與文章連結不同層級 ---- */
+/* ---- 履歷區：eyebrow 在白色卡外面（跟「作品」一致）---- */
+.resume { margin: 3rem 0 1.5rem; }
 .resume-card {
-  margin: 3rem 0 1.5rem;
+  margin: .9rem 0 0;
   padding: 1.25rem 1.4rem;
   background: var(--lifted);
-  border: 1px solid var(--border);
+  border: 0;
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
@@ -470,7 +487,7 @@ a.work-card:hover { box-shadow: var(--shadow-1); }
   gap: 1.25rem;
   flex-wrap: wrap;
 }
-.resume-meta p { margin: .3rem 0 0; font-size: .92rem; color: var(--slate-anchor); }
+.resume-meta p { margin: 0; font-size: .92rem; color: var(--slate-anchor); }
 .resume-note { font-size: .78rem; color: var(--muted-text); }
 .resume-actions { display: flex; gap: .6rem; flex-shrink: 0; }
 

@@ -70,19 +70,21 @@ const previewPosts = featured.slice(0, 3);
             </a>
           ))}
         </div>
-        <p class="work-more"><a href="/writing/">全部文章 →</a></p>
+        <p class="work-more"><a class="btn btn-ghost" href="/writing/">全部文章 →</a></p>
       </section>
 
-      <div class="resume-card">
-        <div class="resume-meta">
-          <div class="eyebrow">履歷</div>
-          <p>前端工程師 · React / Next.js / TypeScript · 銀行級 Web3 與金融科技</p>
+      <section class="resume">
+        <div class="eyebrow">履歷</div>
+        <div class="resume-card">
+          <div class="resume-meta">
+            <p>前端工程師 · React / Next.js / TypeScript · 銀行級 Web3 與金融科技</p>
+          </div>
+          <div class="resume-actions">
+            <a class="btn" href="/joan-chang-cv.pdf" download><Download size={14} stroke-width={2} />下載履歷</a>
+            <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">線上看</a>
+          </div>
         </div>
-        <div class="resume-actions">
-          <a class="btn" href="/joan-chang-cv.pdf" download><Download size={14} stroke-width={2} />下載履歷</a>
-          <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">線上看</a>
-        </div>
-      </div>
+      </section>
     </div>
   </div>
 </Base>
