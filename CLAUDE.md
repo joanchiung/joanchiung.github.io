@@ -12,10 +12,14 @@
 
 ## 網站結構
 
-- `/` 黃金圈 landing：Why / How / What。文字目前是**草稿**（從 `_source/` 的自我認識筆記整理），待本人潤稿。
-- `/writing/` 文章列表 + `/writing/[slug]` 單篇。放 `.md` 進 `src/content/posts/` 即上稿。
-- `/#resume` 履歷 PDF（`public/joan-chang-cv.pdf`，2026-03 版，本人更新中）+ 聯絡方式。
-- `/projects/` **尚未做** —— 需要專門討論怎麼擺（見下）。
+- nav：首頁 / 關於我 / 文章 ＋ 語言 dropdown（獨立，右上）
+- `/` 黃金圈 landing：姓名+定位 → Why / How / What → **作品** → 履歷卡。文字用 Notion 履歷措辭，待精簡定稿。
+- `/about/` 關於我：設計→工程的完整故事（含 Design Guideline → Design System 橋樑）
+- `/writing/` 文章列表（精選+時間軸）+ `/writing/[slug]` 單篇。`.md` 進 `src/content/posts/`。
+- 作品：`.md` 進 `src/content/projects/`（schema 見 content.config.ts：title/description/tech/repo/demo/status/order/draft）。目前只有 `travel-handbook.md`（出國手冊，draft，repo 未開）。首頁作品區直接讀這個集合。
+- 履歷：`public/joan-chang-cv.pdf`（2026-03 英文版；本人在 Notion 弄新版）。主頁文件卡（下載履歷/線上看）+ footer btn。
+- footer：GitHub / LinkedIn（inline 品牌 SVG，Lucide 沒有品牌 icon）+ Mail（Lucide）+ 下載履歷 btn（Lucide download）
+- 圖示：`@lucide/astro`（`import X from '@lucide/astro/icons/x'`）。品牌 logo 用 inline SVG。
 
 ## 上稿一篇文章
 
