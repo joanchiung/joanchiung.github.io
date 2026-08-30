@@ -2,7 +2,7 @@
 title: 雜湊 Hash 是什麼？跟加密 Encryption 差在哪？
 description: 一個用「這筆資料以後需不需要還原」就能分清楚的問題。
 date: 2026-07-06
-tags: ["工程", "Web3"]
+tags: ["Web3", "系統設計"]
 lang: zh
 draft: true
 source: https://www.threads.com/@joanvisual/post/DadD9DmmYTU

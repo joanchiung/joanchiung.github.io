@@ -2,7 +2,7 @@
 title: 損益表是什麼，以及如何閱讀它？
 description: 從上往下讀，四個方向一起看 —— 以及為什麼我目前的工作剛好在金融轉型的最前期。
 date: 2026-06-03
-tags: ["金融"]
+tags: ["金融", "Web3"]
 lang: zh
 draft: true
 source: https://www.threads.com/@joanvisual/post/DZIHH5oGSwi

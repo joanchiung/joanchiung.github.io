@@ -1,57 +1,17 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getCollection } from 'astro:content';
+import WritingList from '../../components/WritingList.astro';
+import { getWriting, PAGE_SIZE } from '../../lib/writing';
 
-const isDev = import.meta.env.DEV;
-const all = (await getCollection('posts'))
-  .filter((p) => p.data.lang === 'zh')
-  .filter((p) => isDev || !p.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-const featured = all.filter((p) => p.data.featured);
-const rest = all.filter((p) => !p.data.featured);
-
-const fmt = (d: Date) =>
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const { featured, timeline } = await getWriting('zh', import.meta.env.DEV);
+const last = Math.max(1, Math.ceil(timeline.length / PAGE_SIZE));
+const posts = timeline.slice(0, PAGE_SIZE);
 ---
-<Base title="文章 — 張瓊文" description="對前端、Web3、金融與設計的思考。" page="writing">
-  <div class="eyebrow">Writing</div>
-  <h1>文章</h1>
-  <p style="color:var(--muted-text);max-width:34rem">
-    我在轉前端的路上，用寫作把每個學到的概念弄懂 —— 前端、區塊鏈，也包括我工作所在的金融領域。
-  </p>
-
-  {all.length === 0 && <p class="todo">還沒有文章。把 .md 檔放進 src/content/posts/ 就會出現在這裡。</p>}
-
-  {featured.length > 0 && (
-    <section class="featured">
-      <div class="eyebrow">精選</div>
-      <ul class="card-list">
-        {featured.map((p) => (
-          <li>
-            <a href={`/writing/${p.id}/`}>
-              <span class="t">{p.data.title}{p.data.draft && <span class="draft-tag">draft</span>}</span>
-              {p.data.description && <span class="d">{p.data.description}</span>}
-              <span class="meta">{fmt(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )}
-
-  {rest.length > 0 && (
-    <section>
-      <div class="eyebrow" style="margin-top:3rem">全部</div>
-      <ul class="post-list">
-        {rest.map((p) => (
-          <li>
-            <a href={`/writing/${p.id}/`}>{p.data.title}</a>
-            {p.data.draft && <span class="draft-tag">draft</span>}
-            <div class="meta">{fmt(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</div>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )}
+<Base title="文章 — 張瓊文" description="對前端、Web3、金融、能源的思考。" page="writing" altPath="/en/writing/">
+  <WritingList
+    lang="zh"
+    featured={featured}
+    posts={posts}
+    pager={{ current: 1, last, prevUrl: null, nextUrl: last > 1 ? '/writing/page/2/' : null }}
+  />
 </Base>

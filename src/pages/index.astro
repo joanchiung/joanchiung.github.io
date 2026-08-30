@@ -52,7 +52,6 @@ const projects = (await getCollection('projects'))
             <div class="project-head">
               <span class="t">{p.data.title}</span>
               {p.data.status && <span class="status-tag">{p.data.status}</span>}
-              {p.data.draft && <span class="draft-tag">draft</span>}
             </div>
             <p class="d">{p.data.description}</p>
             {p.data.tech.length > 0 && <p class="tech">{p.data.tech.join(' · ')}</p>}

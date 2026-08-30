@@ -15,7 +15,10 @@
 - nav：首頁 / 關於我 / 文章 ＋ 語言 dropdown（獨立，右上）
 - `/` 黃金圈 landing：姓名+定位 → Why / How / What → **作品** → 履歷卡。文字用 Notion 履歷措辭，待精簡定稿。
 - `/about/` 關於我：設計→工程的完整故事（含 Design Guideline → Design System 橋樑）
-- `/writing/` 文章列表（精選+時間軸）+ `/writing/[slug]` 單篇。`.md` 進 `src/content/posts/`。
+- `/writing/` 文章列表：精選卡片（`featured: true`）+ 全部時間軸，每頁 10 篇。第 2 頁起 `/writing/page/N/`。`/writing/[slug]/` 單篇，底部有上一篇/下一篇（依日期）。共用邏輯在 `src/lib/writing.ts` + `src/components/WritingList.astro`。`.md` 進 `src/content/posts/`。
+- 文章列表/單篇**不顯示** draft 標籤、也不顯示原始出處連結（`source` 欄位仍保留在 frontmatter 供參考）。
+- tag 詞彙（控制用）：前端 / 後端 / Web3 / 金融 / 能源 / AI / 工作流程 / 設計 / 系統設計
+- 文章共 17 篇（全 draft）：11 篇來自 Threads + 6 篇來自英文課 W6/W7-8/W9/W11/W12/W13 備課稿（`_source` 外，原檔在 `~/Desktop/學習與成長/英文學習/prep/`）。W6（DeFi→M-Key）是 featured 強候選，目前放時間軸。
 - 作品：`.md` 進 `src/content/projects/`（schema 見 content.config.ts：title/description/tech/repo/demo/status/order/draft）。目前只有 `travel-handbook.md`（出國手冊，draft，repo 未開）。首頁作品區直接讀這個集合。
 - 履歷：`public/joan-chang-cv.pdf`（2026-03 英文版；本人在 Notion 弄新版）。主頁文件卡（下載履歷/線上看）+ footer btn。
 - footer：GitHub / LinkedIn（inline 品牌 SVG，Lucide 沒有品牌 icon）+ Mail（Lucide）+ 下載履歷 btn（Lucide download）

@@ -2,7 +2,7 @@
 title: NestJS 核心概念筆記
 description: Module、Controller、DTO、Service、Entity、資料表關聯，一次串起來。
 date: 2026-06-21
-tags: ["後端"]
+tags: ["後端", "系統設計"]
 lang: zh
 draft: true
 featured: true

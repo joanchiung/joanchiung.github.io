@@ -2,7 +2,7 @@
 title: 誰保管你的錢？CEX 和 DEX 最根本的差異
 description: 中心化交易所賺每一個環節的手續費，去中心化交易所把錢留在你自己的錢包裡 —— 差別在「誰保管資產」。
 date: 2026-05-20
-tags: ["Web3"]
+tags: ["Web3", "金融"]
 lang: zh
 draft: true
 featured: true

@@ -2,7 +2,7 @@
 title: 用 AI 做數位斷捨離：Plan mode → 確認 → 執行 → 記錄
 description: 把整理規則寫成 md，每次整理都先讓 AI 提案，確認後才動手。三天刪掉 30GB。
 date: 2026-05-13
-tags: ["工作方法"]
+tags: ["AI", "工作流程"]
 lang: zh
 draft: true
 source: https://www.threads.com/@joanvisual/post/DYRguVNGTr7

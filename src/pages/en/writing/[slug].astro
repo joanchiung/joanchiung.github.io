@@ -1,0 +1,36 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { render } from 'astro:content';
+import { getWriting, fmtDate, neighbours } from '../../../lib/writing';
+
+export async function getStaticPaths() {
+  const { all } = await getWriting('en', import.meta.env.DEV);
+  return all.map((post) => ({
+    params: { slug: post.id },
+    props: { post, ...neighbours(all, post.id) },
+  }));
+}
+
+const { post, prev, next } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={`${post.data.title} — Joan Chang`} description={post.data.description} lang="en" page="writing" reading altPath="/writing/">
+  <article class="article">
+    <h1>{post.data.title}</h1>
+    <div class="meta">
+      {fmtDate(post.data.date)}{post.data.tags.length > 0 && ` · ${post.data.tags.join(' / ')}`}
+    </div>
+    <Content />
+  </article>
+
+  <nav class="post-nav">
+    {prev ? (
+      <a href={`/en/writing/${prev.id}/`}><span class="dir">Previous</span><span class="ttl">{prev.data.title}</span></a>
+    ) : <span></span>}
+    {next ? (
+      <a class="right" href={`/en/writing/${next.id}/`}><span class="dir">Next</span><span class="ttl">{next.data.title}</span></a>
+    ) : <span></span>}
+  </nav>
+
+  <a class="back" href="/en/writing/">← Back to writing</a>
+</Base>

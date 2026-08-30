@@ -2,7 +2,7 @@
 title: 把 Photoshop 檔案整理 SOP 寫成一組規則，交給自動化
 description: 設計師時期留下的爛攤子，能不能變成一個 SKILL + Photoshop MCP？
 date: 2026-06-28
-tags: ["設計", "工作方法"]
+tags: ["設計", "AI", "工作流程"]
 lang: zh
 draft: true
 source: https://www.threads.com/@joanvisual/post/DaHtYRcmUSR

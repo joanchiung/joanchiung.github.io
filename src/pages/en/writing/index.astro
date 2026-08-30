@@ -1,30 +1,17 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { getCollection } from 'astro:content';
+import WritingList from '../../../components/WritingList.astro';
+import { getWriting, PAGE_SIZE } from '../../../lib/writing';
 
-const isDev = import.meta.env.DEV;
-const posts = (await getCollection('posts'))
-  .filter((p) => p.data.lang === 'en')
-  .filter((p) => isDev || !p.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-const fmt = (d: Date) =>
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const { featured, timeline } = await getWriting('en', import.meta.env.DEV);
+const last = Math.max(1, Math.ceil(timeline.length / PAGE_SIZE));
+const posts = timeline.slice(0, PAGE_SIZE);
 ---
-<Base title="Writing — Joan Chang" lang="en" page="writing">
-  <div class="eyebrow">Writing</div>
-  <h1>Writing</h1>
-  <p style="color:var(--muted-text)">Notes on finance, Web3, frontend and design.</p>
-
-  {posts.length === 0 && <p class="todo">No English articles yet.</p>}
-
-  <ul class="post-list">
-    {posts.map((p) => (
-      <li>
-        <a href={`/en/writing/${p.id}/`}>{p.data.title}</a>
-        {p.data.draft && <span class="draft-tag">draft</span>}
-        <div class="meta">{fmt(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</div>
-      </li>
-    ))}
-  </ul>
+<Base title="Writing — Joan Chang" lang="en" page="writing" altPath="/writing/">
+  <WritingList
+    lang="en"
+    featured={featured}
+    posts={posts}
+    pager={{ current: 1, last, prevUrl: null, nextUrl: last > 1 ? '/en/writing/page/2/' : null }}
+  />
 </Base>
