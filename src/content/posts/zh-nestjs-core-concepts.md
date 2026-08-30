@@ -5,7 +5,6 @@ date: 2026-06-21
 tags: ["後端", "系統設計"]
 lang: zh
 draft: true
-featured: true
 source: https://www.threads.com/@joanvisual/post/DZ2W9o2mbDp
 ---
 

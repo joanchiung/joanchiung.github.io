@@ -11,7 +11,9 @@ export async function getWriting(lang: 'zh' | 'en', isDev: boolean) {
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return {
     all,
-    featured: all.filter((p) => p.data.featured),
+    featured: all
+      .filter((p) => p.data.featured)
+      .sort((a, b) => b.data.order - a.data.order || b.data.date.valueOf() - a.data.date.valueOf()),
     timeline: all.filter((p) => !p.data.featured),
   };
 }

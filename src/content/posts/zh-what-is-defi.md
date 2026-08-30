@@ -5,6 +5,8 @@ date: 2026-07-10
 tags: ["Web3", "金融"]
 lang: zh
 draft: true
+featured: true
+order: 20
 source: 英文課 W6 備課稿（DeFi Fundamentals）
 ---
 

@@ -12,6 +12,7 @@ const posts = defineCollection({
     lang: z.enum(['zh', 'en']).default('zh'),
     draft: z.boolean().default(false),   // true = 只在本機 dev 顯示，build 不輸出
     featured: z.boolean().default(false), // true = Writing 頁置頂精選
+    order: z.number().default(0),          // 精選排序，越大越前面（非精選不影響）
     source: z.string().optional(),        // 原始出處（例如 Threads 連結）
   }),
 });

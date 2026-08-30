@@ -5,6 +5,8 @@ date: 2026-07-24
 tags: ["Web3", "金融", "系統設計"]
 lang: zh
 draft: true
+featured: true
+order: 10
 source: 英文課 W7+W8 備課稿（AMM 流動性風險 + 借貸清算）
 ---
 

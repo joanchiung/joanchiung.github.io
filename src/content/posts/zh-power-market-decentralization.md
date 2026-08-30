@@ -6,6 +6,7 @@ tags: ["Web3", "能源", "系統設計"]
 lang: zh
 draft: true
 featured: true
+order: 30
 source: https://www.threads.com/@joanvisual/post/DbqTBdtmdON
 ---
 

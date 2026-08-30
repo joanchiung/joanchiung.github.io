@@ -5,7 +5,6 @@ date: 2026-05-20
 tags: ["Web3", "金融"]
 lang: zh
 draft: true
-featured: true
 source: https://www.threads.com/@joanvisual/post/DYkH_pXmUaq
 ---
 
