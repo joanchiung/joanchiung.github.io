@@ -318,7 +318,9 @@ blockquote {
   max-width: var(--measure-wide);
   margin: 0 auto;
   position: relative;
+  z-index: 0;            /* 建立堆疊脈絡，讓 ghost 能沉到文字後面 */
 }
+.hero-inner > :not(.hero-ghost) { position: relative; z-index: 1; }
 /* 深色 hero：漸層變暗，文字提亮 */
 :root[data-theme="dark"] .home-hero .why-line { color: #f4efe9; }
 :root[data-theme="dark"] .home-hero .role-line,
@@ -344,13 +346,14 @@ blockquote {
 
 .track-caption {
   margin: 1.75rem 0 0;
-  font-size: .88rem;
-  line-height: 1.9;
-  color: var(--muted-text);
+  font-size: .92rem;
+  line-height: 1.7;
+  color: var(--slate-anchor);
 }
 
 .hero-ghost {
   position: absolute;
+  z-index: -1;           /* 沉到文字後面，只在漸層背景之上 */
   right: 0;
   bottom: -3.25rem;
   font-family: 'Libre Baskerville', Georgia, serif;
