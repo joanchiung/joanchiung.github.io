@@ -294,17 +294,37 @@ blockquote {
 }
 
 /* =========================================================================
-   黃金圈 landing
+   首頁 landing
    ========================================================================= */
 .gc section { margin: 2.5rem 0; }
-.gc .why-line {
-  font-size: 1.5rem;
+.gc-block { margin: 2.75rem 0; }
+
+.why-line {
+  font-size: 1.4rem;
   line-height: 1.5;
   font-weight: 450;
   letter-spacing: -0.015em;
   color: var(--ink-slate);
-  margin: 0;
+  margin: 1.25rem 0 0;
 }
+
+/* 軌跡：現在 / 之前 */
+.track { margin: .5rem 0 0; }
+.track > div {
+  display: flex;
+  gap: 1rem;
+  padding: .5rem 0;
+}
+.track > div + div { border-top: 1px solid var(--border); }
+.track dt {
+  flex-shrink: 0;
+  width: 3rem;
+  font-size: .85rem;
+  color: var(--muted-text);
+  padding-top: .1rem;
+}
+.track dd { margin: 0; color: var(--slate-anchor); }
+
 .gc ol { margin: .25rem 0 0; padding-left: 1.3rem; }
 .gc ol li { margin: .6rem 0; }
 .gc ul.signal { list-style: none; margin: .25rem 0 0; padding: 0; }
@@ -321,8 +341,8 @@ blockquote {
   color: var(--signal-purple);
   font-weight: 700;
 }
-.gc .what-links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: .35rem; }
-.gc .what-links a { font-weight: 500; }
+.gc .what-links, .what-links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: .35rem; }
+.gc .what-links a, .what-links a { font-weight: 500; }
 
 .name-latin {
   color: var(--muted-text);

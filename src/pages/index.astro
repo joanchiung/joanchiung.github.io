@@ -18,29 +18,25 @@ const projects = (await getCollection('projects'))
   <h1>張瓊文<span class="name-latin">Joan Chang</span></h1>
   <p class="role-line">前端工程師｜銀行級 Web3 與金融科技系統</p>
 
-  <div class="gc">
-    <section>
-      <div class="eyebrow">Why</div>
-      <p class="why-line">設計背景的前端工程師。<br />我把模糊、未定義的需求，拆解成可以執行的介面。</p>
-    </section>
+  <p class="why-line">
+    擅長把模糊、沒定義好的需求，拆成可執行的方案；<br />11 年設計訓練是底層優勢。
+  </p>
 
-    <section>
-      <div class="eyebrow">How</div>
-      <ul class="signal">
-        <li>11 年品牌與 UX/UI 設計，2023 年轉前端</li>
-        <li>現在做受監管的加密貨幣托管系統，服務銀行與執法機關</li>
-        <li>邊做邊寫，把學到的概念真的弄懂 —— 前端、區塊鏈、金融、能源</li>
-      </ul>
-    </section>
+  <section class="gc-block">
+    <div class="eyebrow">軌跡</div>
+    <dl class="track">
+      <div><dt>現在</dt><dd>區塊科技 · 受監管的加密貨幣托管系統（Next.js / TypeScript）</dd></div>
+      <div><dt>之前</dt><dd>11 年設計 —— 品牌識別、Design System、獨立接案</dd></div>
+    </dl>
+  </section>
 
-    <section>
-      <div class="eyebrow">What</div>
-      <p class="what-links">
-        <a href="/writing/">文章 →</a>
-        <a href="/about/">關於我 →</a>
-      </p>
-    </section>
-  </div>
+  <section class="gc-block">
+    <div class="eyebrow">文章</div>
+    <p>
+      前端、區塊鏈、金融、能源的思考，邊做邊寫。<br />
+      <a href="/writing/">全部文章 →</a>
+    </p>
+  </section>
 
   <section class="projects">
     <div class="eyebrow">作品</div>
@@ -71,7 +67,6 @@ const projects = (await getCollection('projects'))
     <div class="resume-meta">
       <div class="eyebrow">履歷</div>
       <p>前端工程師 · React / Next.js / TypeScript · 銀行級 Web3 與金融科技</p>
-      <span class="resume-note">2026-03 版（更新中）</span>
     </div>
     <div class="resume-actions">
       <a class="btn" href="/joan-chang-cv.pdf" download><Download size={14} stroke-width={2} />下載履歷</a>
