@@ -12,10 +12,12 @@ interface Props {
   lang?: 'zh' | 'en';
   page?: 'home' | 'about' | 'writing' | undefined;
   reading?: boolean;
+  /** true = 不套用置中的 .wrap 容器，頁面自行排版（首頁用）。 */
+  bleed?: boolean;
   /** 切換語言時要去的對應網址。不給就用當前路徑自動換前綴。 */
   altPath?: string;
 }
-const { title, description, lang = 'zh', page, reading = false, altPath } = Astro.props;
+const { title, description, lang = 'zh', page, reading = false, bleed = false, altPath } = Astro.props;
 
 const nav = lang === 'en'
   ? { home: 'Home', about: 'About', writing: 'Writing', brand: 'Joan Chang', current: 'English', resume: 'Download résumé' }
@@ -41,7 +43,7 @@ const enHref = lang === 'en' ? path : otherHref;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Libre+Baskerville:ital@1&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='25' font-size='24'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E" />
@@ -85,9 +87,11 @@ const enHref = lang === 'en' ? path : otherHref;
       </div>
     </header>
 
-    <main class:list={['wrap', { reading }]}>
-      <slot />
-    </main>
+    {bleed ? (
+      <main><slot /></main>
+    ) : (
+      <main class:list={['wrap', { reading }]}><slot /></main>
+    )}
 
     <footer class="site-footer">
       <div class="site-footer-inner">

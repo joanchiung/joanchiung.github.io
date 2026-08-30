@@ -12,7 +12,6 @@ const projects = (await getCollection('projects'))
   .filter((p) => isDev || !p.data.draft)
   .sort((a, b) => b.data.order - a.data.order);
 
-// 首頁「作品」區只放前 3 篇精選文章當預覽，完整清單在 /writing/
 const { featured } = await getWriting('zh', isDev);
 const previewPosts = featured.slice(0, 3);
 ---
@@ -20,62 +19,71 @@ const previewPosts = featured.slice(0, 3);
   title="張瓊文 Joan Chang — 前端工程師"
   description="前端工程師，前身為 11 年品牌與 UX/UI 設計師。做受監管的金融與 Web3 系統。"
   page="home"
+  bleed
 >
-  <div class="hero">
-    <h1>張瓊文<span class="name-latin">Joan Chang</span></h1>
-    <p class="role-line">前端工程師｜銀行級 Web3 與金融科技系統</p>
+  <section class="home-hero">
+    <div class="hero-inner">
+      <h1>張瓊文<span class="name-latin">Joan Chang</span></h1>
+      <p class="role-line">前端工程師｜銀行級 Web3 與金融科技系統</p>
 
-    <p class="why-line">
-      擅長把模糊、沒定義好的需求，拆成可執行的方案；11 年設計訓練是底層優勢。
-    </p>
+      <p class="why-line">
+        擅長把模糊、沒定義好的需求，拆成可執行的方案；11 年設計訓練是底層優勢。
+      </p>
 
-    <p class="track-caption">
-      現在 · 區塊科技 · 受監管的加密貨幣托管系統（Next.js / TypeScript）<br />
-      之前 · 11 年設計 · 品牌識別、Design System、獨立接案
-    </p>
-  </div>
+      <p class="track-caption">
+        現在 · 區塊科技 · 受監管的加密貨幣托管系統（Next.js / TypeScript）<br />
+        之前 · 11 年設計 · 品牌識別、Design System、獨立接案
+      </p>
 
-  <section class="work">
-    <div class="eyebrow">作品</div>
-    <div class="work-grid">
-      {projects.map((p) => (
-        <div class="work-card">
-          <div class="wc-head">
-            <span class="wc-title">{p.data.title}</span>
-            {p.data.status && <span class="status-tag">{p.data.status}</span>}
-          </div>
-          <p class="wc-desc">{p.data.description}</p>
-          <p class="wc-meta">{p.data.tech.join(' · ')}</p>
-          {(p.data.repo || p.data.demo) && (
-            <p class="wc-links">
-              {p.data.repo && <a href={p.data.repo}><ExternalLink size={13} stroke-width={2} /> GitHub</a>}
-              {p.data.demo && <a href={p.data.demo}><ExternalLink size={13} stroke-width={2} /> Demo</a>}
-            </p>
-          )}
-        </div>
-      ))}
-
-      {previewPosts.map((p) => (
-        <a class="work-card" href={`/writing/${p.id}/`}>
-          <div class="wc-head">
-            <span class="wc-title">{p.data.title}</span>
-          </div>
-          {p.data.description && <p class="wc-desc">{p.data.description}</p>}
-          <p class="wc-meta">{fmtDate(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</p>
-        </a>
-      ))}
+      <span class="hero-ghost" aria-hidden="true">Frontend<br />Engineer</span>
     </div>
-    <p class="work-more"><a href="/writing/">全部文章 →</a></p>
   </section>
 
-  <div class="resume-card">
-    <div class="resume-meta">
-      <div class="eyebrow">履歷</div>
-      <p>前端工程師 · React / Next.js / TypeScript · 銀行級 Web3 與金融科技</p>
-    </div>
-    <div class="resume-actions">
-      <a class="btn" href="/joan-chang-cv.pdf" download><Download size={14} stroke-width={2} />下載履歷</a>
-      <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">線上看</a>
+  <div class="home-sheet">
+    <div class="sheet-inner">
+      <section class="work">
+        <div class="eyebrow">作品</div>
+        <div class="work-grid">
+          {projects.map((p) => (
+            <div class="work-card">
+              <div class="wc-head">
+                <span class="wc-title">{p.data.title}</span>
+                {p.data.status && <span class="status-tag">{p.data.status}</span>}
+              </div>
+              <p class="wc-desc">{p.data.description}</p>
+              <p class="wc-meta">{p.data.tech.join(' · ')}</p>
+              {(p.data.repo || p.data.demo) && (
+                <p class="wc-links">
+                  {p.data.repo && <a href={p.data.repo}><ExternalLink size={13} stroke-width={2} /> GitHub</a>}
+                  {p.data.demo && <a href={p.data.demo}><ExternalLink size={13} stroke-width={2} /> Demo</a>}
+                </p>
+              )}
+            </div>
+          ))}
+
+          {previewPosts.map((p) => (
+            <a class="work-card" href={`/writing/${p.id}/`}>
+              <div class="wc-head">
+                <span class="wc-title">{p.data.title}</span>
+              </div>
+              {p.data.description && <p class="wc-desc">{p.data.description}</p>}
+              <p class="wc-meta">{fmtDate(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</p>
+            </a>
+          ))}
+        </div>
+        <p class="work-more"><a href="/writing/">全部文章 →</a></p>
+      </section>
+
+      <div class="resume-card">
+        <div class="resume-meta">
+          <div class="eyebrow">履歷</div>
+          <p>前端工程師 · React / Next.js / TypeScript · 銀行級 Web3 與金融科技</p>
+        </div>
+        <div class="resume-actions">
+          <a class="btn" href="/joan-chang-cv.pdf" download><Download size={14} stroke-width={2} />下載履歷</a>
+          <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">線上看</a>
+        </div>
+      </div>
     </div>
   </div>
 </Base>

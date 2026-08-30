@@ -297,8 +297,37 @@ blockquote {
    首頁 landing
    ========================================================================= */
 
-/* ---- 上層：身份 + hook（純 canvas、留白）---- */
-.hero { padding: 1.5rem 0 4.5rem; }
+/* ---- 上層：粉調漸層 hero（沿用累積自由本金：mid-surface → dusty-rose）---- */
+.home-hero {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  background: linear-gradient(to bottom right, var(--mid-surface), var(--dusty-rose));
+  padding: 7rem 1.5rem 5.5rem;
+  overflow: hidden;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .home-hero {
+    background: linear-gradient(to bottom right, #2b2521, #4a3739);
+  }
+}
+:root[data-theme="dark"] .home-hero {
+  background: linear-gradient(to bottom right, #2b2521, #4a3739);
+}
+.hero-inner {
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+  position: relative;
+}
+/* 深色 hero：漸層變暗，文字提亮 */
+:root[data-theme="dark"] .home-hero .why-line { color: #f4efe9; }
+:root[data-theme="dark"] .home-hero .role-line,
+:root[data-theme="dark"] .home-hero .track-caption { color: rgba(244, 239, 233, .7); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .home-hero .why-line { color: #f4efe9; }
+  :root:not([data-theme="light"]) .home-hero .role-line,
+  :root:not([data-theme="light"]) .home-hero .track-caption { color: rgba(244, 239, 233, .7); }
+}
 
 .why-line {
   font-size: 1.7rem;
@@ -317,7 +346,36 @@ blockquote {
   color: var(--muted-text);
 }
 
-/* ---- 下層：作品（lifted 卡片格）---- */
+.hero-ghost {
+  position: absolute;
+  right: 0;
+  bottom: -3.25rem;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  font-size: 4.5rem;
+  line-height: 1;
+  text-align: right;
+  color: rgba(255, 255, 255, .28);
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 560px) {
+  .hero-ghost { font-size: 2.75rem; bottom: -2rem; }
+}
+
+/* ---- 下層：canvas「紙張」滑上來蓋住 hero ---- */
+.home-sheet {
+  position: relative;
+  z-index: 1;
+  margin-top: -2.5rem;
+  background: var(--canvas);
+  border-radius: 40px 40px 0 0;
+  box-shadow: 0 -6px 44px rgba(0, 0, 0, .12);
+  padding: 3rem 1.5rem 5rem;
+}
+.sheet-inner { max-width: var(--measure-wide); margin: 0 auto; }
+
+/* ---- 作品（lifted 卡片格）---- */
 .work { margin: 0 0 3rem; }
 .work-grid {
   margin: .9rem 0 0;
@@ -351,7 +409,8 @@ a.work-card:hover { box-shadow: var(--shadow-1); }
 
 @media (max-width: 560px) {
   .work-grid { grid-template-columns: 1fr; }
-  .hero { padding-bottom: 3rem; }
+  .home-hero { padding: 6rem 1.25rem 4rem; }
+  .home-sheet { padding: 2.5rem 1.25rem 4rem; border-radius: 28px 28px 0 0; }
 }
 
 /* ---- 英文首頁仍用舊 Why/How/What 結構（之後翻譯時統一）---- */
