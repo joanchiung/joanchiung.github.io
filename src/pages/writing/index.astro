@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const isDev = import.meta.env.DEV;
+const posts = (await getCollection('posts'))
+  .filter((p) => p.data.lang === 'zh')
+  .filter((p) => isDev || !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+---
+<Base title="文章 — 張瓊文" description="對金融、Web3、前端與設計的思考。" page="writing">
+  <h1>文章</h1>
+  <p style="color:var(--muted)">邊學邊寫。把一個概念寫清楚，才算真的懂。</p>
+
+  {posts.length === 0 && <p class="todo">還沒有文章。把 .md 檔放進 src/content/posts/ 就會出現在這裡。</p>}
+
+  <ul class="post-list">
+    {posts.map((p) => (
+      <li>
+        <a href={`/writing/${p.id}/`}>{p.data.title}</a>
+        {p.data.draft && <span class="draft-tag">draft</span>}
+        <div class="meta">{fmt(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</div>
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'zh' | 'en';
+  /** 目前頁面，用來標示 nav active：'home' | 'writing' */
+  page?: 'home' | 'writing' | undefined;
+}
+const { title, description, lang = 'zh', page } = Astro.props;
+
+const t = lang === 'en'
+  ? { home: 'Joan Chang', writing: 'Writing', resume: 'Résumé', other: '中文' }
+  : { home: '張瓊文', writing: '文章', resume: '履歷', other: 'EN' };
+
+const base = lang === 'en' ? '/en' : '';
+const otherHref = lang === 'en' ? '/' : '/en/';
+---
+<!doctype html>
+<html lang={lang === 'en' ? 'en' : 'zh-Hant'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9C%92%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="home" href={`${base}/`}>{t.home}</a>
+      <nav>
+        <a href={`${base}/writing/`} aria-current={page === 'writing' ? 'page' : undefined}>{t.writing}</a>
+        <a href={`${base}/#resume`}>{t.resume}</a>
+        <a href={otherHref}>{t.other}</a>
+      </nav>
+    </header>
+    <main class="wrap">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <a href="https://github.com/joanchiung">GitHub</a>
+      <a href="https://www.linkedin.com/in/joanvisual">LinkedIn</a>
+      <a href="mailto:joankaminari@gmail.com">Email</a>
+    </footer>
+  </body>
+</html>

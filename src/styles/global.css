@@ -1,0 +1,131 @@
+/* ---- 設計 token ---- */
+:root {
+  --bg: #fbfaf8;
+  --fg: #1c1a17;
+  --muted: #6b6560;
+  --line: #e5e0d8;
+  --accent: #1a1a1a;
+  --link: #3a5a9a;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+    "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Noto Serif TC", Georgia, serif;
+
+  --measure: 42rem;
+  --step: 1.6rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16150f;
+    --fg: #e9e5dd;
+    --muted: #9a938a;
+    --line: #322f27;
+    --accent: #e9e5dd;
+    --link: #8fb0e6;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #16150f;
+  --fg: #e9e5dd;
+  --muted: #9a938a;
+  --line: #322f27;
+  --accent: #e9e5dd;
+  --link: #8fb0e6;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  letter-spacing: .01em;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 5rem;
+}
+
+a { color: var(--link); text-underline-offset: 2px; }
+a:hover { text-decoration: none; }
+
+h1, h2, h3 { font-family: var(--font-serif); line-height: 1.25; font-weight: 600; }
+h1 { font-size: 2rem; margin: 0 0 .5rem; }
+h2 { font-size: 1.35rem; margin: 2.5rem 0 .75rem; }
+h3 { font-size: 1.1rem; margin: 1.75rem 0 .5rem; }
+
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
+
+/* ---- header ---- */
+.site-header {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem .5rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.site-header .home { font-weight: 600; font-family: var(--font-serif); }
+.site-header nav { display: flex; gap: 1rem; margin-left: auto; }
+.site-header nav a { color: var(--muted); text-decoration: none; font-size: .95rem; }
+.site-header nav a[aria-current="page"] { color: var(--fg); }
+
+/* ---- golden circle ---- */
+.gc { margin: 1rem 0 0; }
+.gc section { margin: 2.25rem 0; }
+.gc .label {
+  font-size: .8rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .35rem;
+}
+.gc .why p { font-size: 1.3rem; line-height: 1.55; font-family: var(--font-serif); margin: 0; }
+.gc ol { margin: .25rem 0 0; padding-left: 1.2rem; }
+.gc ol li { margin: .5rem 0; }
+.gc .what-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .5rem; }
+
+/* ---- writing list ---- */
+.post-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.post-list li { padding: 1rem 0; border-top: 1px solid var(--line); }
+.post-list li:last-child { border-bottom: 1px solid var(--line); }
+.post-list a { text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+.post-list .meta { color: var(--muted); font-size: .9rem; margin-top: .15rem; }
+.draft-tag {
+  font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+  color: #b4530a; border: 1px solid currentColor; border-radius: 3px;
+  padding: 0 .3rem; margin-left: .5rem;
+}
+
+/* ---- article ---- */
+.article .meta { color: var(--muted); font-size: .9rem; margin-bottom: 2rem; }
+.article :is(p, ul, ol) { margin: 1rem 0; }
+.article code {
+  background: var(--line); padding: .1em .35em; border-radius: 3px; font-size: .9em;
+}
+.article blockquote {
+  margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--line);
+  color: var(--muted);
+}
+
+.back { display: inline-block; margin-top: 3rem; color: var(--muted); text-decoration: none; }
+
+/* ---- footer ---- */
+.site-footer {
+  max-width: var(--measure); margin: 0 auto; padding: 2rem 1.25rem 3rem;
+  border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem;
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.site-footer a { color: var(--muted); }
+
+.todo {
+  background: #fff6e5; border: 1px dashed #d9a441; color: #7a5310;
+  padding: .5rem .75rem; border-radius: 4px; font-size: .85rem; margin: 1rem 0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .todo { background: #2a2310; color: #e0bd8e; border-color: #6b5320; }
+}

@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const isDev = import.meta.env.DEV;
+  const posts = (await getCollection('posts'))
+    .filter((p) => p.data.lang === 'zh')
+    .filter((p) => isDev || !p.data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data.date;
+const fmt = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+---
+<Base title={`${post.data.title} — 張瓊文`} description={post.data.description} page="writing">
+  <article class="article">
+    <h1>{post.data.title}{post.data.draft && <span class="draft-tag">draft</span>}</h1>
+    <div class="meta">
+      {fmt}{post.data.tags.length > 0 && ` · ${post.data.tags.join(' / ')}`}
+      {post.data.source && <> · <a href={post.data.source}>原始出處</a></>}
+    </div>
+    <Content />
+  </article>
+  <a class="back" href="/writing/">← 回文章列表</a>
+</Base>
