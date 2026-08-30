@@ -296,35 +296,66 @@ blockquote {
 /* =========================================================================
    首頁 landing
    ========================================================================= */
-.gc section { margin: 2.5rem 0; }
-.gc-block { margin: 2.75rem 0; }
+
+/* ---- 上層：身份 + hook（純 canvas、留白）---- */
+.hero { padding: 1.5rem 0 4.5rem; }
 
 .why-line {
-  font-size: 1.4rem;
-  line-height: 1.5;
-  font-weight: 450;
-  letter-spacing: -0.015em;
+  font-size: 1.7rem;
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.02em;
   color: var(--ink-slate);
-  margin: 1.25rem 0 0;
+  max-width: 30rem;
+  margin: 2rem 0 0;
 }
 
-/* 軌跡：現在 / 之前 */
-.track { margin: .5rem 0 0; }
-.track > div {
-  display: flex;
-  gap: 1rem;
-  padding: .5rem 0;
-}
-.track > div + div { border-top: 1px solid var(--border); }
-.track dt {
-  flex-shrink: 0;
-  width: 3rem;
-  font-size: .85rem;
+.track-caption {
+  margin: 1.75rem 0 0;
+  font-size: .88rem;
+  line-height: 1.9;
   color: var(--muted-text);
-  padding-top: .1rem;
 }
-.track dd { margin: 0; color: var(--slate-anchor); }
 
+/* ---- 下層：作品（lifted 卡片格）---- */
+.work { margin: 0 0 3rem; }
+.work-grid {
+  margin: .9rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .85rem;
+}
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  background: var(--lifted);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.1rem 1.25rem;
+  text-decoration: none;
+  transition: box-shadow .15s;
+}
+a.work-card:hover { box-shadow: var(--shadow-1); }
+.wc-head { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.wc-title { font-weight: 500; font-size: 1.02rem; color: var(--ink-slate); line-height: 1.35; }
+.wc-desc { margin: 0; font-size: .88rem; color: var(--slate-anchor); line-height: 1.6; }
+.wc-meta { margin: .15rem 0 0; font-size: .78rem; color: var(--muted-text); }
+.wc-links { margin: .3rem 0 0; display: flex; gap: 1rem; }
+.wc-links a {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .8rem; font-weight: 500; text-decoration: none; color: var(--signal-purple);
+}
+.work-more { margin: 1rem 0 0; }
+.work-more a { font-weight: 500; text-decoration: none; }
+
+@media (max-width: 560px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .hero { padding-bottom: 3rem; }
+}
+
+/* ---- 英文首頁仍用舊 Why/How/What 結構（之後翻譯時統一）---- */
+.gc section { margin: 2.5rem 0; }
 .gc ol { margin: .25rem 0 0; padding-left: 1.3rem; }
 .gc ol li { margin: .6rem 0; }
 .gc ul.signal { list-style: none; margin: .25rem 0 0; padding: 0; }

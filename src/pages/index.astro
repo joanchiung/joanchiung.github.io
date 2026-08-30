@@ -1,66 +1,71 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { getWriting, fmtDate } from '../lib/writing';
 import Download from '@lucide/astro/icons/download';
 import ExternalLink from '@lucide/astro/icons/external-link';
 
 const isDev = import.meta.env.DEV;
+
 const projects = (await getCollection('projects'))
   .filter((p) => p.data.lang === 'zh')
   .filter((p) => isDev || !p.data.draft)
   .sort((a, b) => b.data.order - a.data.order);
+
+// 首頁「作品」區只放前 3 篇精選文章當預覽，完整清單在 /writing/
+const { featured } = await getWriting('zh', isDev);
+const previewPosts = featured.slice(0, 3);
 ---
 <Base
   title="張瓊文 Joan Chang — 前端工程師"
-  description="前端工程師，前身為 11 年品牌與 UX/UI 設計師。在受監管的金融系統裡把模糊需求拆解成可執行的介面。"
+  description="前端工程師，前身為 11 年品牌與 UX/UI 設計師。做受監管的金融與 Web3 系統。"
   page="home"
 >
-  <h1>張瓊文<span class="name-latin">Joan Chang</span></h1>
-  <p class="role-line">前端工程師｜銀行級 Web3 與金融科技系統</p>
+  <div class="hero">
+    <h1>張瓊文<span class="name-latin">Joan Chang</span></h1>
+    <p class="role-line">前端工程師｜銀行級 Web3 與金融科技系統</p>
 
-  <p class="why-line">
-    擅長把模糊、沒定義好的需求，拆成可執行的方案；<br />11 年設計訓練是底層優勢。
-  </p>
-
-  <section class="gc-block">
-    <div class="eyebrow">軌跡</div>
-    <dl class="track">
-      <div><dt>現在</dt><dd>區塊科技 · 受監管的加密貨幣托管系統（Next.js / TypeScript）</dd></div>
-      <div><dt>之前</dt><dd>11 年設計 —— 品牌識別、Design System、獨立接案</dd></div>
-    </dl>
-  </section>
-
-  <section class="gc-block">
-    <div class="eyebrow">文章</div>
-    <p>
-      前端、區塊鏈、金融、能源的思考，邊做邊寫。<br />
-      <a href="/writing/">全部文章 →</a>
+    <p class="why-line">
+      擅長把模糊、沒定義好的需求，拆成可執行的方案；11 年設計訓練是底層優勢。
     </p>
-  </section>
 
-  <section class="projects">
+    <p class="track-caption">
+      現在 · 區塊科技 · 受監管的加密貨幣托管系統（Next.js / TypeScript）<br />
+      之前 · 11 年設計 · 品牌識別、Design System、獨立接案
+    </p>
+  </div>
+
+  <section class="work">
     <div class="eyebrow">作品</div>
-    {projects.length === 0 && <p style="color:var(--muted-text)">整理中。</p>}
-    <ul class="card-list">
+    <div class="work-grid">
       {projects.map((p) => (
-        <li>
-          <div class="project-card">
-            <div class="project-head">
-              <span class="t">{p.data.title}</span>
-              {p.data.status && <span class="status-tag">{p.data.status}</span>}
-            </div>
-            <p class="d">{p.data.description}</p>
-            {p.data.tech.length > 0 && <p class="tech">{p.data.tech.join(' · ')}</p>}
-            {(p.data.repo || p.data.demo) && (
-              <p class="project-links">
-                {p.data.repo && <a href={p.data.repo}><ExternalLink size={14} stroke-width={2} /> GitHub</a>}
-                {p.data.demo && <a href={p.data.demo}><ExternalLink size={14} stroke-width={2} /> Demo</a>}
-              </p>
-            )}
+        <div class="work-card">
+          <div class="wc-head">
+            <span class="wc-title">{p.data.title}</span>
+            {p.data.status && <span class="status-tag">{p.data.status}</span>}
           </div>
-        </li>
+          <p class="wc-desc">{p.data.description}</p>
+          <p class="wc-meta">{p.data.tech.join(' · ')}</p>
+          {(p.data.repo || p.data.demo) && (
+            <p class="wc-links">
+              {p.data.repo && <a href={p.data.repo}><ExternalLink size={13} stroke-width={2} /> GitHub</a>}
+              {p.data.demo && <a href={p.data.demo}><ExternalLink size={13} stroke-width={2} /> Demo</a>}
+            </p>
+          )}
+        </div>
       ))}
-    </ul>
+
+      {previewPosts.map((p) => (
+        <a class="work-card" href={`/writing/${p.id}/`}>
+          <div class="wc-head">
+            <span class="wc-title">{p.data.title}</span>
+          </div>
+          {p.data.description && <p class="wc-desc">{p.data.description}</p>}
+          <p class="wc-meta">{fmtDate(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</p>
+        </a>
+      ))}
+    </div>
+    <p class="work-more"><a href="/writing/">全部文章 →</a></p>
   </section>
 
   <div class="resume-card">
