@@ -61,13 +61,13 @@ const enHref = lang === 'en' ? path : otherHref;
         <span class="mark">✦</span>{nav.brand}
       </a>
 
-      <nav class="nav-pill nav-center">
-        <a href={`${base}/`} aria-current={page === 'home' ? 'page' : undefined}>{nav.home}</a>
-        <a href={`${base}/about/`} aria-current={page === 'about' ? 'page' : undefined}>{nav.about}</a>
-        <a href={`${base}/writing/`} aria-current={page === 'writing' ? 'page' : undefined}>{nav.writing}</a>
-      </nav>
+      <div class="nav-right">
+        <nav class="nav-pill">
+          <a href={`${base}/`} aria-current={page === 'home' ? 'page' : undefined}>{nav.home}</a>
+          <a href={`${base}/about/`} aria-current={page === 'about' ? 'page' : undefined}>{nav.about}</a>
+          <a href={`${base}/writing/`} aria-current={page === 'writing' ? 'page' : undefined}>{nav.writing}</a>
+        </nav>
 
-      <div class="nav-util">
         <details class="lang-switch" data-lang-switch>
           <summary aria-label="切換語言 / Switch language">
             <Languages size={15} stroke-width={1.75} />
