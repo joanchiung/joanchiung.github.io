@@ -307,6 +307,20 @@ blockquote {
 }
 .gc ol { margin: .25rem 0 0; padding-left: 1.3rem; }
 .gc ol li { margin: .6rem 0; }
+.gc ul.signal { list-style: none; margin: .25rem 0 0; padding: 0; }
+.gc ul.signal li {
+  margin: .55rem 0;
+  padding-left: 1.1rem;
+  position: relative;
+  color: var(--slate-anchor);
+}
+.gc ul.signal li::before {
+  content: "·";
+  position: absolute;
+  left: .2rem;
+  color: var(--signal-purple);
+  font-weight: 700;
+}
 .gc .what-links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: .35rem; }
 .gc .what-links a { font-weight: 500; }
 
