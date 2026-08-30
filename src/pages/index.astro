@@ -1,5 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import Download from '@lucide/astro/icons/download';
+import ExternalLink from '@lucide/astro/icons/external-link';
+
+const isDev = import.meta.env.DEV;
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.lang === 'zh')
+  .filter((p) => isDev || !p.data.draft)
+  .sort((a, b) => b.data.order - a.data.order);
 ---
 <Base
   title="張瓊文 Joan Chang — 前端工程師"
@@ -26,9 +35,38 @@ import Base from '../layouts/Base.astro';
 
     <section>
       <div class="eyebrow">What</div>
-      <p><a href="/writing/">文章</a> —— 我對前端、區塊鏈、金融的思考，邊學邊寫。</p>
+      <p>
+        <a href="/writing/">文章</a> —— 我對前端、區塊鏈、金融的思考，邊學邊寫。<br />
+        <a href="/about/">關於我</a> —— 從設計判斷力到前端實作的一條路。
+      </p>
     </section>
   </div>
+
+  <section class="projects">
+    <div class="eyebrow">作品</div>
+    {projects.length === 0 && <p style="color:var(--muted-text)">整理中。</p>}
+    <ul class="card-list">
+      {projects.map((p) => (
+        <li>
+          <div class="project-card">
+            <div class="project-head">
+              <span class="t">{p.data.title}</span>
+              {p.data.status && <span class="status-tag">{p.data.status}</span>}
+              {p.data.draft && <span class="draft-tag">draft</span>}
+            </div>
+            <p class="d">{p.data.description}</p>
+            {p.data.tech.length > 0 && <p class="tech">{p.data.tech.join(' · ')}</p>}
+            {(p.data.repo || p.data.demo) && (
+              <p class="project-links">
+                {p.data.repo && <a href={p.data.repo}><ExternalLink size={14} stroke-width={2} /> GitHub</a>}
+                {p.data.demo && <a href={p.data.demo}><ExternalLink size={14} stroke-width={2} /> Demo</a>}
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
 
   <div class="resume-card">
     <div class="resume-meta">
@@ -37,14 +75,8 @@ import Base from '../layouts/Base.astro';
       <span class="resume-note">2026-03 版（更新中）</span>
     </div>
     <div class="resume-actions">
-      <a class="btn" href="/joan-chang-cv.pdf" download>下載 PDF</a>
+      <a class="btn" href="/joan-chang-cv.pdf" download><Download size={14} stroke-width={2} />下載履歷</a>
       <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">線上看</a>
     </div>
   </div>
-
-  <p class="contact-line">
-    <a href="https://github.com/joanchiung">GitHub</a> ·
-    <a href="https://www.linkedin.com/in/joanvisual">LinkedIn</a> ·
-    <a href="mailto:joankaminari@gmail.com">joankaminari@gmail.com</a>
-  </p>
 </Base>
