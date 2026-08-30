@@ -36,6 +36,18 @@
   - 色票 token 在 global.css：淺色在 `:root`，深色有**兩塊**（`@media` + `:root[data-theme="dark"]`）**改值兩塊都要改**
 - footer 分隔線只跟內容同寬（border-top 在 `.site-footer-inner`，不是 `.site-footer`）。
 
+## i18n（管線已建，編輯型文案未翻）
+
+- **UI 字串**（nav/footer/文章列表/分頁/上一篇下一篇等「介面文字」）集中在 `src/i18n/ui.ts`
+  的 `{ zh, en }` 字典，用 `useT(lang)` 取；另有 `pathForLocale` / `base` / `htmlLang` helper。
+  新增介面字串加 key，不要在 component 內寫 inline 字典。
+- **編輯型文案**（hero hook、關於我內文、文章內文）留在各自的 `.astro` / `.md`，不進 ui.ts。
+- 文章路由已收斂：`ArticlePage.astro` + `WritingListPage.astro` 兩個共用 component，
+  `src/pages/{,en/}writing/*` 六個檔案都只是 3–10 行 wrapper。分頁計算在
+  `lib/writing.ts` 的 `getWritingPage()` / `writingPagePaths()`。
+- **還沒收斂**：`index.astro` / `en/index.astro`（等 hero 定稿）、`about.astro` /
+  `en/about.astro`（內文要搬到 `src/content/pages/{zh,en}-about.md` + 共用 AboutPage）。
+
 ## 上稿一篇文章
 
 `src/content/posts/` 放 `.md`，frontmatter schema 見 `src/content.config.ts`：
