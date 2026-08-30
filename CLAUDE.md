@@ -32,18 +32,34 @@
 ## 關鍵事實（寫文案時對照）
 
 - GitHub `joanchiung`、LinkedIn `joanvisual`、Email `joankaminari@gmail.com`
-- 現職：受監管金融的加密托管系統（M-Key），前端工程師，Next.js/TS、Redux、TanStack Query、Lit Web Components、Paged.js、i18n
-- 經歷：11 年設計（7+ 公司 + 接案）→ 前端 since 2023/10
-- CV 用化名（BlockTech、Snowbridge、Surasia、BOYU、Innospread）
-- 待確認：CV 把 coding 拆成 Snowbridge(2023/10–2024/10) + BlockTech(2024/11–) 兩段，但筆記說連續——同一間還是換過？（會影響文案，需本人確認）
-- 已有的 LinkedIn About / 7 段經歷英文定稿在 `_source` 提到的 Codex 產出（本機 `~/Documents/Codex/2026-07-11/`）
+- 現職：區塊科技 BlockChain Security Corp（2024/11–），前端工程師，M-Key 加密貨幣托管平台（服務銀行與執法機關）。Next.js/TS、TanStack Query、Zod。負責金庫管理、30+ 審批事件流程、團隊管理、設計系統基礎（色彩/字體 Token、自動化圖示產線 → 交付時間 1.5 週縮到 3 天）
+- 前一份：雪橋 Snowbridge Inc（2023/10–2024/11），5 人團隊唯一前端。1510.ai 不動產工具（Paged.js，網頁 UI 與 PDF 同步，4hr→0.5hr）、ERC-1155 循環經濟平台原型、NextAuth 多角色租賃平台
+- **確認：coding 是兩間公司，不是連續一間。真名可用（跟 CV/LinkedIn 一致）。**
+- 自由接案 2018/03–2023/10（能源署淨零網站「源宇宙」、Gold Alles 錢包 App、臥和彩日診所 VI）；2012–2018 設計（BVG、Surasia、BOYU、Innospread）
+- 最新履歷文案來源：Notion「履歷 - 通用版」`https://app.notion.com/p/3c60a677b5e581b19275c181880667f8`（本人還在精簡）。主頁 Why/How 已改用此版自我簡介的措辭。
+- 一句定位：「前端工程師｜銀行級 Web3 與金融科技系統」
+- Why：「我擅長把模糊、未定義的需求，拆解成可以執行的路徑。」
+
+## 最小 MVP 標準（目標：家教課上能從頭走一遍，不用道歉）
+
+- [x] 主導覽只留「文章」
+- [x] 語言切換獨立成 dropdown（右上，與 nav 分開）
+- [x] 履歷從 nav 移除 → 主頁做成文件卡（下載 PDF / 線上看）+ footer
+- [x] 主頁重新結構：姓名+定位 → Why → How → What（文章）→ 履歷卡 → 連結
+- [x] 拿掉黃色草稿提示條（中文頁）
+- [ ] 精選 4 篇潤稿 + 拿掉 draft（讓正式 build 有內容）
+- [ ] 單篇文章排版細修
+- [ ] 手機版 nav 不破版（實機看）
+- [ ] EN 頁：等中文定稿後做 i18n（今天先中文）
+
+**不在 MVP**：程式作品區、15 篇全潤完、部署、文章英譯、定位敘事 A/B。
 
 ## 進行中的決策 / 待辦
 
-1. 定位敘事 A vs B
-2. 程式作品怎麼擺：家教練習（asset-tracker、my-crud-backend）vs AI 協作（job-radar）vs 較完整的「網頁轉 A5 紙本」專案（未整理、未上 GitHub）。不要一次放三個，需深度討論
-3. Threads 文章潤稿 + 正式上稿（目前只有 1 篇 draft 測試排版）
-4. 主頁 Why/How/What 定稿（等本人 CV 改完一起）
+1. 精選 4 篇（電力市場、登入系統、NestJS、CEX vs DEX）逐篇潤稿、拿掉 draft
+2. 程式作品怎麼擺：家教練習（asset-tracker、my-crud-backend）vs AI 協作（job-radar）vs 「網頁轉 A5 紙本」出國手冊專案（有程式碼、未整理、未上 GitHub → 要開 repo + 寫 case study）
+3. 主頁 Why/How 最終版（等本人 Notion 履歷精簡完）
+4. 中文定稿後補英文 i18n
 5. 部署：private repo → 審核完 → public + 開 Pages
 
 ## 完整計畫
