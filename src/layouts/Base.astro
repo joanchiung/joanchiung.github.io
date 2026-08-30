@@ -5,11 +5,12 @@ import Languages from '@lucide/astro/icons/languages';
 import Download from '@lucide/astro/icons/download';
 import Sun from '@lucide/astro/icons/sun';
 import Moon from '@lucide/astro/icons/moon';
+import { useT, htmlLang, pathForLocale, base as localeBase, type Locale } from '../i18n/ui';
 
 interface Props {
   title: string;
   description?: string;
-  lang?: 'zh' | 'en';
+  lang?: Locale;
   page?: 'home' | 'about' | 'writing' | undefined;
   reading?: boolean;
   /** true = 不套用置中的 .wrap 容器，頁面自行排版（首頁用）。 */
@@ -19,22 +20,17 @@ interface Props {
 }
 const { title, description, lang = 'zh', page, reading = false, bleed = false, altPath } = Astro.props;
 
-const nav = lang === 'en'
-  ? { home: 'Home', about: 'About', writing: 'Writing', brand: 'Joan Chang', current: 'English', resume: 'Download résumé' }
-  : { home: '首頁', about: '關於我', writing: '文章', brand: 'Joan Chang', current: '繁體中文', resume: '下載履歷' };
-
-const base = lang === 'en' ? '/en' : '';
+const t = useT(lang);
+const base = localeBase(lang);
 
 // 語言選單：當前語言指向本頁；另一語言用 altPath（若有）或自動換前綴
 const path = Astro.url.pathname;
-const stripEn = (p: string) => (p === '/en' || p === '/en/' ? '/' : p.startsWith('/en/') ? p.slice(3) : p);
-const addEn = (p: string) => (p === '/' ? '/en/' : '/en' + p);
-const otherHref = altPath ?? (lang === 'en' ? stripEn(path) : addEn(path));
+const otherHref = altPath ?? pathForLocale(path, lang === 'en' ? 'zh' : 'en');
 const zhHref = lang === 'zh' ? path : otherHref;
 const enHref = lang === 'en' ? path : otherHref;
 ---
 <!doctype html>
-<html lang={lang === 'en' ? 'en-US' : 'zh-TW'}>
+<html lang={htmlLang[lang]}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -58,20 +54,20 @@ const enHref = lang === 'en' ? path : otherHref;
   <body>
     <header class="site-nav">
       <a class="nav-pill nav-home" href={`${base}/`}>
-        <span class="mark">✦</span>{nav.brand}
+        <span class="mark">✦</span>{t('nav.brand')}
       </a>
 
       <div class="nav-right">
         <nav class="nav-pill">
-          <a href={`${base}/`} aria-current={page === 'home' ? 'page' : undefined}>{nav.home}</a>
-          <a href={`${base}/about/`} aria-current={page === 'about' ? 'page' : undefined}>{nav.about}</a>
-          <a href={`${base}/writing/`} aria-current={page === 'writing' ? 'page' : undefined}>{nav.writing}</a>
+          <a href={`${base}/`} aria-current={page === 'home' ? 'page' : undefined}>{t('nav.home')}</a>
+          <a href={`${base}/about/`} aria-current={page === 'about' ? 'page' : undefined}>{t('nav.about')}</a>
+          <a href={`${base}/writing/`} aria-current={page === 'writing' ? 'page' : undefined}>{t('nav.writing')}</a>
         </nav>
 
         <details class="lang-switch" data-lang-switch>
-          <summary aria-label="切換語言 / Switch language">
+          <summary aria-label={t('nav.lang.aria')}>
             <Languages size={15} stroke-width={1.75} />
-            <span>{nav.current}</span>
+            <span>{t('nav.lang.current')}</span>
             <span class="chev">▾</span>
           </summary>
           <div class="lang-menu">
@@ -80,7 +76,7 @@ const enHref = lang === 'en' ? path : otherHref;
           </div>
         </details>
 
-        <button class="theme-toggle" data-theme-toggle type="button" aria-label="切換深淺色 / Toggle theme">
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label={t('nav.theme.aria')}>
           <span class="icon-sun"><Sun size={16} stroke-width={1.75} /></span>
           <span class="icon-moon"><Moon size={16} stroke-width={1.75} /></span>
         </button>
@@ -95,7 +91,7 @@ const enHref = lang === 'en' ? path : otherHref;
 
     <footer class="site-footer">
       <div class="site-footer-inner">
-        <span>© 2026 Joan Chang</span>
+        <span>{t('footer.copyright')}</span>
         <div class="footer-actions">
           <a class="icon-link" href="https://github.com/joanchiung" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.2 3.44 9.6 8.2 11.16.6.1.82-.25.82-.56v-2c-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.34-1.73-1.34-1.73-1.1-.73.08-.72.08-.72 1.2.08 1.84 1.22 1.84 1.22 1.07 1.8 2.81 1.28 3.5.98.1-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.28-1.53 3.29-1.21 3.29-1.21.65 1.66.24 2.88.12 3.18.77.83 1.23 1.88 1.23 3.17 0 4.53-2.8 5.53-5.48 5.82.43.37.81 1.1.81 2.22v3.29c0 .31.22.67.83.56A12.02 12.02 0 0 0 24 12.29C24 5.78 18.63.5 12 .5Z"/></svg>
@@ -105,7 +101,7 @@ const enHref = lang === 'en' ? path : otherHref;
           </a>
           <a class="icon-link" href="mailto:joankaminari@gmail.com" aria-label="Email"><Mail size={18} stroke-width={1.75} /></a>
           <a class="btn btn-sm" href="/joan-chang-cv.pdf" target="_blank" rel="noopener noreferrer">
-            <Download size={14} stroke-width={2} />{nav.resume}
+            <Download size={14} stroke-width={2} />{t('footer.resume')}
           </a>
         </div>
       </div>

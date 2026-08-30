@@ -1,24 +1,13 @@
 ---
-import Base from '../../../../layouts/Base.astro';
-import WritingList from '../../../../components/WritingList.astro';
-import { getWriting, PAGE_SIZE } from '../../../../lib/writing';
+import WritingListPage from '../../../../components/WritingListPage.astro';
+import { getWritingPage, writingPagePaths } from '../../../../lib/writing';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths = (async () => {
-  const { timeline } = await getWriting('en', import.meta.env.DEV);
-  const last = Math.max(1, Math.ceil(timeline.length / PAGE_SIZE));
-  const paths = [];
-  for (let n = 2; n <= last; n++) paths.push({ params: { num: String(n) } });
-  return paths;
+  return await writingPagePaths('en', import.meta.env.DEV);
 }) satisfies GetStaticPaths;
 
 const num = Number(Astro.params.num);
-const { timeline } = await getWriting('en', import.meta.env.DEV);
-const last = Math.max(1, Math.ceil(timeline.length / PAGE_SIZE));
-const posts = timeline.slice((num - 1) * PAGE_SIZE, num * PAGE_SIZE);
-const prevUrl = num === 2 ? '/en/writing/' : `/en/writing/page/${num - 1}/`;
-const nextUrl = num < last ? `/en/writing/page/${num + 1}/` : null;
+const data = await getWritingPage('en', num, import.meta.env.DEV);
 ---
-<Base title={`Writing (page ${num}) — Joan Chang`} lang="en" page="writing" altPath="/writing/">
-  <WritingList lang="en" posts={posts} pager={{ current: num, last, prevUrl, nextUrl }} />
-</Base>
+<WritingListPage lang="en" page={num} {...data} />

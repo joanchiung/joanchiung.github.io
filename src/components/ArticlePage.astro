@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { render } from 'astro:content';
+import { fmtDate, type Post } from '../lib/writing';
+import { useT, base as localeBase, type Locale } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+  post: Post;
+  prev: Post | null;
+  next: Post | null;
+}
+const { lang, post, prev, next } = Astro.props;
+const t = useT(lang);
+const b = localeBase(lang);
+const brand = lang === 'en' ? 'Joan Chang' : '張瓊文';
+const { Content } = await render(post);
+
+// 目前沒有 EN 文章，語言切換退回列表頁
+const altPath = `${localeBase(lang === 'en' ? 'zh' : 'en')}/writing/`;
+---
+<Base
+  title={`${post.data.title} — ${brand}`}
+  description={post.data.description}
+  lang={lang}
+  page="writing"
+  reading
+  altPath={altPath}
+>
+  <article class="article">
+    <h1>{post.data.title}</h1>
+    <div class="meta">
+      {fmtDate(post.data.date)}{post.data.tags.length > 0 && ` · ${post.data.tags.join(' / ')}`}
+    </div>
+    <Content />
+  </article>
+
+  <nav class="post-nav">
+    {prev ? (
+      <a href={`${b}/writing/${prev.id}/`}><span class="dir">{t('post.prev')}</span><span class="ttl">{prev.data.title}</span></a>
+    ) : <span></span>}
+    {next ? (
+      <a class="right" href={`${b}/writing/${next.id}/`}><span class="dir">{t('post.next')}</span><span class="ttl">{next.data.title}</span></a>
+    ) : <span></span>}
+  </nav>
+
+  <a class="back" href={`${b}/writing/`}>{t('writing.back')}</a>
+</Base>

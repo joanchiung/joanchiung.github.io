@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import WritingList from './WritingList.astro';
+import { base as localeBase, type Locale } from '../i18n/ui';
+import type { Post } from '../lib/writing';
+
+interface Props {
+  lang: Locale;
+  page?: number;
+  featured?: Post[];
+  posts: Post[];
+  pager: { current: number; last: number; prevUrl: string | null; nextUrl: string | null };
+}
+const { lang, page = 1, featured, posts, pager } = Astro.props;
+
+const brand = lang === 'en' ? 'Joan Chang' : '張瓊文';
+const listTitle = lang === 'en' ? 'Writing' : '文章';
+const title =
+  page > 1
+    ? lang === 'en'
+      ? `Writing (page ${page}) — ${brand}`
+      : `文章 (第 ${page} 頁) — ${brand}`
+    : `${listTitle} — ${brand}`;
+const altPath = `${localeBase(lang === 'en' ? 'zh' : 'en')}/writing/`;
+---
+<Base title={title} lang={lang} page="writing" altPath={altPath}>
+  <WritingList lang={lang} featured={featured} posts={posts} pager={pager} />
+</Base>

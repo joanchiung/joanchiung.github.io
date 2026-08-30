@@ -1,28 +1,26 @@
 ---
 import { fmtDate, type Post } from '../lib/writing';
+import { useT, base as localeBase, type Locale } from '../i18n/ui';
 
 interface Props {
-  lang: 'zh' | 'en';
+  lang: Locale;
   featured?: Post[];      // 只在第 1 頁傳
   posts: Post[];          // 當頁的時間軸文章
   pager?: { current: number; last: number; prevUrl: string | null; nextUrl: string | null };
 }
 const { lang, featured, posts, pager } = Astro.props;
-const base = lang === 'en' ? '/en' : '';
-
-const t = lang === 'en'
-  ? { eyebrow: 'Writing', h1: 'Writing', intro: 'Notes on frontend, Web3, finance and energy — learning in public.', featured: 'Featured', all: 'All', prev: '← Prev', next: 'Next →' }
-  : { eyebrow: 'Writing', h1: '文章', intro: '我在轉前端的路上，用寫作把每個學到的概念弄懂 —— 前端、區塊鏈，也包括我工作所在的金融與能源領域。', featured: '精選', all: '全部', prev: '← 上一頁', next: '下一頁 →' };
+const base = localeBase(lang);
+const t = useT(lang);
 
 const showFeatured = featured && featured.length > 0;
 ---
-<div class="eyebrow">{t.eyebrow}</div>
-<h1>{t.h1}</h1>
-<p style="color:var(--muted-text);max-width:34rem">{t.intro}</p>
+<div class="eyebrow">{t('writing.eyebrow')}</div>
+<h1>{t('writing.title')}</h1>
+<p style="color:var(--muted-text);max-width:34rem">{t('writing.intro')}</p>
 
 {showFeatured && (
   <section class="featured">
-    <div class="eyebrow">{t.featured}</div>
+    <div class="eyebrow">{t('writing.featured')}</div>
     <ul class="card-list">
       {featured!.map((p) => (
         <li>
@@ -38,7 +36,7 @@ const showFeatured = featured && featured.length > 0;
 )}
 
 <section>
-  {showFeatured && <div class="eyebrow" style="margin-top:3rem">{t.all}</div>}
+  {showFeatured && <div class="eyebrow" style="margin-top:3rem">{t('writing.all')}</div>}
   <ul class="post-list">
     {posts.map((p) => (
       <li>
@@ -50,9 +48,9 @@ const showFeatured = featured && featured.length > 0;
 
   {pager && pager.last > 1 && (
     <nav class="pager">
-      {pager.prevUrl ? <a href={pager.prevUrl}>{t.prev}</a> : <span></span>}
+      {pager.prevUrl ? <a href={pager.prevUrl}>{t('writing.pager.prev')}</a> : <span></span>}
       <span class="pager-count">{pager.current} / {pager.last}</span>
-      {pager.nextUrl ? <a href={pager.nextUrl}>{t.next}</a> : <span></span>}
+      {pager.nextUrl ? <a href={pager.nextUrl}>{t('writing.pager.next')}</a> : <span></span>}
     </nav>
   )}
 </section>

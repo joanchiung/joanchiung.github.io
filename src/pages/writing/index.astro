@@ -1,17 +1,7 @@
 ---
-import Base from '../../layouts/Base.astro';
-import WritingList from '../../components/WritingList.astro';
-import { getWriting, PAGE_SIZE } from '../../lib/writing';
+import WritingListPage from '../../components/WritingListPage.astro';
+import { getWritingPage } from '../../lib/writing';
 
-const { featured, timeline } = await getWriting('zh', import.meta.env.DEV);
-const last = Math.max(1, Math.ceil(timeline.length / PAGE_SIZE));
-const posts = timeline.slice(0, PAGE_SIZE);
+const data = await getWritingPage('zh', 1, import.meta.env.DEV);
 ---
-<Base title="文章 — 張瓊文" description="對前端、Web3、金融、能源的思考。" page="writing" altPath="/en/writing/">
-  <WritingList
-    lang="zh"
-    featured={featured}
-    posts={posts}
-    pager={{ current: 1, last, prevUrl: null, nextUrl: last > 1 ? '/writing/page/2/' : null }}
-  />
-</Base>
+<WritingListPage lang="zh" page={1} {...data} />

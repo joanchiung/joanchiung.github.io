@@ -1,17 +1,7 @@
 ---
-import Base from '../../../layouts/Base.astro';
-import WritingList from '../../../components/WritingList.astro';
-import { getWriting, PAGE_SIZE } from '../../../lib/writing';
+import WritingListPage from '../../../components/WritingListPage.astro';
+import { getWritingPage } from '../../../lib/writing';
 
-const { featured, timeline } = await getWriting('en', import.meta.env.DEV);
-const last = Math.max(1, Math.ceil(timeline.length / PAGE_SIZE));
-const posts = timeline.slice(0, PAGE_SIZE);
+const data = await getWritingPage('en', 1, import.meta.env.DEV);
 ---
-<Base title="Writing — Joan Chang" lang="en" page="writing" altPath="/writing/">
-  <WritingList
-    lang="en"
-    featured={featured}
-    posts={posts}
-    pager={{ current: 1, last, prevUrl: null, nextUrl: last > 1 ? '/en/writing/page/2/' : null }}
-  />
-</Base>
+<WritingListPage lang="en" page={1} {...data} />
