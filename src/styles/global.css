@@ -330,13 +330,16 @@ blockquote {
 }
 
 .why-line {
-  font-size: 1.7rem;
-  line-height: 1.45;
+  font-size: 2.2rem;
+  line-height: 1.32;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--ink-slate);
-  max-width: 30rem;
-  margin: 2rem 0 0;
+  max-width: 32rem;
+  margin: 2.25rem 0 0;
+}
+@media (max-width: 560px) {
+  .why-line { font-size: 1.7rem; }
 }
 
 .track-caption {
@@ -355,9 +358,13 @@ blockquote {
   font-size: 4.5rem;
   line-height: 1;
   text-align: right;
-  color: rgba(255, 255, 255, .28);
+  color: rgba(255, 255, 255, .12);
   pointer-events: none;
   user-select: none;
+}
+:root[data-theme="dark"] .hero-ghost { color: rgba(255, 255, 255, .05); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-ghost { color: rgba(255, 255, 255, .05); }
 }
 @media (max-width: 560px) {
   .hero-ghost { font-size: 2.75rem; bottom: -2rem; }
