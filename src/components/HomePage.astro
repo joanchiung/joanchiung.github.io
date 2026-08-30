@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { getWriting, fmtDate } from '../lib/writing';
+import { useT, base as localeBase, type Locale } from '../i18n/ui';
+import { home } from '../i18n/home';
+import Download from '@lucide/astro/icons/download';
+import ExternalLink from '@lucide/astro/icons/external-link';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const c = home[lang];
+const t = useT(lang);
+const b = localeBase(lang);
+const isDev = import.meta.env.DEV;
+
+// 作品目前只有中文資料，兩種語言先共用
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.lang === 'zh')
+  .filter((p) => isDev || !p.data.draft)
+  .sort((x, y) => y.data.order - x.data.order);
+
+// 精選文章：沒有該語言的就先退回另一語言（文章逐步翻譯中）
+let { featured } = await getWriting(lang, isDev);
+if (featured.length === 0) {
+  featured = (await getWriting(lang === 'en' ? 'zh' : 'en', isDev)).featured;
+}
+const previewPosts = featured.slice(0, 3);
+---
+<Base title={c.metaTitle} description={c.metaDescription} lang={lang} page="home" bleed>
+  <section class="home-hero">
+    <div class="hero-inner">
+      <h1>{c.name}{c.nameLatin && <span class="name-latin">{c.nameLatin}</span>}</h1>
+      <p class="role-line">{c.roleLine}</p>
+
+      <p class="why-line" set:html={c.whyLine.join('<br />')} />
+
+      <p class="track-caption">{c.trackCaption}</p>
+
+      <span class="hero-ghost" aria-hidden="true" set:html={c.ghost.join('<br />')} />
+    </div>
+  </section>
+
+  <div class="home-sheet">
+    <div class="sheet-inner">
+      <section class="work">
+        <div class="eyebrow">{c.workEyebrow}</div>
+        <div class="work-grid">
+          {projects.map((p) => (
+            <div class="work-card">
+              <div class="wc-head">
+                <span class="wc-title">{p.data.title}</span>
+                {p.data.status && <span class="status-tag">{p.data.status}</span>}
+              </div>
+              <p class="wc-desc">{p.data.description}</p>
+              <p class="wc-meta">{p.data.tech.join(' · ')}</p>
+              {(p.data.repo || p.data.demo) && (
+                <p class="wc-links">
+                  {p.data.repo && <a href={p.data.repo}><ExternalLink size={13} stroke-width={2} /> GitHub</a>}
+                  {p.data.demo && <a href={p.data.demo}><ExternalLink size={13} stroke-width={2} /> Demo</a>}
+                </p>
+              )}
+            </div>
+          ))}
+
+          {previewPosts.map((p) => (
+            <a class="work-card" href={`${b}/writing/${p.id}/`}>
+              <div class="wc-head">
+                <span class="wc-title">{p.data.title}</span>
+              </div>
+              {p.data.description && <p class="wc-desc">{p.data.description}</p>}
+              <p class="wc-meta">{fmtDate(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</p>
+            </a>
+          ))}
+        </div>
+        <p class="work-more"><a class="btn btn-ghost" href={`${b}/writing/`}>{c.workMore}</a></p>
+      </section>
+
+      <section class="resume">
+        <div class="eyebrow">{c.resumeEyebrow}</div>
+        <div class="resume-card">
+          <div class="resume-meta">
+            <p>{c.resumeMeta}</p>
+          </div>
+          <div class="resume-actions">
+            <a class="btn" href="/joan-chang-cv.pdf" download><Download size={14} stroke-width={2} />{t('footer.resume')}</a>
+            <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">{c.resumeView}</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>
