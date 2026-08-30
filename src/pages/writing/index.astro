@@ -12,8 +12,9 @@ const fmt = (d: Date) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 ---
 <Base title="文章 — 張瓊文" description="對金融、Web3、前端與設計的思考。" page="writing">
+  <div class="eyebrow">Writing</div>
   <h1>文章</h1>
-  <p style="color:var(--muted)">邊學邊寫。把一個概念寫清楚，才算真的懂。</p>
+  <p style="color:var(--muted-text)">邊學邊寫。把一個概念寫清楚，才算真的懂。</p>
 
   {posts.length === 0 && <p class="todo">還沒有文章。把 .md 檔放進 src/content/posts/ 就會出現在這裡。</p>}
 

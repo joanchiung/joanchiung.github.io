@@ -12,8 +12,9 @@ const fmt = (d: Date) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 ---
 <Base title="Writing — Joan Chang" lang="en" page="writing">
+  <div class="eyebrow">Writing</div>
   <h1>Writing</h1>
-  <p style="color:var(--muted)">Notes on finance, Web3, frontend and design.</p>
+  <p style="color:var(--muted-text)">Notes on finance, Web3, frontend and design.</p>
 
   {posts.length === 0 && <p class="todo">No English articles yet.</p>}
 

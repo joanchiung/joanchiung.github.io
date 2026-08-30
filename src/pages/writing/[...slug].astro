@@ -15,7 +15,7 @@ const { Content } = await render(post);
 const d = post.data.date;
 const fmt = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 ---
-<Base title={`${post.data.title} — 張瓊文`} description={post.data.description} page="writing">
+<Base title={`${post.data.title} — 張瓊文`} description={post.data.description} page="writing" reading>
   <article class="article">
     <h1>{post.data.title}{post.data.draft && <span class="draft-tag">draft</span>}</h1>
     <div class="meta">
