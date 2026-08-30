@@ -23,6 +23,8 @@
 - 履歷：`public/joan-chang-cv.pdf`（2026-03 英文版；本人在 Notion 弄新版）。主頁文件卡（下載履歷/線上看）+ footer btn。
 - footer：GitHub / LinkedIn（inline 品牌 SVG，Lucide 沒有品牌 icon）+ Mail（Lucide）+ 下載履歷 btn（Lucide download）
 - 圖示：`@lucide/astro`（`import X from '@lucide/astro/icons/x'`）。品牌 logo 用 inline SVG。
+- 深淺色：預設跟隨系統 `prefers-color-scheme`；nav 有 sun/moon toggle，選擇存 localStorage，`<head>` inline script 防閃爍。色票 token 在 global.css：淺色在 `:root`，深色有兩塊（`@media` + `:root[data-theme="dark"]`）**改深色值兩塊都要改**。
+- footer 分隔線只跟內容同寬（border-top 在 `.site-footer-inner`，不是 `.site-footer`）。
 
 ## 上稿一篇文章
 

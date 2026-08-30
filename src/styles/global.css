@@ -5,37 +5,82 @@
    ========================================================================= */
 
 :root {
-  /* Surface */
+  /* ---- 淺色（預設）---- */
   --canvas:      #eeeae5;   /* 頁面底色，永遠不用純白 */
   --lifted:      #f4f2ef;   /* 卡片、內嵌區塊，比 canvas 亮一階 */
   --near-white:  #f8f6f3;   /* nav pill、浮動元素，系統最亮的表面 */
   --mid-surface: #dddad5;   /* 分隔帶 */
 
-  /* Text / dark anchors */
   --ink-slate:    #2b2e40;  /* 主要標題與內文 */
   --slate-anchor: #4d516d;  /* 次級標題、連結、深色 pill */
   --muted-text:   #7e7a8a;  /* eyebrow、時間戳、placeholder */
   --warm-sand:    #d3bcb6;  /* 極低對比裝飾文字 */
 
-  /* Accent（克制使用）*/
   --signal-purple: #6b5c72; /* active 狀態、eyebrow dot、inline 連結 */
   --light-purple:  #b5a4b4; /* 裝飾線、被動指示 */
   --dusty-rose:    #a8868c; /* 次級連結、hover 暖度 */
   --border:        #c4bdb9; /* 輸入框、卡片外框、分隔線 */
 
-  /* Functional */
   --read-green: #4a7c59;
 
-  --font-sans: 'Noto Sans TC', 'Sofia Sans', -apple-system, BlinkMacSystemFont,
-    'PingFang TC', 'Microsoft JhengHei', Arial, sans-serif;
-
-  --measure: 40rem;              /* 閱讀寬度 */
-  --measure-wide: 46rem;         /* landing / 列表 */
-  --nav-space: 5.5rem;           /* 內容頂部留給浮動 nav 的空間 */
-
-  /* Elevation（大範圍、低透明度的氛圍陰影）*/
   --shadow-1: rgba(0, 0, 0, 0.04) 0px 4px 24px 0px;
   --shadow-2: rgba(0, 0, 0, 0.08) 0px 24px 48px 0px;
+
+  /* ---- 非色彩 token（不隨主題變）---- */
+  --font-sans: 'Noto Sans TC', 'Sofia Sans', -apple-system, BlinkMacSystemFont,
+    'PingFang TC', 'Microsoft JhengHei', Arial, sans-serif;
+  --measure: 40rem;
+  --measure-wide: 46rem;
+  --nav-space: 5.5rem;
+
+  color-scheme: light dark;
+}
+
+/* ---- 深色 token：跟隨系統，或被 [data-theme] 明確指定 ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas:      #1a1917;
+    --lifted:      #242220;
+    --near-white:  #302d2a;
+    --mid-surface: #3a3733;
+
+    --ink-slate:    #ece8e2;
+    --slate-anchor: #c3bcc8;
+    --muted-text:   #918b86;
+    --warm-sand:    #6f5f5a;
+
+    --signal-purple: #b9a4c0;
+    --light-purple:  #6f6274;
+    --dusty-rose:    #cda6a9;
+    --border:        #3d3a37;
+
+    --read-green: #7fb08f;
+
+    --shadow-1: rgba(0, 0, 0, 0.4) 0px 4px 24px 0px;
+    --shadow-2: rgba(0, 0, 0, 0.5) 0px 24px 48px 0px;
+  }
+}
+/* ⚠️ 與上面 @media 區塊的深色值必須一致，改一處要改兩處 */
+:root[data-theme="dark"] {
+  --canvas:      #1a1917;
+  --lifted:      #242220;
+  --near-white:  #302d2a;
+  --mid-surface: #3a3733;
+
+  --ink-slate:    #ece8e2;
+  --slate-anchor: #c3bcc8;
+  --muted-text:   #918b86;
+  --warm-sand:    #6f5f5a;
+
+  --signal-purple: #b9a4c0;
+  --light-purple:  #6f6274;
+  --dusty-rose:    #cda6a9;
+  --border:        #3d3a37;
+
+  --read-green: #7fb08f;
+
+  --shadow-1: rgba(0, 0, 0, 0.4) 0px 4px 24px 0px;
+  --shadow-2: rgba(0, 0, 0, 0.5) 0px 24px 48px 0px;
 }
 
 * { box-sizing: border-box; }
@@ -191,6 +236,29 @@ blockquote {
 .lang-menu a:hover { background: var(--canvas); color: var(--ink-slate); }
 .lang-menu a[aria-current] { color: var(--ink-slate); font-weight: 500; }
 .lang-menu .code { font-size: .72rem; color: var(--muted-text); letter-spacing: .02em; }
+
+/* ---- 深淺色切換 ---- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--near-white);
+  box-shadow: var(--shadow-1);
+  color: var(--muted-text);
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--ink-slate); }
+.theme-toggle span { display: inline-flex; align-items: center; }
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: inline-flex; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: inline-flex; }
+}
 
 @media (max-width: 640px) {
   .site-nav { padding: 0 1rem; top: 1rem; flex-wrap: wrap; gap: .5rem; }
@@ -406,13 +474,14 @@ blockquote {
    Footer
    ========================================================================= */
 .site-footer {
-  border-top: 1px solid var(--border);
   background: var(--canvas);
-  padding: 2rem 1.5rem 3rem;
+  padding: 0 1.5rem 3rem;
 }
 .site-footer-inner {
   max-width: var(--measure-wide);
   margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);   /* 線只跟內容一樣寬，不延伸到左右 */
   display: flex;
   justify-content: space-between;
   align-items: center;

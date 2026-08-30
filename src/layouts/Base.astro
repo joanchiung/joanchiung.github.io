@@ -3,6 +3,8 @@ import '../styles/global.css';
 import Mail from '@lucide/astro/icons/mail';
 import Languages from '@lucide/astro/icons/languages';
 import Download from '@lucide/astro/icons/download';
+import Sun from '@lucide/astro/icons/sun';
+import Moon from '@lucide/astro/icons/moon';
 
 interface Props {
   title: string;
@@ -43,6 +45,13 @@ const enHref = lang === 'en' ? path : otherHref;
       rel="stylesheet"
     />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='25' font-size='24'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E" />
+    <script is:inline>
+      // 上色前先套用已儲存的深淺色選擇，避免閃爍
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <header class="site-nav">
@@ -68,6 +77,11 @@ const enHref = lang === 'en' ? path : otherHref;
             <a href={enHref} aria-current={lang === 'en' ? 'true' : undefined}>English <span class="code">en-US</span></a>
           </div>
         </details>
+
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="切換深淺色 / Toggle theme">
+          <span class="icon-sun"><Sun size={16} stroke-width={1.75} /></span>
+          <span class="icon-moon"><Moon size={16} stroke-width={1.75} /></span>
+        </button>
       </div>
     </header>
 
@@ -103,6 +117,17 @@ const enHref = lang === 'en' ? path : otherHref;
           if ((e as KeyboardEvent).key === 'Escape') d.open = false;
         });
       }
+
+      // 深淺色切換：未選過 → 跟隨系統；點一下 → 明確指定並記住
+      const toggle = document.querySelector('[data-theme-toggle]');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const current = root.dataset.theme
+          || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
     </script>
   </body>
 </html>
