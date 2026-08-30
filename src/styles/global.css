@@ -311,9 +311,9 @@ blockquote {
   overflow: hidden;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .home-hero { --hero-tl: #211c1b; --hero-br: #4a3438; }
+  :root:not([data-theme="light"]) .home-hero { --hero-tl: #342a26; --hero-br: #6b4753; }
 }
-:root[data-theme="dark"] .home-hero { --hero-tl: #211c1b; --hero-br: #4a3438; }
+:root[data-theme="dark"] .home-hero { --hero-tl: #342a26; --hero-br: #6b4753; }
 .hero-inner {
   max-width: var(--measure-wide);
   margin: 0 auto;
