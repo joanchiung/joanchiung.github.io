@@ -1,44 +1,53 @@
 ---
 import Base from '../../layouts/Base.astro';
 ---
-<Base title="Joan Chang — Frontend Engineer" description="A frontend engineer with a design background, building interfaces for regulated finance." lang="en" page="home">
-  <p class="todo">Draft: the Why / How / What copy below is a first pass from personal notes, pending Joan's final wording. English translation not started.</p>
+<Base
+  title="Joan Chang — Frontend Engineer"
+  description="Frontend engineer, formerly a brand & UX/UI designer for 11 years. I break vague requirements into shippable interfaces inside regulated finance."
+  lang="en"
+  page="home"
+>
+  <p class="todo">English copy is a rough pass — final wording comes after the Chinese version is locked.</p>
 
   <h1>Joan Chang</h1>
+  <p class="role-line">Frontend Engineer · Bank-grade Web3 & fintech systems</p>
 
   <div class="gc">
     <section>
       <div class="eyebrow">Why</div>
-      <p class="why-line">In the age of AI, the scarce skill isn't writing code —<br />it's seeing where a system is unclear, and making it precise.</p>
+      <p class="why-line">I break vague, undefined requirements<br />into a path you can actually execute.</p>
     </section>
 
     <section>
       <div class="eyebrow">How</div>
       <ol>
-        <li>11 years as a designer — turning vague client briefs into usable visuals and systems.</li>
-        <li>As a frontend engineer — turning complex rules into interfaces, inside regulated finance.</li>
-        <li>Learning in public — I write to force myself to actually understand a concept.</li>
+        <li><strong>Design background</strong> — 11 years in brand and UX/UI design; moved into engineering in 2023, bringing that judgement into the code.</li>
+        <li><strong>Now</strong> — building M-Key, a crypto custody platform for banks and law-enforcement agencies: vault management, approval workflows, design-system foundations.</li>
+        <li><strong>Method</strong> — when the spec is unclear, I draw the outline first: who it's for, what the goal is, then ship.</li>
       </ol>
     </section>
 
     <section>
       <div class="eyebrow">What</div>
-      <div class="what-links">
-        <a href="/en/writing/">Writing →</a>
-        <a href="#resume">Résumé →</a>
-      </div>
+      <p><a href="/en/writing/">Writing</a> — notes on frontend, blockchain and finance, learning in public.</p>
     </section>
   </div>
 
-  <hr />
+  <div class="resume-card">
+    <div class="resume-meta">
+      <div class="eyebrow">Résumé</div>
+      <p>Frontend Engineer · React / Next.js / TypeScript · bank-grade Web3 & fintech</p>
+      <span class="resume-note">Mar 2026 (being updated)</span>
+    </div>
+    <div class="resume-actions">
+      <a class="btn" href="/joan-chang-cv.pdf" download>Download PDF</a>
+      <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">View</a>
+    </div>
+  </div>
 
-  <section id="resume">
-    <div class="eyebrow">Résumé · Contact</div>
-    <p><a href="/joan-chang-cv.pdf">Download résumé (PDF)</a> (Mar 2026, being updated)</p>
-    <p>
-      <a href="https://github.com/joanchiung">GitHub</a> ·
-      <a href="https://www.linkedin.com/in/joanvisual">LinkedIn</a> ·
-      <a href="mailto:joankaminari@gmail.com">joankaminari@gmail.com</a>
-    </p>
-  </section>
+  <p class="contact-line">
+    <a href="https://github.com/joanchiung">GitHub</a> ·
+    <a href="https://www.linkedin.com/in/joanvisual">LinkedIn</a> ·
+    <a href="mailto:joankaminari@gmail.com">joankaminari@gmail.com</a>
+  </p>
 </Base>

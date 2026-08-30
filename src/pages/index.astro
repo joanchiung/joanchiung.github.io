@@ -1,44 +1,50 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="張瓊文 — Frontend Engineer" description="設計背景的前端工程師，在受監管的金融系統裡把複雜規則做成介面。" page="home">
-  <p class="todo">草稿版：Why / How / What 文字是從個人筆記整理的初稿，待張瓊文本人潤稿定案。履歷 PDF 為 2026-03 版，本人正在改。</p>
-
+<Base
+  title="張瓊文 Joan Chang — 前端工程師"
+  description="前端工程師，前身為 11 年品牌與 UX/UI 設計師。在受監管的金融系統裡把模糊需求拆解成可執行的介面。"
+  page="home"
+>
   <h1>張瓊文<span class="name-latin">Joan Chang</span></h1>
+  <p class="role-line">前端工程師｜銀行級 Web3 與金融科技系統</p>
 
   <div class="gc">
     <section>
       <div class="eyebrow">Why</div>
-      <p class="why-line">我相信在 AI 時代，真正稀缺的不是寫程式，<br />而是看出一個系統哪裡模糊、然後把它說清楚的能力。</p>
+      <p class="why-line">我擅長把模糊、未定義的需求，<br />拆解成可以執行的路徑。</p>
     </section>
 
     <section>
       <div class="eyebrow">How</div>
       <ol>
-        <li>11 年設計訓練 —— 把客戶說不清楚的需求，變成能用的視覺與系統。</li>
-        <li>轉前端後 —— 在受監管的金融系統裡，把複雜規則做成介面。</li>
-        <li>邊做邊寫 —— 我用寫作逼自己真的理解一個概念（財報、區塊鏈、電力市場）。</li>
+        <li><strong>設計出身</strong> —— 11 年品牌與 UX/UI 設計，2023 年轉前端，把設計判斷力帶進實作。</li>
+        <li><strong>現在</strong> —— 在區塊科技做 M-Key 加密貨幣托管平台，服務銀行與執法機關，負責金庫管理、審批流程、設計系統基礎。</li>
+        <li><strong>方法</strong> —— 需求不明確時，先自己建立輪廓、釐清受眾與目標，再落地執行。</li>
       </ol>
     </section>
 
     <section>
       <div class="eyebrow">What</div>
-      <div class="what-links">
-        <a href="/writing/">文章 →</a>
-        <a href="#resume">履歷 →</a>
-      </div>
+      <p><a href="/writing/">文章</a> —— 我對前端、區塊鏈、金融的思考，邊學邊寫。</p>
     </section>
   </div>
 
-  <hr />
+  <div class="resume-card">
+    <div class="resume-meta">
+      <div class="eyebrow">履歷</div>
+      <p>前端工程師 · React / Next.js / TypeScript · 銀行級 Web3 與金融科技</p>
+      <span class="resume-note">2026-03 版（更新中）</span>
+    </div>
+    <div class="resume-actions">
+      <a class="btn" href="/joan-chang-cv.pdf" download>下載 PDF</a>
+      <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">線上看</a>
+    </div>
+  </div>
 
-  <section id="resume">
-    <div class="eyebrow">履歷 · 聯絡</div>
-    <p><a href="/joan-chang-cv.pdf">下載履歷 PDF</a>（2026-03 版，更新中）</p>
-    <p>
-      <a href="https://github.com/joanchiung">GitHub</a> ·
-      <a href="https://www.linkedin.com/in/joanvisual">LinkedIn</a> ·
-      <a href="mailto:joankaminari@gmail.com">joankaminari@gmail.com</a>
-    </p>
-  </section>
+  <p class="contact-line">
+    <a href="https://github.com/joanchiung">GitHub</a> ·
+    <a href="https://www.linkedin.com/in/joanvisual">LinkedIn</a> ·
+    <a href="mailto:joankaminari@gmail.com">joankaminari@gmail.com</a>
+  </p>
 </Base>

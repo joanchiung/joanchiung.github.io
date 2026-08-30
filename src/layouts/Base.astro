@@ -6,17 +6,15 @@ interface Props {
   description?: string;
   lang?: 'zh' | 'en';
   page?: 'home' | 'writing' | undefined;
-  /** reading = 窄欄（單篇文章）*/
   reading?: boolean;
 }
 const { title, description, lang = 'zh', page, reading = false } = Astro.props;
 
 const t = lang === 'en'
-  ? { home: 'Joan Chang', writing: 'Writing', resume: 'Résumé', other: '中文' }
-  : { home: '張瓊文', writing: '文章', resume: '履歷', other: 'EN' };
+  ? { home: 'Joan Chang', writing: 'Writing' }
+  : { home: '張瓊文', writing: '文章' };
 
 const base = lang === 'en' ? '/en' : '';
-const otherHref = lang === 'en' ? '/' : '/en/';
 ---
 <!doctype html>
 <html lang={lang === 'en' ? 'en' : 'zh-Hant'}>
@@ -38,11 +36,23 @@ const otherHref = lang === 'en' ? '/' : '/en/';
       <a class="nav-pill nav-home" href={`${base}/`}>
         <span class="mark">✦</span>{t.home}
       </a>
-      <nav class="nav-pill">
-        <a href={`${base}/writing/`} aria-current={page === 'writing' ? 'page' : undefined}>{t.writing}</a>
-        <a href={`${base}/#resume`}>{t.resume}</a>
-        <a href={otherHref}>{t.other}</a>
-      </nav>
+
+      <div class="nav-right">
+        <nav class="nav-pill">
+          <a href={`${base}/writing/`} aria-current={page === 'writing' ? 'page' : undefined}>{t.writing}</a>
+        </nav>
+
+        <details class="lang-switch">
+          <summary class="nav-pill" aria-label="切換語言 / Switch language">
+            {lang === 'en' ? 'EN' : '中'}
+            <span class="chev">▾</span>
+          </summary>
+          <div class="lang-menu">
+            <a href="/" aria-current={lang === 'zh' ? 'true' : undefined}>中文</a>
+            <a href="/en/" aria-current={lang === 'en' ? 'true' : undefined}>English</a>
+          </div>
+        </details>
+      </div>
     </header>
 
     <main class:list={['wrap', { reading }]}>
@@ -53,6 +63,7 @@ const otherHref = lang === 'en' ? '/' : '/en/';
       <div class="site-footer-inner">
         <span>© 2026 Joan Chang</span>
         <span class="links">
+          <a href="/joan-chang-cv.pdf">履歷</a>
           <a href="https://github.com/joanchiung">GitHub</a>
           <a href="https://www.linkedin.com/in/joanvisual">LinkedIn</a>
           <a href="mailto:joankaminari@gmail.com">Email</a>

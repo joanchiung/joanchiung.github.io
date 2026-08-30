@@ -127,21 +127,63 @@ blockquote {
   text-decoration: none;
 }
 .nav-home .mark { color: var(--signal-purple); font-size: .7rem; }
+.nav-right { display: flex; align-items: center; gap: .6rem; }
 .site-nav nav { display: flex; align-items: center; gap: .15rem; padding: .3rem .4rem; }
 .site-nav nav a {
   font-size: .85rem;
   font-weight: 500;
   text-decoration: none;
   color: var(--muted-text);
-  padding: .3rem .75rem;
+  padding: .3rem .85rem;
   border-radius: 999px;
   transition: color .15s, background .15s;
 }
 .site-nav nav a:hover { color: var(--ink-slate); background: var(--canvas); }
 .site-nav nav a[aria-current="page"] { background: var(--slate-anchor); color: var(--near-white); }
 
+/* ---- 語言切換：獨立 dropdown，與 nav 連結視覺分開 ---- */
+.lang-switch { position: relative; }
+.lang-switch summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .5rem .7rem;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--muted-text);
+}
+.lang-switch summary::-webkit-details-marker { display: none; }
+.lang-switch summary:hover { color: var(--ink-slate); }
+.lang-switch .chev { font-size: .6rem; transition: transform .15s; }
+.lang-switch[open] .chev { transform: rotate(180deg); }
+.lang-menu {
+  position: absolute;
+  right: 0;
+  margin-top: .4rem;
+  background: var(--near-white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-1);
+  padding: .35rem;
+  min-width: 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+}
+.lang-menu a {
+  font-size: .85rem;
+  text-decoration: none;
+  color: var(--slate-anchor);
+  padding: .4rem .6rem;
+  border-radius: 8px;
+}
+.lang-menu a:hover { background: var(--canvas); color: var(--ink-slate); }
+.lang-menu a[aria-current] { color: var(--ink-slate); font-weight: 500; }
+
 @media (max-width: 640px) {
-  .site-nav { padding: 0 1rem; top: 1rem; flex-wrap: wrap; }
+  .site-nav { padding: 0 1rem; top: 1rem; flex-wrap: wrap; gap: .5rem; }
 }
 
 /* =========================================================================
@@ -197,6 +239,47 @@ blockquote {
   letter-spacing: 0;
   margin-left: .5rem;
 }
+.role-line {
+  margin: -.25rem 0 0;
+  color: var(--slate-anchor);
+  font-size: .98rem;
+}
+
+/* ---- 履歷文件卡：與文章連結不同層級 ---- */
+.resume-card {
+  margin: 3rem 0 1.5rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--lifted);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.resume-meta p { margin: .3rem 0 0; font-size: .92rem; color: var(--slate-anchor); }
+.resume-note { font-size: .78rem; color: var(--muted-text); }
+.resume-actions { display: flex; gap: .6rem; flex-shrink: 0; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: .85rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: .45rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink-slate);
+  background: var(--ink-slate);
+  color: var(--near-white);
+  transition: opacity .15s;
+}
+.btn:hover { opacity: .85; color: var(--near-white); }
+.btn-ghost { background: transparent; color: var(--ink-slate); }
+.btn-ghost:hover { background: var(--ink-slate); color: var(--near-white); }
+
+.contact-line { font-size: .9rem; color: var(--muted-text); }
 
 /* =========================================================================
    文章列表
