@@ -1,7 +1,9 @@
 /* =========================================================================
-   Design System — 沿用「累積自由本金」DESIGN.md
-   暖灰畫布、pill 形狀、克制的紫調。單一字體 Noto Sans TC。
-   色票即 source of truth，不要自創語意色。
+   Design System
+   pill 形狀、克制的紫調、單一字體 Noto Sans TC。色票即 source of truth。
+   淺色：暖灰米色畫布（沿用「累積自由本金」DESIGN.md）
+   深色：暖棕微光（v3）—— 不是近黑，是低飽和暖褐，跟淺色同「暖色」精神
+   ⚠️ 深色 token 有兩塊（@media + [data-theme="dark"]），改值兩塊都要改
    ========================================================================= */
 
 :root {
@@ -39,48 +41,49 @@
 /* ---- 深色 token：跟隨系統，或被 [data-theme] 明確指定 ---- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --canvas:      #1a1917;
-    --lifted:      #242220;
-    --near-white:  #302d2a;
-    --mid-surface: #3a3733;
+    /* 暖棕微光深色系統（v3）—— 不是近黑，而是低飽和暖褐 */
+    --canvas:      #423a34;   /* 頁面底色 */
+    --lifted:      #4d443c;   /* 卡片、內嵌區塊（跟 canvas 靠近，同「表面」層）*/
+    --near-white:  #594f45;   /* nav pill、浮動元素 */
+    --mid-surface: #6b5f52;   /* 分隔帶（明顯跳開）*/
 
-    --ink-slate:    #ece8e2;
-    --slate-anchor: #c3bcc8;
-    --muted-text:   #918b86;
-    --warm-sand:    #6f5f5a;
+    --ink-slate:    #eeeae5;  /* 主要文字（沿用淺色 canvas 值）*/
+    --slate-anchor: #cabfb0;  /* 次級文字、連結、標題 */
+    --muted-text:   #9e9184;  /* eyebrow、時間戳 */
+    --warm-sand:    #7d6d61;
 
-    --signal-purple: #b9a4c0;
-    --light-purple:  #6f6274;
-    --dusty-rose:    #cda6a9;
-    --border:        #3d3a37;
+    --signal-purple: #caa8b4; /* accent：暖調淺玫瑰紫 */
+    --light-purple:  #8a7480;
+    --dusty-rose:    #d1a6a3;
+    --border:        #7d7062;  /* 在 canvas 上看得出是一條線 */
 
-    --read-green: #7fb08f;
+    --read-green: #86bd97;
 
-    --shadow-1: rgba(0, 0, 0, 0.4) 0px 4px 24px 0px;
-    --shadow-2: rgba(0, 0, 0, 0.5) 0px 24px 48px 0px;
+    --shadow-1: rgba(0, 0, 0, 0.32) 0px 4px 24px 0px;
+    --shadow-2: rgba(0, 0, 0, 0.42) 0px 24px 48px 0px;
   }
 }
 /* ⚠️ 與上面 @media 區塊的深色值必須一致，改一處要改兩處 */
 :root[data-theme="dark"] {
-  --canvas:      #1a1917;
-  --lifted:      #242220;
-  --near-white:  #302d2a;
-  --mid-surface: #3a3733;
+  --canvas:      #423a34;
+  --lifted:      #4d443c;
+  --near-white:  #594f45;
+  --mid-surface: #6b5f52;
 
-  --ink-slate:    #ece8e2;
-  --slate-anchor: #c3bcc8;
-  --muted-text:   #918b86;
-  --warm-sand:    #6f5f5a;
+  --ink-slate:    #eeeae5;
+  --slate-anchor: #cabfb0;
+  --muted-text:   #9e9184;
+  --warm-sand:    #7d6d61;
 
-  --signal-purple: #b9a4c0;
-  --light-purple:  #6f6274;
-  --dusty-rose:    #cda6a9;
-  --border:        #3d3a37;
+  --signal-purple: #caa8b4;
+  --light-purple:  #8a7480;
+  --dusty-rose:    #d1a6a3;
+  --border:        #7d7062;
 
-  --read-green: #7fb08f;
+  --read-green: #86bd97;
 
-  --shadow-1: rgba(0, 0, 0, 0.4) 0px 4px 24px 0px;
-  --shadow-2: rgba(0, 0, 0, 0.5) 0px 24px 48px 0px;
+  --shadow-1: rgba(0, 0, 0, 0.32) 0px 4px 24px 0px;
+  --shadow-2: rgba(0, 0, 0, 0.42) 0px 24px 48px 0px;
 }
 
 * { box-sizing: border-box; }
@@ -297,9 +300,10 @@ blockquote {
    首頁 landing
    ========================================================================= */
 
-/* ---- 上層：粉調漸層 hero（右下 dusty-rose 保留；左上換成乾淨的淡粉）----
-   想調左上角，改 --hero-tl 即可：
-   #f5ede9 淡粉奶油（現用）／ #f3e6e3 更明顯的粉 ／ #f7f2ef 幾乎白 */
+/* ---- 上層：漸層 hero ----
+   淺色：左上淡粉奶油 → 右下 dusty-rose（改 --hero-tl 可調左上：
+         #f5ede9 現用 ／ #f3e6e3 更粉 ／ #f7f2ef 幾乎白）
+   深色：左上藕紫 → 右下較淺玫瑰粉（暖調 ~353°，跟淺色同色相家族）*/
 .home-hero {
   --hero-tl: #f5ede9;
   --hero-br: #a8868c;
@@ -311,9 +315,10 @@ blockquote {
   overflow: hidden;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .home-hero { --hero-tl: #342a26; --hero-br: #6b4753; }
+  :root:not([data-theme="light"]) .home-hero { --hero-tl: #6d4a4d; --hero-br: #ad8489; }
 }
-:root[data-theme="dark"] .home-hero { --hero-tl: #342a26; --hero-br: #6b4753; }
+:root[data-theme="dark"] .home-hero { --hero-tl: #6d4a4d; --hero-br: #ad8489; }
+
 .hero-inner {
   max-width: var(--measure-wide);
   margin: 0 auto;
@@ -321,14 +326,35 @@ blockquote {
   z-index: 0;            /* 建立堆疊脈絡，讓 ghost 能沉到文字後面 */
 }
 .hero-inner > :not(.hero-ghost) { position: relative; z-index: 1; }
-/* 深色 hero：漸層變暗，文字提亮 */
-:root[data-theme="dark"] .home-hero .why-line { color: #f4efe9; }
+
+/* 深色 hero：漸層右下偏亮，文字區加一層偏左的暗色 scrim 當可讀底 */
+:root[data-theme="dark"] .home-hero .why-line,
 :root[data-theme="dark"] .home-hero .role-line,
-:root[data-theme="dark"] .home-hero .track-caption { color: rgba(244, 239, 233, .7); }
+:root[data-theme="dark"] .home-hero .track-caption { color: #f6f1ec; }
+:root[data-theme="dark"] .home-hero .role-line,
+:root[data-theme="dark"] .home-hero .track-caption { color: rgba(246, 241, 236, .82); }
+:root[data-theme="dark"] .hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: -1.5rem -1.5rem -1.5rem -3rem;
+  z-index: 0;
+  background: linear-gradient(100deg, rgba(28, 16, 18, .24), rgba(28, 16, 18, .06) 48%, transparent 78%);
+  pointer-events: none;
+}
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .home-hero .why-line { color: #f4efe9; }
+  :root:not([data-theme="light"]) .home-hero .why-line,
   :root:not([data-theme="light"]) .home-hero .role-line,
-  :root:not([data-theme="light"]) .home-hero .track-caption { color: rgba(244, 239, 233, .7); }
+  :root:not([data-theme="light"]) .home-hero .track-caption { color: #f6f1ec; }
+  :root:not([data-theme="light"]) .home-hero .role-line,
+  :root:not([data-theme="light"]) .home-hero .track-caption { color: rgba(246, 241, 236, .82); }
+  :root:not([data-theme="light"]) .hero-inner::before {
+    content: "";
+    position: absolute;
+    inset: -1.5rem -1.5rem -1.5rem -3rem;
+    z-index: 0;
+    background: linear-gradient(100deg, rgba(28, 16, 18, .24), rgba(28, 16, 18, .06) 48%, transparent 78%);
+    pointer-events: none;
+  }
 }
 
 .why-line {
