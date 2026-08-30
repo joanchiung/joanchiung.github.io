@@ -10,14 +10,24 @@ interface Props {
   lang?: 'zh' | 'en';
   page?: 'home' | 'about' | 'writing' | undefined;
   reading?: boolean;
+  /** 切換語言時要去的對應網址。不給就用當前路徑自動換前綴。 */
+  altPath?: string;
 }
-const { title, description, lang = 'zh', page, reading = false } = Astro.props;
+const { title, description, lang = 'zh', page, reading = false, altPath } = Astro.props;
 
 const nav = lang === 'en'
   ? { home: 'Home', about: 'About', writing: 'Writing', brand: 'Joan Chang', current: 'English', resume: 'Download résumé' }
   : { home: '首頁', about: '關於我', writing: '文章', brand: '張瓊文', current: '繁體中文', resume: '下載履歷' };
 
 const base = lang === 'en' ? '/en' : '';
+
+// 語言選單：當前語言指向本頁；另一語言用 altPath（若有）或自動換前綴
+const path = Astro.url.pathname;
+const stripEn = (p: string) => (p === '/en' || p === '/en/' ? '/' : p.startsWith('/en/') ? p.slice(3) : p);
+const addEn = (p: string) => (p === '/' ? '/en/' : '/en' + p);
+const otherHref = altPath ?? (lang === 'en' ? stripEn(path) : addEn(path));
+const zhHref = lang === 'zh' ? path : otherHref;
+const enHref = lang === 'en' ? path : otherHref;
 ---
 <!doctype html>
 <html lang={lang === 'en' ? 'en-US' : 'zh-TW'}>
@@ -47,15 +57,15 @@ const base = lang === 'en' ? '/en' : '';
           <a href={`${base}/writing/`} aria-current={page === 'writing' ? 'page' : undefined}>{nav.writing}</a>
         </nav>
 
-        <details class="lang-switch">
+        <details class="lang-switch" data-lang-switch>
           <summary aria-label="切換語言 / Switch language">
             <Languages size={15} stroke-width={1.75} />
             <span>{nav.current}</span>
             <span class="chev">▾</span>
           </summary>
           <div class="lang-menu">
-            <a href="/" aria-current={lang === 'zh' ? 'true' : undefined}>繁體中文 <span class="code">zh-TW</span></a>
-            <a href="/en/" aria-current={lang === 'en' ? 'true' : undefined}>English <span class="code">en-US</span></a>
+            <a href={zhHref} aria-current={lang === 'zh' ? 'true' : undefined}>繁體中文 <span class="code">zh-TW</span></a>
+            <a href={enHref} aria-current={lang === 'en' ? 'true' : undefined}>English <span class="code">en-US</span></a>
           </div>
         </details>
       </div>
@@ -69,18 +79,30 @@ const base = lang === 'en' ? '/en' : '';
       <div class="site-footer-inner">
         <span>© 2026 Joan Chang</span>
         <div class="footer-actions">
-          <a class="icon-link" href="https://github.com/joanchiung" aria-label="GitHub">
+          <a class="icon-link" href="https://github.com/joanchiung" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.2 3.44 9.6 8.2 11.16.6.1.82-.25.82-.56v-2c-3.34.71-4.04-1.58-4.04-1.58-.55-1.36-1.34-1.73-1.34-1.73-1.1-.73.08-.72.08-.72 1.2.08 1.84 1.22 1.84 1.22 1.07 1.8 2.81 1.28 3.5.98.1-.76.42-1.28.76-1.58-2.67-.3-5.47-1.31-5.47-5.83 0-1.29.47-2.34 1.24-3.17-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.28-1.53 3.29-1.21 3.29-1.21.65 1.66.24 2.88.12 3.18.77.83 1.23 1.88 1.23 3.17 0 4.53-2.8 5.53-5.48 5.82.43.37.81 1.1.81 2.22v3.29c0 .31.22.67.83.56A12.02 12.02 0 0 0 24 12.29C24 5.78 18.63.5 12 .5Z"/></svg>
           </a>
-          <a class="icon-link" href="https://www.linkedin.com/in/joanvisual" aria-label="LinkedIn">
+          <a class="icon-link" href="https://www.linkedin.com/in/joanvisual" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
           </a>
           <a class="icon-link" href="mailto:joankaminari@gmail.com" aria-label="Email"><Mail size={18} stroke-width={1.75} /></a>
-          <a class="btn btn-sm" href="/joan-chang-cv.pdf" download>
+          <a class="btn btn-sm" href="/joan-chang-cv.pdf" target="_blank" rel="noopener noreferrer">
             <Download size={14} stroke-width={2} />{nav.resume}
           </a>
         </div>
       </div>
     </footer>
+
+    <script>
+      // 點擊 dropdown 外面 / 按 Esc → 關閉
+      for (const d of document.querySelectorAll<HTMLDetailsElement>('[data-lang-switch]')) {
+        document.addEventListener('click', (e) => {
+          if (d.open && !d.contains(e.target as Node)) d.open = false;
+        });
+        d.addEventListener('keydown', (e) => {
+          if ((e as KeyboardEvent).key === 'Escape') d.open = false;
+        });
+      }
+    </script>
   </body>
 </html>
