@@ -11,8 +11,9 @@ const posts = defineCollection({
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     lang: z.enum(['zh', 'en']).default('zh'),
-    draft: z.boolean().default(false), // true = 只在本機 dev 顯示，build 不輸出
-    source: z.string().optional(),     // 原始出處（例如 Threads 連結）
+    draft: z.boolean().default(false),   // true = 只在本機 dev 顯示，build 不輸出
+    featured: z.boolean().default(false), // true = Writing 頁置頂精選
+    source: z.string().optional(),        // 原始出處（例如 Threads 連結）
   }),
 });
 
