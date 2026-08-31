@@ -31,8 +31,8 @@ export const ui = {
     'writing.pager.next': '下一頁 →',
     'writing.back': '← 回文章列表',
 
-    'post.prev': '上一篇',
-    'post.next': '下一篇',
+    'post.prev': '← 上一篇',
+    'post.next': '下一篇 →',
 
     'about.eyebrow': '關於我',
     'about.back': '← 回首頁',
@@ -59,8 +59,8 @@ export const ui = {
     'writing.pager.next': 'Next →',
     'writing.back': '← Back to writing',
 
-    'post.prev': 'Previous',
-    'post.next': 'Next',
+    'post.prev': '← Previous',
+    'post.next': 'Next →',
 
     'about.eyebrow': 'About',
     'about.back': '← Home',

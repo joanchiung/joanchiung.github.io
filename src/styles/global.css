@@ -436,27 +436,6 @@ a.work-card:hover {
   .home-sheet { padding: 2.5rem 1.25rem 4rem; border-radius: 28px 28px 0 0; }
 }
 
-/* ---- 英文首頁仍用舊 Why/How/What 結構（之後翻譯時統一）---- */
-.gc section { margin: 2.5rem 0; }
-.gc ol { margin: .25rem 0 0; padding-left: 1.3rem; }
-.gc ol li { margin: .6rem 0; }
-.gc ul.signal { list-style: none; margin: .25rem 0 0; padding: 0; }
-.gc ul.signal li {
-  margin: .55rem 0;
-  padding-left: 1.1rem;
-  position: relative;
-  color: var(--slate-anchor);
-}
-.gc ul.signal li::before {
-  content: "·";
-  position: absolute;
-  left: .2rem;
-  color: var(--signal-purple);
-  font-weight: 700;
-}
-.gc .what-links, .what-links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: .35rem; }
-.gc .what-links a, .what-links a { font-weight: 500; }
-
 .name-latin {
   color: var(--muted-text);
   font-weight: 400;
@@ -485,7 +464,6 @@ a.work-card:hover {
   flex-wrap: wrap;
 }
 .resume-meta p { margin: 0; font-size: .92rem; color: var(--slate-anchor); }
-.resume-note { font-size: .78rem; color: var(--muted-text); }
 .resume-actions { display: flex; gap: .6rem; flex-shrink: 0; }
 
 .btn {
@@ -509,23 +487,6 @@ a.work-card:hover {
 
 .contact-line { font-size: .9rem; color: var(--muted-text); }
 
-/* ---- 作品區 ---- */
-.projects { margin-top: 3rem; }
-.project-card {
-  background: var(--lifted);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 1.15rem 1.35rem;
-}
-.project-head { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
-.project-head .t { font-weight: 500; font-size: 1.08rem; color: var(--ink-slate); }
-.project-card .d { margin: .45rem 0 0; font-size: .92rem; color: var(--slate-anchor); line-height: 1.6; }
-.project-card .tech { margin: .5rem 0 0; font-size: .8rem; color: var(--muted-text); }
-.project-links { margin: .7rem 0 0; display: flex; gap: 1rem; }
-.project-links a {
-  display: inline-flex; align-items: center; gap: .3rem;
-  font-size: .82rem; font-weight: 500; text-decoration: none; color: var(--signal-purple);
-}
 .status-tag {
   font-size: .68rem; font-weight: 700; letter-spacing: .08em;
   color: var(--slate-anchor); background: var(--mid-surface);
@@ -582,21 +543,25 @@ a.work-card:hover {
 .post-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: .75rem;
   margin-top: 3.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
 }
 .post-nav a {
   display: flex;
   flex-direction: column;
-  gap: .2rem;
+  gap: .3rem;
   text-decoration: none;
+  padding: .9rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--lifted);
+  transition: border-color .15s, box-shadow .15s;
 }
+.post-nav a:hover { border-color: var(--slate-anchor); box-shadow: var(--shadow-1); }
 .post-nav a.right { text-align: right; align-items: flex-end; }
-.post-nav .dir { font-size: .75rem; color: var(--muted-text); letter-spacing: .04em; }
+.post-nav .dir { font-size: .78rem; font-weight: 500; color: var(--signal-purple); letter-spacing: .02em; }
 .post-nav .ttl { font-size: .92rem; font-weight: 500; color: var(--slate-anchor); line-height: 1.4; }
-.post-nav a:hover .ttl { color: var(--signal-purple); }
+.post-nav a:hover .ttl { color: var(--ink-slate); }
 @media (max-width: 560px) {
   .post-nav { grid-template-columns: 1fr; }
   .post-nav a.right { text-align: left; align-items: flex-start; }
