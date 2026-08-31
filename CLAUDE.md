@@ -13,7 +13,7 @@
 ## 網站結構
 
 - nav：首頁 / 關於我 / 文章 ＋ 語言 dropdown（獨立，右上）
-- `/` 黃金圈 landing：姓名+定位 → Why / How / What → **作品** → 履歷卡。文字用 Notion 履歷措辭，待精簡定稿。
+- `/` landing：兩層 hero（姓名+定位+一句 hook，粉膚漸層 sticky 底 + sheet 滑上）→ **作品**格（作品卡 + 精選文章卡並排）→ 履歷卡。結構在 `HomePage.astro`，文案在 `src/i18n/home.ts`。
 - `/about/` 關於我：設計→工程的完整故事（含 Design Guideline → Design System 橋樑）
 - `/writing/` 文章列表：精選卡片（`featured: true`）+ 全部時間軸，每頁 10 篇。第 2 頁起 `/writing/page/N/`。`/writing/[slug]/` 單篇，底部有上一篇/下一篇（依日期）。共用邏輯在 `src/lib/writing.ts` + `src/components/WritingList.astro`。`.md` 進 `src/content/posts/`。
 - 文章列表/單篇**不顯示** draft 標籤、也不顯示原始出處連結（`source` 欄位仍保留在 frontmatter 供參考）。
@@ -36,17 +36,19 @@
   - 色票 token 在 global.css：淺色在 `:root`，深色有**兩塊**（`@media` + `:root[data-theme="dark"]`）**改值兩塊都要改**
 - footer 分隔線只跟內容同寬（border-top 在 `.site-footer-inner`，不是 `.site-footer`）。
 
-## i18n（管線已建，編輯型文案未翻）
+## i18n（全站已統一：thin route → 共用 component → 依語言分離內容）
 
-- **UI 字串**（nav/footer/文章列表/分頁/上一篇下一篇等「介面文字」）集中在 `src/i18n/ui.ts`
-  的 `{ zh, en }` 字典，用 `useT(lang)` 取；另有 `pathForLocale` / `base` / `htmlLang` helper。
-  新增介面字串加 key，不要在 component 內寫 inline 字典。
-- **編輯型文案**（hero hook、關於我內文、文章內文）留在各自的 `.astro` / `.md`，不進 ui.ts。
-- 文章路由已收斂：`ArticlePage.astro` + `WritingListPage.astro` 兩個共用 component，
-  `src/pages/{,en/}writing/*` 六個檔案都只是 3–10 行 wrapper。分頁計算在
-  `lib/writing.ts` 的 `getWritingPage()` / `writingPagePaths()`。
-- **還沒收斂**：`index.astro` / `en/index.astro`（等 hero 定稿）、`about.astro` /
-  `en/about.astro`（內文要搬到 `src/content/pages/{zh,en}-about.md` + 共用 AboutPage）。
+- **每一頁**都是「`src/pages/{,en/}xxx.astro` 三行 wrapper → 傳 `lang` 給共用 component」：
+  - 首頁 `HomePage.astro`，關於我 `AboutPage.astro`，文章列表 `WritingListPage.astro`，單篇 `ArticlePage.astro`
+- **UI 字串**（nav/footer/eyebrow/分頁/上一篇下一篇…）在 `src/i18n/ui.ts` 的 `{ zh, en }` 字典，
+  `useT(lang)` 取；另有 `pathForLocale` / `base` / `htmlLang` helper。新增介面字串加 key，別在 component 內寫 inline 字典。
+- **首頁文案**（hero hook、role line、track caption、區塊標題）在 `src/i18n/home.ts`。
+- **長文內容**（關於我、文章）走 content collection：關於我在 `src/content/pages/{zh,en}-about.md`，
+  文章在 `src/content/posts/{zh,en}-<slug>.md`。`getCollection` 用 `data.lang` 篩。
+- 分頁計算在 `lib/writing.ts` 的 `getWritingPage()` / `writingPagePaths()`。
+- **英文狀態**：13 篇文章有 en 版（財經 6 + Web3 3 + 能源 4，皆從英文課備課稿翻；en tag 用英文）。
+  7 篇前端/後端/AI/設計/工作流程仍只有 zh，暫不翻。en 首頁的作品卡／未翻文章會 fallback 用 zh 資料。
+  en hero / en 關於我 是初翻，待本人潤。
 
 ## 上稿一篇文章
 
@@ -81,17 +83,18 @@
 - [ ] 精選 4 篇潤稿 + 拿掉 draft（讓正式 build 有內容）
 - [ ] 單篇文章排版細修
 - [ ] 手機版 nav 不破版（實機看）
-- [ ] EN 頁：等中文定稿後做 i18n（今天先中文）
+- [x] EN 頁：全站 i18n 管線完成（thin route → 共用 component），首頁對齊中文版
+- [x] 13 篇文章英譯（初翻，draft）；en hero / en 關於我 初翻待潤
+- [ ] 本人潤 en hero（`src/i18n/home.ts`）、en 關於我（`src/content/pages/en-about.md`）、13 篇 en 文章
 
-**不在 MVP**：程式作品區、15 篇全潤完、部署、文章英譯、定位敘事 A/B。
+**不在 MVP**：程式作品區、全部潤完、部署、定位敘事 A/B。
 
 ## 進行中的決策 / 待辦
 
 1. 精選 4 篇（電力市場、登入系統、NestJS、CEX vs DEX）逐篇潤稿、拿掉 draft
 2. 程式作品怎麼擺：家教練習（asset-tracker、my-crud-backend）vs AI 協作（job-radar）vs 「網頁轉 A5 紙本」出國手冊專案（有程式碼、未整理、未上 GitHub → 要開 repo + 寫 case study）
-3. 主頁 Why/How 最終版（等本人 Notion 履歷精簡完）
-4. 中文定稿後補英文 i18n
-5. 部署：private repo → 審核完 → public + 開 Pages
+3. 潤英文：en hero、en 關於我、13 篇 en 文章（目前是初翻）
+4. 部署：private repo → 審核完 → public + 開 Pages（目前無 remote，全本機 commit）
 
 ## 完整計畫
 
