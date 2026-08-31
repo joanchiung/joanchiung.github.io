@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { useT, base as localeBase, type Locale } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+const b = localeBase(lang);
+
+const pages = await getCollection('pages');
+const entry =
+  pages.find((p) => p.data.lang === lang && p.id.replace(/^(zh|en)-/, '') === 'about') ??
+  pages.find((p) => p.id.replace(/^(zh|en)-/, '') === 'about')!;
+const { Content } = await render(entry);
+
+const brand = lang === 'en' ? 'Joan Chang' : '張瓊文';
+const altPath = `${localeBase(lang === 'en' ? 'zh' : 'en')}/about/`;
+---
+<Base
+  title={`${entry.data.title} — ${brand}`}
+  description={entry.data.description}
+  lang={lang}
+  page="about"
+  reading
+  altPath={altPath}
+>
+  <div class="eyebrow">{t('about.eyebrow')}</div>
+  <h1>{entry.data.title}</h1>
+  <Content />
+  <a class="back" href={`${b}/`}>{t('about.back')}</a>
+</Base>

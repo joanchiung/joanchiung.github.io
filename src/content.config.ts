@@ -34,4 +34,14 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { posts, projects };
+// 一般頁面（目前只有「關於我」）。每個語言一個 .md，檔名結尾決定是哪一頁（例如 zh-about.md）。
+const pages = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+  schema: z.object({
+    title: z.string(),                    // 頁面 h1
+    description: z.string().optional(),
+    lang: z.enum(['zh', 'en']).default('zh'),
+  }),
+});
+
+export const collections = { posts, projects, pages };
