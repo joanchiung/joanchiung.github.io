@@ -1,21 +1,11 @@
 ---
-title: From design judgement to shipping frontend
-description: Frontend engineer, formerly a brand & UX/UI designer for 11 years.
+title: Turning rules into interfaces
+description: Frontend engineer, currently on the M-Key crypto custody platform. 11 years in design before the switch.
 lang: en
 ---
 
-I'm a frontend engineer, formerly a brand and UX/UI designer. After 11 years in design, I moved into engineering in 2023, bringing a decade of design judgement into the code.
+I'm a frontend engineer. Right now I work on the frontend of M-Key, a crypto custody platform at BlockChain Security Corp that serves banks and law-enforcement agencies. Before I moved into engineering, I spent 11 years in brand and UX/UI design.
 
-I'm good at breaking vague, undefined requirements into a path you can actually execute. Whether that's a brand need distilled from client interviews, or an interface decision when the product spec is incomplete, I draw the outline first: who it's for, what the goal is, then ship.
+The thing I'm good at is taking a requirement that isn't defined yet and turning it into a direction the team can build on — sketch the outline first, who it's for and what the goal is, then start. Financial systems have a lot of fine-grained rules, so I do this most days.
 
-## Design and engineering are two sides of the same thing
-
-As a designer I did brand-identity rebuilds, design systems and packaging, across agency roles (art director at BVG Corp, senior designer at Surasia) and 5+ years running my own design consultancy, some client relationships lasting more than seven years.
-
-As an engineer, the same skill changed tools. At BlockChain Security Corp I proposed and built the team's design-system foundations, colour and type tokens and an automated icon pipeline, cutting average feature delivery time from 1.5 weeks to 3 days. That foundation was later expanded by the team into a shared UI component library. Eight years ago I drew the guidelines in Illustrator; now I define them in code.
-
-## Now
-
-I work on M-Key, a crypto custody platform for banks and law-enforcement agencies: vault management, 30+ approval event flows, team permissions, task workflows. It's the earliest stage of traditional finance adopting crypto, and I keep building things from zero to one in system design and cross-functional work.
-
-I also write to force myself to actually understand a concept: frontend, blockchain, and the finance domain I work in. Those notes are in [Writing](/en/writing/).
+I also write to get concepts straight in my head — frontend, blockchain, and finance. Those notes are in [Writing](/en/writing/).
