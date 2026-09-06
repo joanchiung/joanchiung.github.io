@@ -1,11 +1,13 @@
 ---
-title: Turning rules into interfaces
-description: Frontend engineer, currently on the M-Key crypto custody platform. 11 years in design before the switch.
+title: About
+description: Frontend engineer building bank-grade crypto custody and fintech systems. 11 years in brand and UX/UI design before the switch.
 lang: en
 ---
 
-I'm a frontend engineer. Right now I work on the frontend of M-Key, a crypto custody platform at BlockChain Security Corp that serves banks and law-enforcement agencies. Before I moved into engineering, I spent 11 years in brand and UX/UI design.
+Currently a frontend engineer on projects in fintech\
+Before that, 11 years in brand and UX/UI design — five of them freelance
 
-The thing I'm good at is taking a requirement that isn't defined yet and turning it into a direction the team can build on — sketch the outline first, who it's for and what the goal is, then start. Financial systems have a lot of fine-grained rules, so I do this most days.
+Where I'm most useful is stepping in before a requirement is defined:\
+take a one-line ask, work out who it's for, the goal and the edges, then narrow it into an interface and a direction the team can build
 
-I also write to get concepts straight in my head — frontend, blockchain, and finance. Those notes are in [Writing](/en/writing/).
+The [writing](/en/writing/) here is how I think through frontend, finance, and energy

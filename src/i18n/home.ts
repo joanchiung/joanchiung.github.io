@@ -46,7 +46,7 @@ export const home: Record<Locale, HomeCopy> = {
     ghost: ['Frontend', 'Engineer'],
     workEyebrow: 'Work',
     workMore: 'All writing →',
-    resumeEyebrow: 'Résumé',
+    resumeEyebrow: 'Resume',
     resumeMeta: 'Frontend Engineer · React / Next.js / TypeScript · bank-grade Web3 & fintech',
     resumeView: 'View online',
   },

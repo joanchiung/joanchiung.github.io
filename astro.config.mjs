@@ -6,6 +6,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://joanchiung.github.io',
   integrations: [sitemap()],
+  // Keep quotes/dashes as typed. SmartyPants' curly quotes render full-width in the
+  // CJK body font (Noto Sans TC), which opens a big gap in English text like "I'm".
+  markdown: { smartypants: false },
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh', 'en'],
