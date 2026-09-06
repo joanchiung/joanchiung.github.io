@@ -4,7 +4,7 @@ description: AMM 把風險留給提供流動性的人，借貸協議把風險留
 date: 2026-07-24
 tags: ["Web3", "金融", "系統設計"]
 lang: zh
-draft: true
+draft: false
 featured: true
 order: 10
 source: 英文課 W7+W8 備課稿（AMM 流動性風險 + 借貸清算）

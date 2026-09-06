@@ -4,7 +4,7 @@ description: Asset-backed, utility-backed, belief-backed. These three form a spe
 date: 2026-07-31
 tags: ["Web3", "Finance"]
 lang: en
-draft: true
+draft: false
 source: English-class prep, week 9 (What makes a token valuable)
 ---
 

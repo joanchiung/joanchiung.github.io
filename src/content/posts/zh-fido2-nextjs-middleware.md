@@ -4,13 +4,11 @@ description: 把一個獨立的 passwordless 驗證服務整併進主 app，掃 
 date: 2026-08-30
 tags: ["前端", "系統設計"]
 lang: zh
-draft: true
+draft: false
 featured: true
 order: 40
 source: 工作上與同事討論後整理的筆記（已去識別）
 ---
-
-> 草稿。內部服務名稱、網域都已抽掉，留下的是可以重複使用的教訓。
 
 ## 背景
 

@@ -4,7 +4,7 @@ description: Regulation locks in the renewables share, and physics does not go a
 date: 2026-08-14
 tags: ["Energy", "AI"]
 lang: en
-draft: true
+draft: false
 source: English-class prep, week 11 (Energy Fundamentals)
 ---
 

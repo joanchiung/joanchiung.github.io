@@ -4,11 +4,9 @@ description: 先搞清楚自己的投資習慣，再挑對應的標準 —— �
 date: 2026-06-25
 tags: ["金融", "Web3"]
 lang: zh
-draft: true
+draft: false
 source: https://www.threads.com/@joanvisual/post/DaAsRo-GVXO
 ---
-
-> 草稿，內容擷取自 Threads，尚未潤稿。原標題「用 5 個比率、4 個步驟，篩出一家好公司」。
 
 ## 1. 優秀是比較出來的
 

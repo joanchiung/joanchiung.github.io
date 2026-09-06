@@ -4,11 +4,9 @@ description: 先看世界的真實需求，再順著產業鏈用財報找誰在�
 date: 2026-06-30
 tags: ["金融"]
 lang: zh
-draft: true
+draft: false
 source: https://www.threads.com/@joanvisual/post/DaNu2yzmSYR
 ---
-
-> 草稿，內容擷取自 Threads，尚未潤稿。（原文第 4 段含個人生活例子，此處先移除。）
 
 ## 1. 財報是我決定「錢放哪」的工具
 

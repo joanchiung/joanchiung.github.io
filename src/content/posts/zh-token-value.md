@@ -4,7 +4,7 @@ description: 資產支撐、功能支撐、信念支撐 —— 這三種是一�
 date: 2026-07-31
 tags: ["Web3", "金融"]
 lang: zh
-draft: true
+draft: false
 source: 英文課 W9 備課稿（What makes a token valuable）
 ---
 

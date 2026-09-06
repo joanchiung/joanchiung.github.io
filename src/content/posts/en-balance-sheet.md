@@ -4,7 +4,7 @@ description: How to read the accounting equation, and why on-chain transparency 
 date: 2026-06-11
 tags: ["Finance", "Web3"]
 lang: en
-draft: true
+draft: false
 source: Threads @joanvisual (DZcuGaPmc2y)
 ---
 

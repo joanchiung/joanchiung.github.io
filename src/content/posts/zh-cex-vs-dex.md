@@ -4,11 +4,9 @@ description: 中心化交易所賺每一個環節的手續費，去中心化交�
 date: 2026-05-20
 tags: ["Web3", "金融"]
 lang: zh
-draft: true
+draft: false
 source: https://www.threads.com/@joanvisual/post/DYkH_pXmUaq
 ---
-
-> 草稿，內容擷取自 Threads，尚未潤稿。
 
 ## CEX：幣圈版的「交易所 + 券商」，抽走每一個環節的手續費
 

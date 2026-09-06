@@ -4,7 +4,7 @@ description: 法規把再生能源占比鎖死，物理限制又不會消失。�
 date: 2026-08-14
 tags: ["能源", "AI"]
 lang: zh
-draft: true
+draft: false
 source: 英文課 W11 備課稿（Energy Fundamentals）
 ---
 

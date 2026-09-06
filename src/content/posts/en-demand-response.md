@@ -4,7 +4,7 @@ description: A gentler buffer one step before "we have to cut power". AI data ce
 date: 2026-08-21
 tags: ["Energy", "AI"]
 lang: en
-draft: true
+draft: false
 source: English-class prep, week 12 (Energy Fundamentals)
 ---
 

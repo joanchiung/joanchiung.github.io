@@ -4,7 +4,7 @@ description: The income statement says profit, the cash flow statement says the 
 date: 2026-06-16
 tags: ["Finance"]
 lang: en
-draft: true
+draft: false
 source: Threads @joanvisual (DZplYummUn8)
 ---
 

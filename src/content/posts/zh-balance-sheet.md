@@ -4,11 +4,9 @@ description: 會計恆等式怎麼讀，以及為什麼鏈上透明度目前只�
 date: 2026-06-11
 tags: ["金融", "Web3"]
 lang: zh
-draft: true
+draft: false
 source: https://www.threads.com/@joanvisual/post/DZcuGaPmc2y
 ---
-
-> 草稿，內容擷取自 Threads，尚未潤稿。
 
 ## 1. 資產負債表是什麼？
 

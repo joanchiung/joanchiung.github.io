@@ -4,7 +4,7 @@ description: 總量鎖死才有稀缺性，稀缺性才逼得出減排意願。�
 date: 2026-08-28
 tags: ["能源", "Web3", "金融"]
 lang: zh
-draft: true
+draft: false
 source: 英文課 W13 備課稿（Energy Fundamentals）
 ---
 

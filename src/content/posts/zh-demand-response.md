@@ -4,7 +4,7 @@ description: 在「必須限電」這一步之前，先提供一道更溫和的�
 date: 2026-08-21
 tags: ["能源", "AI"]
 lang: zh
-draft: true
+draft: false
 source: 英文課 W12 備課稿（Energy Fundamentals）
 ---
 

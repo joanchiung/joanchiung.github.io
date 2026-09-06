@@ -4,7 +4,7 @@ description: Figure out your own investing habits first, then pick the matching 
 date: 2026-06-25
 tags: ["Finance", "Web3"]
 lang: en
-draft: true
+draft: false
 source: Threads @joanvisual (DaAsRo-GVXO)
 ---
 

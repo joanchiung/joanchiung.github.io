@@ -4,11 +4,9 @@ description: 損益表說賺錢、現金流量表說現金見底 —— 大廠�
 date: 2026-06-16
 tags: ["金融"]
 lang: zh
-draft: true
+draft: false
 source: https://www.threads.com/@joanvisual/post/DZplYummUn8
 ---
-
-> 草稿，內容擷取自 Threads，尚未潤稿。
 
 ## 1. 現金流量表是什麼？
 

@@ -4,7 +4,7 @@ description: A centralized exchange takes a fee at every step; a decentralized o
 date: 2026-05-20
 tags: ["Web3", "Finance"]
 lang: en
-draft: true
+draft: false
 source: Threads @joanvisual (DYkH_pXmUaq)
 ---
 

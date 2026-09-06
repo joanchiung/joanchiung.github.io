@@ -4,11 +4,9 @@ description: 從上往下讀，四個方向一起看 —— 以及為什麼我�
 date: 2026-06-03
 tags: ["金融", "Web3"]
 lang: zh
-draft: true
+draft: false
 source: https://www.threads.com/@joanvisual/post/DZIHH5oGSwi
 ---
-
-> 草稿，內容擷取自 Threads，尚未潤稿。
 
 ## 損益表是什麼？
 

@@ -4,13 +4,11 @@ description: 從台電的邊際定價機制，談 303 大停電暴露的集中�
 date: 2026-08-05
 tags: ["Web3", "能源", "系統設計"]
 lang: zh
-draft: true
+draft: false
 featured: true
 order: 30
 source: https://www.threads.com/@joanvisual/post/DbqTBdtmdON
 ---
-
-> 草稿，內容擷取自 Threads，尚未潤稿。
 
 ## 1. 電力沒辦法保存，計價永遠跟著當下最貴的那台機組走
 

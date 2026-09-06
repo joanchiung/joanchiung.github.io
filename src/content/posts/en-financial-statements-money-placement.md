@@ -4,7 +4,7 @@ description: Look at the world's real needs first, then follow the supply chain 
 date: 2026-06-30
 tags: ["Finance"]
 lang: en
-draft: true
+draft: false
 source: Threads @joanvisual (DaNu2yzmSYR)
 ---
 

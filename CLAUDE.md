@@ -1,108 +1,56 @@
-# personal-site — 專案脈絡
+# personal-site — 開發脈絡
 
-張瓊文（Joan Chang）的個人網站，補面試需求。Astro 靜態站，之後 host 在 GitHub Pages（`joanchiung.github.io`）。
+Joan Chang 的個人網站。Astro 靜態站，部署在 GitHub Pages（`joanchiung.github.io`）。
+中英雙語：`zh` 為預設（無前綴），`en` 走 `/en/`。
 
-## 定位（已定案）
-
-- **工程師為主、設計為輔。** 明確不要讓人覺得「設計師想轉碼」。
-- 一句話：設計背景的前端工程師，在受監管的金融系統裡把複雜規則做成介面。
-- 橋樑故事（只講一次）：設計師時期做 Design Guideline → 轉前端後做 Design System。
-- 語言：中英雙語（`zh` 預設、`en` 走 `/en/`）。英文內容尚未翻。
-- 敘事 A（工程為主 + 單一橋樑）vs B（設計區大一點）：**尚未拍板**，先看完素材清單再決定。
+> 定位敘事、履歷細節、原始素材等非程式脈絡不放這裡（在 gitignore 的 `_source/`）。
 
 ## 網站結構
 
-- nav：首頁 / 關於我 / 文章 ＋ 語言 dropdown（獨立，右上）
-- `/` landing：兩層 hero（姓名+定位+一句 hook，粉膚漸層 sticky 底 + sheet 滑上）→ **作品**格（作品卡 + 精選文章卡並排）→ 履歷卡。結構在 `HomePage.astro`，文案在 `src/i18n/home.ts`。
-- `/about/` 關於我：設計→工程的完整故事（含 Design Guideline → Design System 橋樑）
-- `/writing/` 文章列表：精選卡片（`featured: true`）+ 全部時間軸，每頁 10 篇。第 2 頁起 `/writing/page/N/`。`/writing/[slug]/` 單篇，底部有上一篇/下一篇（依日期）。共用邏輯在 `src/lib/writing.ts` + `src/components/WritingList.astro`。`.md` 進 `src/content/posts/`。
-- 文章列表/單篇**不顯示** draft 標籤、也不顯示原始出處連結（`source` 欄位仍保留在 frontmatter 供參考）。
-- tag 詞彙（控制用）：前端 / 後端 / Web3 / 金融 / 能源 / AI / 工作流程 / 設計 / 系統設計
-- 文章共 20 篇（全 draft）：Threads + 英文課備課稿（原檔 `~/Desktop/學習與成長/英文學習/prep/`）+ FIDO2 那篇（去識別自工作筆記）。
-- **精選 4 篇**（`featured: true` + `order` 越大越前，排序邏輯在 `src/lib/writing.ts`）：
-  1. 整合 FIDO2 到 Next.js（order 40）—— 已抽掉所有內部服務名/網域/repo 路徑
-  2. 一顆開關按錯，全國停電：電力市場（30）
-  3. DeFi 想拿掉的是「人」這個變數（20）—— M-Key 細節已移除
-  4. DeFi 拿掉中介之後，風險去了哪裡：AMM 與借貸清算（10）
-- 去識別原則：文章不出現 M-Key 產品細節、公司內部服務名、網域、repo 路徑。主頁/關於我用履歷等級的措辭（M-Key 產品名 OK）。
-- 作品：`.md` 進 `src/content/projects/`（schema 見 content.config.ts：title/description/tech/repo/demo/status/order/draft）。目前只有 `travel-handbook.md`（出國手冊，draft，repo 未開）。首頁作品區直接讀這個集合。
-- 履歷：`public/joan-chang-cv.pdf`（2026-03 英文版；本人在 Notion 弄新版）。主頁文件卡（下載履歷/線上看）+ footer btn。
-- footer：GitHub / LinkedIn（inline 品牌 SVG，Lucide 沒有品牌 icon）+ Mail（Lucide）+ 下載履歷 btn（Lucide download）
-- 圖示：`@lucide/astro`（`import X from '@lucide/astro/icons/x'`）。品牌 logo 用 inline SVG。
-- 深淺色：預設跟隨系統 `prefers-color-scheme`；nav 有 sun/moon toggle，選擇存 localStorage，`<head>` inline script 防閃爍。
-  - 淺色 = 暖灰米色（canvas `#eeeae5`）；深色 = **暖棕微光 v3**（canvas `#423a34`，不是近黑），兩者同「暖色」精神
-  - hero 漸層：淺色 `#f5ede9 → #a8868c`；深色 `#6d4a4d → #ad8489`（暖玫瑰 ~353°，跟淺色同色相）。改 `--hero-tl` / `--hero-br`
-  - 深色 hero 右下偏亮，`.hero-inner::before` 有偏左的暗 scrim 當文字可讀底
-  - 色票 token 在 global.css：淺色在 `:root`，深色有**兩塊**（`@media` + `:root[data-theme="dark"]`）**改值兩塊都要改**
-- footer 分隔線只跟內容同寬（border-top 在 `.site-footer-inner`，不是 `.site-footer`）。
+- **nav**：首頁 / 關於我 / 文章 ＋ 語言 dropdown（獨立，右上）＋ 深淺色 toggle
+- **`/`**：兩層 hero（姓名＋定位＋一句 hook，粉膚漸層 sticky 底 + sheet 滑上）→ 精選文章卡 → 履歷卡。結構在 `HomePage.astro`，文案在 `src/i18n/home.ts`。
+- **`/about/`**：`AboutPage.astro` + `src/content/pages/{zh,en}-about.md`
+- **`/writing/`**：精選卡（`featured: true`，`order` 越大越前）+ 全部時間軸，每頁 10 篇；第 2 頁起 `/writing/page/N/`。單篇 `/writing/<slug>/`，底部上一篇／下一篇（依日期）。共用邏輯在 `src/lib/writing.ts` + `src/components/WritingList.astro`。
+  - 公開網址 slug 會拿掉檔名的語言前綴：`zh-balance-sheet.md` → `/writing/balance-sheet/`（`slugOf()`）。zh／en 同 slug 時，單篇的語言切換可直接互跳。
+  - 文章列表／單篇不顯示 draft 標籤，也不顯示 `source`（欄位保留供參考）。
+- **tag 詞彙**（控制用）：前端 / 後端 / Web3 / 金融 / 能源 / AI / 工作流程 / 設計 / 系統設計
+- **履歷**：`public/joan-chang-cv.pdf`。主頁文件卡（下載／線上看）+ footer btn。
+- **footer**：GitHub / LinkedIn（inline 品牌 SVG）+ Mail（Lucide）+ 下載履歷 btn。border-top 在 `.site-footer-inner`。
+- **圖示**：`@lucide/astro`（`import X from '@lucide/astro/icons/x'`）；品牌 logo 用 inline SVG。
+- **深淺色**：預設跟隨系統；nav toggle 存 localStorage，`<head>` inline script 防閃爍。
+  - 淺色 canvas `#eeeae5`；深色 canvas `#423a34`（暖棕微光，非近黑）
+  - hero 漸層：淺色 `#f5ede9 → #a8868c`；深色 `#6d4a4d → #ad8489`。改 `--hero-tl` / `--hero-br`
+  - 色票 token 在 `global.css`：淺色在 `:root`，深色有**兩塊**（`@media` + `:root[data-theme="dark"]`）——**改值兩塊都要改**
 
-## i18n（全站已統一：thin route → 共用 component → 依語言分離內容）
+## i18n（thin route → 共用 component → 依語言分離內容）
 
-- **每一頁**都是「`src/pages/{,en/}xxx.astro` 三行 wrapper → 傳 `lang` 給共用 component」：
-  - 首頁 `HomePage.astro`，關於我 `AboutPage.astro`，文章列表 `WritingListPage.astro`，單篇 `ArticlePage.astro`
-- **UI 字串**（nav/footer/eyebrow/分頁/上一篇下一篇…）在 `src/i18n/ui.ts` 的 `{ zh, en }` 字典，
-  `useT(lang)` 取；另有 `pathForLocale` / `base` / `htmlLang` helper。新增介面字串加 key，別在 component 內寫 inline 字典。
-- **首頁文案**（hero hook、role line、track caption、區塊標題）在 `src/i18n/home.ts`。
-- **長文內容**（關於我、文章）走 content collection：關於我在 `src/content/pages/{zh,en}-about.md`，
-  文章在 `src/content/posts/{zh,en}-<slug>.md`。`getCollection` 用 `data.lang` 篩。
+- 每頁都是 `src/pages/{,en/}xxx.astro` 三行 wrapper → 傳 `lang` 給共用 component
+  （`HomePage` / `AboutPage` / `WritingListPage` / `ArticlePage`）
+- **UI 字串**（nav/footer/eyebrow/分頁…）在 `src/i18n/ui.ts` 的 `{ zh, en }` 字典，`useT(lang)` 取；另有 `pathForLocale` / `base` / `htmlLang` helper。新增介面字串加 key，別在 component 內寫 inline 字典。
+- **首頁文案** 在 `src/i18n/home.ts`。
+- **長文內容** 走 content collection：關於我 `src/content/pages/{zh,en}-about.md`，文章 `src/content/posts/{zh,en}-<slug>.md`。`getCollection` 用 `data.lang` 篩。
 - 分頁計算在 `lib/writing.ts` 的 `getWritingPage()` / `writingPagePaths()`。
-- **英文狀態**：13 篇文章有 en 版（財經 6 + Web3 3 + 能源 4，皆從英文課備課稿翻；en tag 用英文）。
-  7 篇前端/後端/AI/設計/工作流程仍只有 zh，暫不翻。en 首頁的作品卡／未翻文章會 fallback 用 zh 資料。
-  en hero / en 關於我 是初翻，待本人潤。
+- 沒有某語言版本時，首頁精選會 fallback 用另一語言的資料。
 
 ## 上稿一篇文章
 
 `src/content/posts/` 放 `.md`，frontmatter schema 見 `src/content.config.ts`：
-`title, description?, date, tags[], lang(zh|en), draft(bool), source?`
+`title, description?, date, tags[], lang(zh|en), draft(bool), featured(bool), order(number), source?`
 `draft: true` = 只在本機 `npm run dev` 顯示，`npm run build` 不輸出。
 
-## 原始素材位置（`_source/`，已 gitignore，含隱私，不要 commit）
+## 作品集合
 
-- `_source/00_素材清單.md` — 掃描電腦 Desktop+Documents 的分類清單
-- `_source/01_策展建議.md` — 定位敘事 A/B 分析、各區塊 shortlist、缺口清單
-- `_source/02_Threads擷取/` — 從 Threads @joanvisual 擷取的 16 篇（技術/金融/工作方法），每篇有 `site_verdict` 判斷。`00_擷取總覽與判斷.md` 是索引。
-
-## 關鍵事實（寫文案時對照）
-
-- GitHub `joanchiung`、LinkedIn `joanvisual`、Email `joankaminari@gmail.com`
-- 現職：區塊科技 BlockChain Security Corp（2024/11–），前端工程師，M-Key 加密貨幣托管平台（服務銀行與執法機關）。Next.js/TS、TanStack Query、Zod。負責金庫管理、30+ 審批事件流程、團隊管理、設計系統基礎（色彩/字體 Token、自動化圖示產線 → 交付時間 1.5 週縮到 3 天）
-- 前一份：雪橋 Snowbridge Inc（2023/10–2024/11），5 人團隊唯一前端。1510.ai 不動產工具（Paged.js，網頁 UI 與 PDF 同步，4hr→0.5hr）、ERC-1155 循環經濟平台原型、NextAuth 多角色租賃平台
-- **確認：coding 是兩間公司，不是連續一間。真名可用（跟 CV/LinkedIn 一致）。**
-- 自由接案 2018/03–2023/10（能源署淨零網站「源宇宙」、Gold Alles 錢包 App、臥和彩日診所 VI）；2012–2018 設計（BVG、Surasia、BOYU、Innospread）
-- 最新履歷文案來源：Notion「履歷 - 通用版」`https://app.notion.com/p/3c60a677b5e581b19275c181880667f8`（本人還在精簡）。主頁 Why/How 已改用此版自我簡介的措辭。
-- 一句定位：「前端工程師｜銀行級 Web3 與金融科技系統」
-- Why：「我擅長把模糊、未定義的需求，拆解成可以執行的路徑。」
-
-## 最小 MVP 標準（目標：家教課上能從頭走一遍，不用道歉）
-
-- [x] 主導覽只留「文章」
-- [x] 語言切換獨立成 dropdown（右上，與 nav 分開）
-- [x] 履歷從 nav 移除 → 主頁做成文件卡（下載 PDF / 線上看）+ footer
-- [x] 主頁重新結構：姓名+定位 → Why → How → What（文章）→ 履歷卡 → 連結
-- [x] 拿掉黃色草稿提示條（中文頁）
-- [ ] 精選 4 篇潤稿 + 拿掉 draft（讓正式 build 有內容）
-- [ ] 單篇文章排版細修
-- [ ] 手機版 nav 不破版（實機看）
-- [x] EN 頁：全站 i18n 管線完成（thin route → 共用 component），首頁對齊中文版
-- [x] 13 篇文章英譯（初翻，draft）；en hero / en 關於我 初翻待潤
-- [ ] 本人潤 en hero（`src/i18n/home.ts`）、en 關於我（`src/content/pages/en-about.md`）、13 篇 en 文章
-
-**不在 MVP**：程式作品區、全部潤完、部署、定位敘事 A/B。
-
-## 進行中的決策 / 待辦
-
-1. 精選 4 篇（電力市場、登入系統、NestJS、CEX vs DEX）逐篇潤稿、拿掉 draft
-2. 程式作品怎麼擺：家教練習（asset-tracker、my-crud-backend）vs AI 協作（job-radar）vs 「網頁轉 A5 紙本」出國手冊專案（有程式碼、未整理、未上 GitHub → 要開 repo + 寫 case study）
-3. 潤英文：en hero、en 關於我、13 篇 en 文章（目前是初翻）
-4. 部署：private repo → 審核完 → public + 開 Pages（目前無 remote，全本機 commit）
-
-## 完整計畫
-
-`~/.claude/plans/majestic-greeting-possum.md`（5 階段：掃描→策展→撰寫→建站→打磨）。
+`src/content/projects/`（schema 見 `content.config.ts`）。目前首頁沒有讀這個集合（作品區暫時只放精選文章）；要恢復作品卡再把 `HomePage.astro` 的 projects 區塊接回來。
 
 ## 開發
 
 ```bash
 npm run dev      # localhost:4321
 npm run build    # → dist/
+npm run check    # astro check（型別）
 ```
+
+## 部署
+
+`main` 一有 push，`.github/workflows/deploy.yml` 會跑 `npm run check` → build → 發佈到 GitHub Pages。
+首次啟用：repo Settings → Pages → Source 選「GitHub Actions」。

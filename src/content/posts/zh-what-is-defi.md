@@ -4,7 +4,7 @@ description: DeFi 用寫死的合約取代人為裁量；但排除人也有代�
 date: 2026-07-10
 tags: ["Web3", "金融"]
 lang: zh
-draft: true
+draft: false
 featured: true
 order: 20
 source: 英文課 W6 備課稿（DeFi Fundamentals）

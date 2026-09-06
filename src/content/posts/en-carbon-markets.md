@@ -4,7 +4,7 @@ description: Scarcity only exists once the total is capped, and scarcity is what
 date: 2026-08-28
 tags: ["Energy", "Web3", "Finance"]
 lang: en
-draft: true
+draft: false
 source: English-class prep, week 13 (Energy Fundamentals)
 ---
 

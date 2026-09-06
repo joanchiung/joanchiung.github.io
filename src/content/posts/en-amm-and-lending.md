@@ -4,7 +4,7 @@ description: An AMM leaves the risk with the liquidity provider; a lending proto
 date: 2026-07-24
 tags: ["Web3", "Finance", "System Design"]
 lang: en
-draft: true
+draft: false
 featured: true
 order: 10
 source: English-class prep, weeks 7-8 (AMM liquidity risk + lending liquidations)

@@ -4,7 +4,7 @@ description: DeFi replaces human discretion with hardcoded contracts. But removi
 date: 2026-07-10
 tags: ["Web3", "Finance"]
 lang: en
-draft: true
+draft: false
 featured: true
 order: 20
 source: English-class prep, week 6 (DeFi Fundamentals)

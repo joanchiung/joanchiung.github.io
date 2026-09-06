@@ -4,7 +4,7 @@ description: From Taipower's marginal pricing, to the concentration risk the 303
 date: 2026-08-05
 tags: ["Web3", "Energy", "System Design"]
 lang: en
-draft: true
+draft: false
 featured: true
 order: 30
 source: Threads @joanvisual (DbqTBdtmdON)
