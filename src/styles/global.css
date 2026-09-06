@@ -361,7 +361,7 @@ blockquote {
   position: absolute;
   z-index: -1;           /* behind the text, above only the gradient background */
   right: 0;
-  bottom: -3.25rem;
+  bottom: -4rem;
   font-family: 'Libre Baskerville', Georgia, serif;
   font-style: italic;
   font-size: 4.5rem;
@@ -376,7 +376,7 @@ blockquote {
   :root:not([data-theme="light"]) .hero-ghost { color: rgba(255, 255, 255, .05); }
 }
 @media (max-width: 560px) {
-  .hero-ghost { font-size: 2.75rem; bottom: -2rem; }
+  .hero-ghost { font-size: 2.75rem; bottom: -2.75rem; }
 }
 
 /* ---- Bottom layer: canvas "sheet" slides up over the hero ---- */
