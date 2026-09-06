@@ -7,8 +7,6 @@ lang: zh
 draft: true
 ---
 
-> 草稿，內容擷取自 Threads，尚未潤稿。
-
 ## Step 1 事前作業
 
 開一個專屬「整理資料夾」的 Project，把整理規則存成 md 檔，之後每次都能直接套用。

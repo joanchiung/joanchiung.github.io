@@ -7,8 +7,6 @@ lang: zh
 draft: true
 ---
 
-> 草稿，內容擷取自 Threads，尚未潤稿。
-
 ORM = Object-Relational Mapper（物件關聯對應，用來操作資料庫）。
 
 ## Step 1 環境初始化
