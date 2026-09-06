@@ -1,5 +1,5 @@
 ---
-import { fmtDate, type Post } from '../lib/writing';
+import { fmtDate, slugOf, type Post } from '../lib/writing';
 import { useT, base as localeBase, type Locale } from '../i18n/ui';
 
 interface Props {
@@ -24,7 +24,7 @@ const showFeatured = featured && featured.length > 0;
     <ul class="card-list">
       {featured!.map((p) => (
         <li>
-          <a href={`${base}/writing/${p.id}/`}>
+          <a href={`${base}/writing/${slugOf(p)}/`}>
             <span class="t">{p.data.title}</span>
             {p.data.description && <span class="d">{p.data.description}</span>}
             <span class="meta">{fmtDate(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</span>
@@ -40,7 +40,7 @@ const showFeatured = featured && featured.length > 0;
   <ul class="post-list">
     {posts.map((p) => (
       <li>
-        <a href={`${base}/writing/${p.id}/`}>{p.data.title}</a>
+        <a href={`${base}/writing/${slugOf(p)}/`}>{p.data.title}</a>
         <div class="meta">{fmtDate(p.data.date)}{p.data.tags.length > 0 && ` · ${p.data.tags.join(' / ')}`}</div>
       </li>
     ))}

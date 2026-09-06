@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { render } from 'astro:content';
-import { fmtDate, type Post } from '../lib/writing';
+import { fmtDate, slugOf, getWriting, type Post } from '../lib/writing';
 import { useT, base as localeBase, type Locale } from '../i18n/ui';
 
 interface Props {
@@ -16,8 +16,15 @@ const b = localeBase(lang);
 const brand = lang === 'en' ? 'Joan Chang' : '張瓊文';
 const { Content } = await render(post);
 
-// 目前沒有 EN 文章，語言切換退回列表頁
-const altPath = `${localeBase(lang === 'en' ? 'zh' : 'en')}/writing/`;
+// 語言切換：對方語言有同一篇就直接跳過去，沒有就退回文章列表
+const otherLang = lang === 'en' ? 'zh' : 'en';
+const otherBase = localeBase(otherLang);
+const slug = slugOf(post);
+const { all: otherAll } = await getWriting(otherLang, import.meta.env.DEV);
+const hasCounterpart = otherAll.some((p) => slugOf(p) === slug);
+const altPath = hasCounterpart
+  ? `${otherBase}/writing/${slug}/`
+  : `${otherBase}/writing/`;
 ---
 <Base
   title={`${post.data.title} — ${brand}`}
@@ -37,10 +44,10 @@ const altPath = `${localeBase(lang === 'en' ? 'zh' : 'en')}/writing/`;
 
   <nav class="post-nav">
     {prev ? (
-      <a href={`${b}/writing/${prev.id}/`}><span class="dir">{t('post.prev')}</span><span class="ttl">{prev.data.title}</span></a>
+      <a href={`${b}/writing/${slugOf(prev)}/`}><span class="dir">{t('post.prev')}</span><span class="ttl">{prev.data.title}</span></a>
     ) : <span></span>}
     {next ? (
-      <a class="right" href={`${b}/writing/${next.id}/`}><span class="dir">{t('post.next')}</span><span class="ttl">{next.data.title}</span></a>
+      <a class="right" href={`${b}/writing/${slugOf(next)}/`}><span class="dir">{t('post.next')}</span><span class="ttl">{next.data.title}</span></a>
     ) : <span></span>}
   </nav>
 

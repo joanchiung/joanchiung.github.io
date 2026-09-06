@@ -43,6 +43,9 @@ export async function writingPagePaths(lang: 'zh' | 'en', isDev: boolean) {
   return paths;
 }
 
+/** 公開網址用的 slug：拿掉檔名的語言前綴（zh-/en-），例如 zh-balance-sheet → balance-sheet */
+export const slugOf = (p: Post) => p.id.replace(/^(zh|en)-/, '');
+
 export const fmtDate = (d: Date) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 

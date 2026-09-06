@@ -1,11 +1,11 @@
 ---
 import ArticlePage from '../../../components/ArticlePage.astro';
-import { getWriting, neighbours } from '../../../lib/writing';
+import { getWriting, neighbours, slugOf } from '../../../lib/writing';
 
 export async function getStaticPaths() {
   const { all } = await getWriting('en', import.meta.env.DEV);
   return all.map((post) => ({
-    params: { slug: post.id },
+    params: { slug: slugOf(post) },
     props: { post, ...neighbours(all, post.id) },
   }));
 }
