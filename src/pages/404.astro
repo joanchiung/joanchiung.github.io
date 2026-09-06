@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { useT } from '../i18n/ui';
+
+// GitHub Pages serves this single 404.html for any unknown path, so it stays zh (the default locale).
+const t = useT('zh');
+---
+<Base title={`${t('notFound.title')} — 張瓊文`} lang="zh" reading>
+  <h1>{t('notFound.title')}</h1>
+  <p style="color:var(--muted-text)">{t('notFound.body')}</p>
+  <a class="back" href="/">{t('notFound.home')}</a>
+</Base>

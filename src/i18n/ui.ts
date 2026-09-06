@@ -41,6 +41,10 @@ export const ui = {
     'post.next': '下一篇 →',
 
     'about.back': '← 回首頁',
+
+    'notFound.title': '找不到這個頁面',
+    'notFound.body': '這個網址沒有內容，可能已經移除，或從來不存在。',
+    'notFound.home': '← 回首頁',
   },
   en: {
     'nav.home': 'Home',
@@ -68,6 +72,10 @@ export const ui = {
     'post.next': 'Next →',
 
     'about.back': '← Home',
+
+    'notFound.title': 'Page not found',
+    'notFound.body': "There's nothing at this URL — it may have moved, or never existed.",
+    'notFound.home': '← Back home',
   },
 } as const;
 
