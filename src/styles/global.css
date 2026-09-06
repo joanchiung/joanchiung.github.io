@@ -574,6 +574,22 @@ a.work-card:hover {
 .article :is(ul, ol) { margin: 1rem 0; padding-left: 1.4rem; }
 .article li { margin: .4rem 0; }
 
+/* ---- Inline SVG figures in articles (shared by zh / en; labels are English) ---- */
+.post-figure { margin: 2rem 0; }
+.post-figure svg { width: 100%; height: auto; }
+.post-figure text { font-family: var(--font-sans); font-size: 13px; }
+.post-figure .pf-label { fill: var(--ink-slate); font-weight: 500; }
+.post-figure .pf-muted { fill: var(--muted-text); }
+.post-figure .pf-fill { fill: var(--slate-anchor); }
+.post-figure .pf-accent { fill: var(--signal-purple); }
+.post-figure .pf-fill-soft { fill: var(--slate-anchor); fill-opacity: .16; stroke: var(--slate-anchor); }
+.post-figure .pf-accent-soft { fill: var(--signal-purple); fill-opacity: .16; stroke: var(--signal-purple); }
+.post-figure .pf-shade { fill: var(--signal-purple); fill-opacity: .1; }
+.post-figure .pf-line { stroke: var(--slate-anchor); fill: none; stroke-width: 2; }
+.post-figure .pf-line-accent { stroke: var(--signal-purple); fill: none; stroke-width: 2.5; }
+.post-figure .pf-axis { stroke: var(--border); fill: none; }
+.post-figure figcaption { font-size: .82rem; color: var(--muted-text); margin-top: .5rem; }
+
 .back {
   display: inline-block;
   margin-top: 2rem;

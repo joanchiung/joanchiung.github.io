@@ -21,6 +21,26 @@ draft: false
 - 負債：看「欠誰、何時要還」。負債不是越少越好 —— 借的錢報酬大於利息就划算，前提是還得起。
 - 權益：資產 − 負債算出來的結果，是歷年累積（保留盈餘）。
 
+<figure class="post-figure">
+<svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bs-t bs-d">
+<title id="bs-t">The accounting equation</title>
+<desc id="bs-d">Assets on the left equal liabilities plus equity on the right, and the two sides always balance. On-chain you can verify assets but not liabilities. Proportions are illustrative.</desc>
+<rect class="pf-fill-soft" x="80" y="44" width="200" height="180" rx="4"/>
+<text class="pf-label" x="180" y="120" text-anchor="middle">Assets</text>
+<text class="pf-muted" x="180" y="142" text-anchor="middle">what the company has</text>
+<text class="pf-label" x="320" y="142" text-anchor="middle" font-size="22">=</text>
+<rect class="pf-fill-soft" x="360" y="44" width="200" height="72" rx="4"/>
+<text class="pf-label" x="460" y="76" text-anchor="middle">Liabilities</text>
+<text class="pf-muted" x="460" y="96" text-anchor="middle">borrowed</text>
+<rect class="pf-accent-soft" x="360" y="120" width="200" height="104" rx="4"/>
+<text class="pf-label" x="460" y="166" text-anchor="middle">Equity</text>
+<text class="pf-muted" x="460" y="186" text-anchor="middle">shareholders'</text>
+<path class="pf-line-accent" d="M80 238 L80 246 L280 246 L280 238"/>
+<text class="pf-accent" x="180" y="266" text-anchor="middle">On-chain: only this side is verifiable</text>
+</svg>
+<figcaption>Assets = Liabilities + Equity, and the two sides always balance. On-chain you can verify assets but not liabilities, so equity stays invisible. Proportions are illustrative.</figcaption>
+</figure>
+
 ## 3. Coinbase vs NVIDIA
 
 上週看市值，兩家差 100 多倍；這週看總資產，只差 9 倍。這個落差本身就是資訊：資產負債表記錄公司「有什麼」，市值反映市場認為它「值什麼」，中間的差距是市場對未來獲利的想像。

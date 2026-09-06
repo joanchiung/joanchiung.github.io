@@ -40,6 +40,10 @@ Joan Chang 的個人網站。Astro 靜態站，部署在 GitHub Pages（`joanchi
 
 Markdown 的 SmartyPants 已關閉（`astro.config.mjs`）：引號、破折號照打的原樣輸出。原因是彎引號 `'` `"` 在 CJK 內文字型（Noto Sans TC）會被當全形，英文的 `I'm` 之類會被撐開一個字寬。破折號直接打 `—`、刪節號直接打 `…`。
 
+### 文章配圖
+
+用 inline `<svg>` 直接寫在 `.md`（`.md` 不能 import component，MDX 尚未導入）。包在 `<figure class="post-figure">…<figcaption>` 裡，配色用 `global.css` 的 `.pf-*` class（`pf-label` / `pf-muted` / `pf-fill` / `pf-accent` / `pf-fill-soft` / `pf-accent-soft` / `pf-shade` / `pf-line` / `pf-line-accent` / `pf-axis`），全部走色票 token，深淺色自動切換。**圖內文字一律英文**，zh／en 兩篇共用同一份 SVG（要同步改）。加 `role="img"` + `<title>`/`<desc>`。已用於 income-statement、balance-sheet、cash-flow-payment-terms。
+
 ## 作品集合
 
 `src/content/projects/`（schema 見 `content.config.ts`）。目前首頁沒有讀這個集合（作品區暫時只放精選文章）；要恢復作品卡再把 `HomePage.astro` 的 projects 區塊接回來。
