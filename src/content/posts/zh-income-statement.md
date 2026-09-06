@@ -15,6 +15,38 @@ draft: false
 
 從上往下：收入扣掉原物料和製造成本是毛利；毛利再扣掉行銷、人事費用是營業利益；加減業外收支（匯差、利息）得到稅前淨利；最後扣稅才是真正的淨利。
 
+<figure class="income-statement-figure">
+<svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="isf-t isf-d">
+<title id="isf-t">Reading an income statement from top to bottom</title>
+<desc id="isf-d">Revenue minus cost of goods sold gives gross profit. Minus operating expenses gives operating profit. Plus or minus non-operating items gives pre-tax profit. Minus tax gives net income. Bar widths are illustrative.</desc>
+<style>
+.income-statement-figure{margin:2rem 0}
+.income-statement-figure svg{width:100%;height:auto}
+.income-statement-figure svg text{font-family:var(--font-sans,system-ui);font-size:13px}
+.income-statement-figure .isf-t1{fill:var(--ink-slate,#2b2e40);font-weight:500}
+.income-statement-figure .isf-t2{fill:var(--muted-text,#7e7a8a)}
+.income-statement-figure .isf-bar{fill:var(--slate-anchor,#4d516d)}
+.income-statement-figure .isf-bar-net{fill:var(--signal-purple,#6b5c72)}
+.income-statement-figure figcaption{font-size:.82rem;color:var(--muted-text);margin-top:.5rem}
+</style>
+<text class="isf-t1" x="180" y="24" text-anchor="end">Revenue</text>
+<rect class="isf-bar" x="190" y="12" width="430" height="18" rx="3"/>
+<text class="isf-t2" x="190" y="54">− Cost of goods sold</text>
+<text class="isf-t1" x="180" y="84" text-anchor="end">Gross profit</text>
+<rect class="isf-bar" x="190" y="72" width="262" height="18" rx="3"/>
+<text class="isf-t2" x="190" y="114">− Operating expenses (marketing, staff, R&amp;D)</text>
+<text class="isf-t1" x="180" y="144" text-anchor="end">Operating profit</text>
+<rect class="isf-bar" x="190" y="132" width="150" height="18" rx="3"/>
+<text class="isf-t2" x="190" y="174">± Non-operating items (interest, FX)</text>
+<text class="isf-t1" x="180" y="204" text-anchor="end">Pre-tax profit</text>
+<rect class="isf-bar" x="190" y="192" width="132" height="18" rx="3"/>
+<text class="isf-t2" x="190" y="234">− Tax</text>
+<text class="isf-t1" x="180" y="264" text-anchor="end">Net income</text>
+<rect class="isf-bar-net" x="190" y="252" width="96" height="18" rx="3"/>
+</svg>
+<figcaption>Read top to bottom. Bar widths are illustrative, not real figures.</figcaption>
+</figure>
+
 成長看營收、體質看營業利益、陷阱看淨利落差、股價看展望 —— 四個方向一起看，比只盯著最後一個數字更能理解一家公司真正的狀態。
 
 ## 為什麼不能只看淨利？
