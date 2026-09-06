@@ -264,7 +264,20 @@ blockquote {
 }
 
 @media (max-width: 640px) {
-  .site-nav { padding: 0 1rem; top: 1rem; flex-wrap: wrap; gap: .5rem; }
+  /* Two centered rows: brand pill on top, menu + language + theme below.
+     Tighten spacing and drop the language label so the second row stays one line. */
+  .site-nav {
+    padding: 0 1rem;
+    top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+  }
+  .nav-right { flex-wrap: wrap; justify-content: center; gap: .4rem; }
+  .site-nav nav { gap: .1rem; padding: .25rem .3rem; }
+  .site-nav nav a { padding: .3rem .65rem; }
+  .lang-switch summary { padding: .5rem .6rem; gap: .3rem; }
+  .lang-switch summary span:not(.chev) { display: none; }
 }
 
 /* =========================================================================
@@ -432,7 +445,7 @@ a.work-card:hover {
 
 @media (max-width: 560px) {
   .work-grid { grid-template-columns: 1fr; }
-  .home-hero { padding: 6rem 1.25rem 4rem; }
+  .home-hero { padding: 8.5rem 1.25rem 4rem; }
   .home-sheet { padding: 2.5rem 1.25rem 4rem; border-radius: 28px 28px 0 0; }
 }
 
@@ -598,6 +611,13 @@ a.work-card:hover {
   text-decoration: none;
 }
 .back:hover { color: var(--ink-slate); }
+
+/* Mobile: the stacked two-row nav is taller, so push page content clear of it.
+   Placed after the base .wrap / .home-hero rules so it wins on source order. */
+@media (max-width: 640px) {
+  .wrap { padding-top: 8rem; }
+  .home-hero { padding-top: 8.5rem; }
+}
 
 /* =========================================================================
    Footer
