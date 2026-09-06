@@ -20,7 +20,7 @@ let { featured } = await getWriting(lang, isDev);
 if (featured.length === 0) {
   featured = (await getWriting(lang === 'en' ? 'zh' : 'en', isDev)).featured;
 }
-const previewPosts = featured.slice(0, 3);
+const previewPosts = featured.slice(0, 4);
 ---
 <Base title={c.metaTitle} description={c.metaDescription} lang={lang} page="home" bleed>
   <section class="home-hero">

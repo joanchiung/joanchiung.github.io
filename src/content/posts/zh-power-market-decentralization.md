@@ -6,7 +6,7 @@ tags: ["Web3", "能源", "系統設計"]
 lang: zh
 draft: false
 featured: true
-order: 30
+order: 40
 ---
 
 ## 1. 電力沒辦法保存，計價永遠跟著當下最貴的那台機組走

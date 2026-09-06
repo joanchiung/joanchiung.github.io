@@ -5,6 +5,8 @@ date: 2026-06-11
 tags: ["Finance", "Web3"]
 lang: en
 draft: false
+featured: true
+order: 20
 ---
 
 ## 1. What is a balance sheet?

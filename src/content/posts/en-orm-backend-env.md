@@ -4,7 +4,9 @@ description: What you have to wire together to get from an empty environment to 
 date: 2026-05-19
 tags: ["Backend", "System Design"]
 lang: en
-draft: true
+draft: false
+featured: true
+order: 10
 ---
 
 ORM = Object-Relational Mapper — a layer for working with the database through objects instead of raw SQL.

@@ -6,7 +6,7 @@ tags: ["Web3", "Energy", "System Design"]
 lang: en
 draft: false
 featured: true
-order: 30
+order: 40
 ---
 
 ## 1. Electricity cannot be stored, so pricing always follows the most expensive unit running right now

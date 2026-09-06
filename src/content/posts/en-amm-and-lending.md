@@ -5,8 +5,8 @@ date: 2026-07-24
 tags: ["Web3", "Finance", "System Design"]
 lang: en
 draft: false
-featured: true
-order: 10
+featured: false
+order: 0
 ---
 
 ## Bridge: no company, just a contract, applied to different activities

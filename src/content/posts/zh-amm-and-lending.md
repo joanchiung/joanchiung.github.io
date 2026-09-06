@@ -5,8 +5,8 @@ date: 2026-07-24
 tags: ["Web3", "金融", "系統設計"]
 lang: zh
 draft: false
-featured: true
-order: 10
+featured: false
+order: 0
 ---
 
 ## 銜接：沒有公司、只有合約，這個原則套用在不同活動上

@@ -5,8 +5,8 @@ date: 2026-07-10
 tags: ["Web3", "Finance"]
 lang: en
 draft: false
-featured: true
-order: 20
+featured: false
+order: 0
 ---
 
 ## 1. DeFi has no company running things behind the scenes, just a contract

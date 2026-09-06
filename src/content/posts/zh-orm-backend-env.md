@@ -4,7 +4,9 @@ description: 從空環境到一支能 CRUD 的 API，中間要接起來的東西
 date: 2026-05-19
 tags: ["後端", "系統設計"]
 lang: zh
-draft: true
+draft: false
+featured: true
+order: 10
 ---
 
 ORM = Object-Relational Mapper（物件關聯對應，用來操作資料庫）。

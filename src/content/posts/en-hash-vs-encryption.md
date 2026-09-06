@@ -4,7 +4,9 @@ description: A question you can settle by asking one thing — will this data ev
 date: 2026-07-06
 tags: ["Web3", "System Design"]
 lang: en
-draft: true
+draft: false
+featured: true
+order: 30
 ---
 
 ## 1. What is a hash?

@@ -4,7 +4,9 @@ description: 一個用「這筆資料以後需不需要還原」就能分清楚�
 date: 2026-07-06
 tags: ["Web3", "系統設計"]
 lang: zh
-draft: true
+draft: false
+featured: true
+order: 30
 ---
 
 ## 1. hash 是什麼？

@@ -4,9 +4,9 @@ description: 把一個獨立的 passwordless 驗證服務整併進主 app，掃 
 date: 2026-08-30
 tags: ["前端", "系統設計"]
 lang: zh
-draft: false
-featured: true
-order: 40
+draft: true
+featured: false
+order: 0
 ---
 
 ## 背景
