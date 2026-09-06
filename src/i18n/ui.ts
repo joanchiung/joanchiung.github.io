@@ -1,11 +1,17 @@
-// 網站 UI 字串（標籤、按鈕、導覽）——不是編輯型文案。
-// 編輯型內容（hero、關於我、文章內文）放在各自的 .md / .astro，不在這裡。
+// Site UI strings (labels, buttons, nav) — not editorial copy.
+// Editorial content (hero, About, article body) lives in its own .md / .astro, not here.
 
 export const locales = ['zh', 'en'] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'zh';
 
 export const htmlLang: Record<Locale, string> = { zh: 'zh-TW', en: 'en-US' };
+
+// Résumé PDF served per locale: path in public/ + the filename the browser saves as.
+export const resume: Record<Locale, { href: string; filename: string }> = {
+  zh: { href: '/joan-chang-cv-zh.pdf', filename: '2026_張瓊文履歷.pdf' },
+  en: { href: '/joan-chang-cv-en.pdf', filename: '2026_JoanChang_CV.pdf' },
+};
 
 export const ui = {
   zh: {
@@ -74,14 +80,14 @@ export function useT(locale: Locale) {
   return (key: UIKey): string => dict[key] ?? ui[defaultLocale][key];
 }
 
-// ---- 路徑 / 語系切換 helper ----
+// ---- Path / locale helpers ----
 
-/** 目前路徑屬於哪個語系 */
+/** Which locale the current path belongs to */
 export function localeFromPath(pathname: string): Locale {
   return pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'zh';
 }
 
-/** 把路徑轉成指定語系的對應網址 */
+/** Map a path to its equivalent URL in the given locale */
 export function pathForLocale(pathname: string, locale: Locale): string {
   const bare =
     pathname === '/en' || pathname === '/en/'
@@ -92,7 +98,7 @@ export function pathForLocale(pathname: string, locale: Locale): string {
   return locale === 'en' ? (bare === '/' ? '/en/' : '/en' + bare) : bare;
 }
 
-/** 該語系的路徑前綴（zh 為預設、無前綴）*/
+/** Path prefix for the locale (zh is default, no prefix) */
 export function base(locale: Locale): string {
   return locale === 'en' ? '/en' : '';
 }

@@ -7,7 +7,6 @@ lang: zh
 draft: false
 featured: true
 order: 40
-source: 工作上與同事討論後整理的筆記（已去識別）
 ---
 
 ## 背景

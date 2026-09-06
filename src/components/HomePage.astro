@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getWriting, fmtDate, slugOf } from '../lib/writing';
-import { useT, base as localeBase, type Locale } from '../i18n/ui';
+import { useT, base as localeBase, resume, type Locale } from '../i18n/ui';
 import { home } from '../i18n/home';
 import Download from '@lucide/astro/icons/download';
 
@@ -12,9 +12,10 @@ const { lang } = Astro.props;
 const c = home[lang];
 const t = useT(lang);
 const b = localeBase(lang);
+const cv = resume[lang];
 const isDev = import.meta.env.DEV;
 
-// 精選文章：沒有該語言的就先退回另一語言（文章逐步翻譯中）
+// Featured posts: fall back to the other language when this one has none (translations in progress)
 let { featured } = await getWriting(lang, isDev);
 if (featured.length === 0) {
   featured = (await getWriting(lang === 'en' ? 'zh' : 'en', isDev)).featured;
@@ -59,8 +60,8 @@ const previewPosts = featured.slice(0, 3);
             <p>{c.resumeMeta}</p>
           </div>
           <div class="resume-actions">
-            <a class="btn" href="/joan-chang-cv.pdf" download><Download size={14} stroke-width={2} />{t('footer.resume')}</a>
-            <a class="btn btn-ghost" href="/joan-chang-cv.pdf" target="_blank" rel="noopener">{c.resumeView}</a>
+            <a class="btn" href={cv.href} download={cv.filename}><Download size={14} stroke-width={2} />{t('footer.resume')}</a>
+            <a class="btn btn-ghost" href={cv.href} target="_blank" rel="noopener">{c.resumeView}</a>
           </div>
         </div>
       </section>

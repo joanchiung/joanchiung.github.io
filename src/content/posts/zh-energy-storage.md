@@ -5,7 +5,6 @@ date: 2026-08-14
 tags: ["能源", "AI"]
 lang: zh
 draft: false
-source: 英文課 W11 備課稿（Energy Fundamentals）
 ---
 
 ## 1. 再生能源的發電時間，無法人為決定

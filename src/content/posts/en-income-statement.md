@@ -5,7 +5,6 @@ date: 2026-06-03
 tags: ["Finance", "Web3"]
 lang: en
 draft: false
-source: Threads @joanvisual (DZIHH5oGSwi)
 ---
 
 ## What is an income statement?

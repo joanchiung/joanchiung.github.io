@@ -5,7 +5,6 @@ date: 2026-06-30
 tags: ["Finance"]
 lang: en
 draft: false
-source: Threads @joanvisual (DaNu2yzmSYR)
 ---
 
 ## 1. Financial statements are my tool for deciding "where the money goes"

@@ -16,7 +16,7 @@ const b = localeBase(lang);
 const brand = lang === 'en' ? 'Joan Chang' : '張瓊文';
 const { Content } = await render(post);
 
-// 語言切換：對方語言有同一篇就直接跳過去，沒有就退回文章列表
+// Language switch: jump to the counterpart post if it exists, otherwise fall back to the writing list
 const otherLang = lang === 'en' ? 'zh' : 'en';
 const otherBase = localeBase(otherLang);
 const slug = slugOf(post);

@@ -7,7 +7,6 @@ lang: en
 draft: false
 featured: true
 order: 10
-source: English-class prep, weeks 7-8 (AMM liquidity risk + lending liquidations)
 ---
 
 ## Bridge: no company, just a contract, applied to different activities

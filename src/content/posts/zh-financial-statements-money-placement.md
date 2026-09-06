@@ -5,7 +5,6 @@ date: 2026-06-30
 tags: ["金融"]
 lang: zh
 draft: false
-source: https://www.threads.com/@joanvisual/post/DaNu2yzmSYR
 ---
 
 ## 1. 財報是我決定「錢放哪」的工具

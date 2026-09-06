@@ -5,7 +5,6 @@ date: 2026-05-13
 tags: ["AI", "工作流程"]
 lang: zh
 draft: true
-source: https://www.threads.com/@joanvisual/post/DYRguVNGTr7
 ---
 
 > 草稿，內容擷取自 Threads，尚未潤稿。

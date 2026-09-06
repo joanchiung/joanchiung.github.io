@@ -7,7 +7,6 @@ lang: en
 draft: false
 featured: true
 order: 30
-source: Threads @joanvisual (DbqTBdtmdON)
 ---
 
 ## 1. Electricity cannot be stored, so pricing always follows the most expensive unit running right now

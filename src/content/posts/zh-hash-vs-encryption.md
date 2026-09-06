@@ -5,7 +5,6 @@ date: 2026-07-06
 tags: ["Web3", "系統設計"]
 lang: zh
 draft: true
-source: https://www.threads.com/@joanvisual/post/DadD9DmmYTU
 ---
 
 > 草稿，內容擷取自 Threads，尚未潤稿。

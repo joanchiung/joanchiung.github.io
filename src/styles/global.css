@@ -1,34 +1,34 @@
 /* =========================================================================
    Design System
-   pill 形狀、克制的紫調、單一字體 Noto Sans TC。色票即 source of truth。
-   淺色：暖灰米色畫布（沿用「累積自由本金」DESIGN.md）
-   深色：暖棕微光（v3）—— 不是近黑，是低飽和暖褐，跟淺色同「暖色」精神
-   ⚠️ 深色 token 有兩塊（@media + [data-theme="dark"]），改值兩塊都要改
+   Pill shapes, restrained purple, single typeface Noto Sans TC. Tokens are the source of truth.
+   Light: warm grey-beige canvas
+   Dark: warm brown glow (v3) — not near-black, a low-saturation warm brown, same "warm" spirit as light
+   NOTE: dark tokens live in two blocks (@media + [data-theme="dark"]); edit both
    ========================================================================= */
 
 :root {
-  /* ---- 淺色（預設）---- */
-  --canvas:      #eeeae5;   /* 頁面底色，永遠不用純白 */
-  --lifted:      #f4f2ef;   /* 卡片、內嵌區塊，比 canvas 亮一階 */
-  --near-white:  #f8f6f3;   /* nav pill、浮動元素，系統最亮的表面 */
-  --mid-surface: #dddad5;   /* 分隔帶 */
+  /* ---- Light (default) ---- */
+  --canvas:      #eeeae5;   /* page background, never pure white */
+  --lifted:      #f4f2ef;   /* cards, inset blocks, one step above canvas */
+  --near-white:  #f8f6f3;   /* nav pill, floating elements, brightest surface */
+  --mid-surface: #dddad5;   /* divider band */
 
-  --ink-slate:    #2b2e40;  /* 主要標題與內文 */
-  --slate-anchor: #4d516d;  /* 次級標題、連結、深色 pill */
-  --muted-text:   #7e7a8a;  /* eyebrow、時間戳、placeholder */
-  --warm-sand:    #d3bcb6;  /* 極低對比裝飾文字 */
+  --ink-slate:    #2b2e40;  /* primary headings and body */
+  --slate-anchor: #4d516d;  /* secondary headings, links, dark pill */
+  --muted-text:   #7e7a8a;  /* eyebrow, timestamps, placeholder */
+  --warm-sand:    #d3bcb6;  /* very low-contrast decorative text */
 
-  --signal-purple: #6b5c72; /* active 狀態、eyebrow dot、inline 連結 */
-  --light-purple:  #b5a4b4; /* 裝飾線、被動指示 */
-  --dusty-rose:    #a8868c; /* 次級連結、hover 暖度 */
-  --border:        #c4bdb9; /* 輸入框、卡片外框、分隔線 */
+  --signal-purple: #6b5c72; /* active state, eyebrow dot, inline links */
+  --light-purple:  #b5a4b4; /* decorative rules, passive indicators */
+  --dusty-rose:    #a8868c; /* secondary links, hover warmth */
+  --border:        #c4bdb9; /* inputs, card outlines, dividers */
 
   --read-green: #4a7c59;
 
   --shadow-1: rgba(0, 0, 0, 0.04) 0px 4px 24px 0px;
   --shadow-2: rgba(0, 0, 0, 0.08) 0px 24px 48px 0px;
 
-  /* ---- 非色彩 token（不隨主題變）---- */
+  /* ---- Non-color tokens (theme-independent) ---- */
   --font-sans: 'Noto Sans TC', 'Sofia Sans', -apple-system, BlinkMacSystemFont,
     'PingFang TC', 'Microsoft JhengHei', Arial, sans-serif;
   --measure: 40rem;
@@ -38,24 +38,24 @@
   color-scheme: light dark;
 }
 
-/* ---- 深色 token：跟隨系統，或被 [data-theme] 明確指定 ---- */
+/* ---- Dark tokens: follow the system, or forced via [data-theme] ---- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    /* 暖棕微光深色系統（v3）—— 不是近黑，而是低飽和暖褐 */
-    --canvas:      #423a34;   /* 頁面底色 */
-    --lifted:      #4d443c;   /* 卡片、內嵌區塊（跟 canvas 靠近，同「表面」層）*/
-    --near-white:  #594f45;   /* nav pill、浮動元素 */
-    --mid-surface: #6b5f52;   /* 分隔帶（明顯跳開）*/
+    /* Warm brown-glow dark system (v3) — not near-black, a low-saturation warm brown */
+    --canvas:      #423a34;   /* page background */
+    --lifted:      #4d443c;   /* cards, inset blocks (close to canvas, same surface layer) */
+    --near-white:  #594f45;   /* nav pill, floating elements */
+    --mid-surface: #6b5f52;   /* divider band (clearly stepped out) */
 
-    --ink-slate:    #eeeae5;  /* 主要文字（沿用淺色 canvas 值）*/
-    --slate-anchor: #cabfb0;  /* 次級文字、連結、標題 */
-    --muted-text:   #9e9184;  /* eyebrow、時間戳 */
+    --ink-slate:    #eeeae5;  /* primary text (reuses the light canvas value) */
+    --slate-anchor: #cabfb0;  /* secondary text, links, headings */
+    --muted-text:   #9e9184;  /* eyebrow, timestamps */
     --warm-sand:    #7d6d61;
 
-    --signal-purple: #caa8b4; /* accent：暖調淺玫瑰紫 */
+    --signal-purple: #caa8b4; /* accent: warm pale rose-purple */
     --light-purple:  #8a7480;
     --dusty-rose:    #d1a6a3;
-    --border:        #7d7062;  /* 在 canvas 上看得出是一條線 */
+    --border:        #7d7062;  /* reads as a line on canvas */
 
     --read-green: #86bd97;
 
@@ -63,7 +63,7 @@
     --shadow-2: rgba(0, 0, 0, 0.42) 0px 24px 48px 0px;
   }
 }
-/* ⚠️ 與上面 @media 區塊的深色值必須一致，改一處要改兩處 */
+/* NOTE: must match the dark values in the @media block above; change both */
 :root[data-theme="dark"] {
   --canvas:      #423a34;
   --lifted:      #4d443c;
@@ -101,7 +101,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- 排版層級：單一字體，靠 scale / weight / tracking 拉對比 ---- */
+/* ---- Type scale: one typeface, contrast from scale / weight / tracking ---- */
 h1, h2, h3, h4 {
   font-weight: 500;
   line-height: 1.25;
@@ -145,7 +145,7 @@ blockquote {
 }
 
 /* =========================================================================
-   浮動 Nav Pill
+   Floating Nav Pill
    ========================================================================= */
 .site-nav {
   position: absolute;
@@ -189,7 +189,7 @@ blockquote {
 .site-nav nav a:hover { color: var(--ink-slate); background: var(--canvas); }
 .site-nav nav a[aria-current="page"] { background: var(--slate-anchor); color: var(--near-white); }
 
-/* ---- 語言切換：獨立 dropdown，與 nav 連結視覺分開 ---- */
+/* ---- Language switch: standalone dropdown, visually separate from nav links ---- */
 .lang-switch { position: relative; }
 .lang-switch summary {
   list-style: none;
@@ -240,7 +240,7 @@ blockquote {
 .lang-menu a[aria-current] { color: var(--ink-slate); font-weight: 500; }
 .lang-menu .code { font-size: .72rem; color: var(--muted-text); letter-spacing: .02em; }
 
-/* ---- 深淺色切換 ---- */
+/* ---- Theme toggle ---- */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -268,7 +268,7 @@ blockquote {
 }
 
 /* =========================================================================
-   內容容器
+   Content container
    ========================================================================= */
 .wrap {
   max-width: var(--measure-wide);
@@ -277,7 +277,7 @@ blockquote {
 }
 .wrap.reading { max-width: var(--measure); }
 
-/* ---- eyebrow：唯一使用 uppercase + tracking 的地方，前綴一個 accent dot ---- */
+/* ---- eyebrow: the only place using uppercase + tracking, prefixed with an accent dot ---- */
 .eyebrow {
   display: flex;
   align-items: center;
@@ -297,13 +297,13 @@ blockquote {
 }
 
 /* =========================================================================
-   首頁 landing
+   Home landing
    ========================================================================= */
 
-/* ---- 上層：漸層 hero ----
-   淺色：左上淡粉奶油 → 右下 dusty-rose（改 --hero-tl 可調左上：
-         #f5ede9 現用 ／ #f3e6e3 更粉 ／ #f7f2ef 幾乎白）
-   深色：左上藕紫 → 右下較淺玫瑰粉（暖調 ~353°，跟淺色同色相家族）*/
+/* ---- Top layer: gradient hero ----
+   Light: top-left pale cream → bottom-right dusty-rose (tune top-left via --hero-tl:
+          #f5ede9 current / #f3e6e3 pinker / #f7f2ef near-white)
+   Dark: top-left mauve → bottom-right paler rose (warm ~353deg, same hue family as light) */
 .home-hero {
   --hero-tl: #f5ede9;
   --hero-br: #a8868c;
@@ -323,11 +323,11 @@ blockquote {
   max-width: var(--measure-wide);
   margin: 0 auto;
   position: relative;
-  z-index: 0;            /* 建立堆疊脈絡，讓 ghost 能沉到文字後面 */
+  z-index: 0;            /* establish a stacking context so the ghost sits behind the text */
 }
 .hero-inner > :not(.hero-ghost) { position: relative; z-index: 1; }
 
-/* 深色 hero 文字：稍微提亮，配合較亮的玫瑰漸層 */
+/* Dark hero text: lifted slightly to match the brighter rose gradient */
 :root[data-theme="dark"] .home-hero .why-line { color: #f6f1ec; }
 :root[data-theme="dark"] .home-hero .role-line,
 :root[data-theme="dark"] .home-hero .track-caption { color: rgba(246, 241, 236, .85); }
@@ -343,7 +343,7 @@ blockquote {
   font-weight: 500;
   letter-spacing: -0.025em;
   color: var(--ink-slate);
-  max-width: none;      /* 交給 <br> 控制斷行 */
+  max-width: none;      /* line breaks controlled by <br> */
   margin: 2.25rem 0 0;
 }
 @media (max-width: 560px) {
@@ -359,7 +359,7 @@ blockquote {
 
 .hero-ghost {
   position: absolute;
-  z-index: -1;           /* 沉到文字後面，只在漸層背景之上 */
+  z-index: -1;           /* behind the text, above only the gradient background */
   right: 0;
   bottom: -3.25rem;
   font-family: 'Libre Baskerville', Georgia, serif;
@@ -379,20 +379,20 @@ blockquote {
   .hero-ghost { font-size: 2.75rem; bottom: -2rem; }
 }
 
-/* ---- 下層：canvas「紙張」滑上來蓋住 hero ---- */
+/* ---- Bottom layer: canvas "sheet" slides up over the hero ---- */
 .home-sheet {
   position: relative;
   z-index: 1;
   margin-top: -2.5rem;
   background: var(--canvas);
   border-radius: 40px 40px 0 0;
-  /* 負 spread = y offset：陰影只從上緣露出，不 bleed 到下方 footer */
+  /* negative spread = y offset: shadow shows only at the top edge, no bleed onto the footer */
   box-shadow: 0 -18px 30px -18px rgba(0, 0, 0, .14);
   padding: 3rem 1.5rem 5rem;
 }
 .sheet-inner { max-width: var(--measure-wide); margin: 0 auto; }
 
-/* ---- 作品（lifted 卡片格）---- */
+/* ---- Work (lifted card grid) ---- */
 .work { margin: 0 0 3rem; }
 .work-grid {
   margin: .9rem 0 0;
@@ -449,7 +449,7 @@ a.work-card:hover {
   font-size: .98rem;
 }
 
-/* ---- 履歷區：eyebrow 在白色卡外面（跟「作品」一致）---- */
+/* ---- Résumé section: eyebrow outside the card (consistent with Work) ---- */
 .resume { margin: 3rem 0 1.5rem; }
 .resume-card {
   margin: .9rem 0 0;
@@ -494,9 +494,9 @@ a.work-card:hover {
 }
 
 /* =========================================================================
-   文章列表
+   Writing list
    ========================================================================= */
-/* 精選卡片 */
+/* Featured cards */
 .featured { margin-top: 2.5rem; }
 .card-list { list-style: none; padding: 0; margin: .75rem 0 0; display: grid; gap: .85rem; }
 .card-list li { margin: 0; }
@@ -526,7 +526,7 @@ a.work-card:hover {
 .post-list a:hover { color: var(--signal-purple); }
 .post-list .meta { color: var(--muted-text); font-size: .85rem; margin-top: .25rem; }
 
-/* 列表分頁 */
+/* List pagination */
 .pager {
   display: flex;
   justify-content: space-between;
@@ -539,7 +539,7 @@ a.work-card:hover {
 .pager a:hover { color: var(--signal-purple); }
 .pager-count { color: var(--muted-text); font-size: .85rem; }
 
-/* 單篇文章底部：上一篇 / 下一篇 */
+/* Article footer: previous / next */
 .post-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -568,7 +568,7 @@ a.work-card:hover {
 }
 
 /* =========================================================================
-   單篇文章
+   Single article
    ========================================================================= */
 .article .meta { color: var(--muted-text); font-size: .85rem; margin: -.25rem 0 2.5rem; }
 .article :is(ul, ol) { margin: 1rem 0; padding-left: 1.4rem; }
@@ -594,7 +594,7 @@ a.work-card:hover {
   max-width: var(--measure-wide);
   margin: 0 auto;
   padding-top: 2rem;
-  border-top: 1px solid var(--border);   /* 線只跟內容一樣寬，不延伸到左右 */
+  border-top: 1px solid var(--border);   /* rule matches content width, not full-bleed */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -618,7 +618,7 @@ a.work-card:hover {
 }
 
 /* =========================================================================
-   施工提示（草稿階段用，正式上線前移除）
+   Construction note (draft stage only, remove before launch)
    ========================================================================= */
 .todo {
   background: var(--lifted);

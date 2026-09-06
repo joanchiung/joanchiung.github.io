@@ -5,7 +5,6 @@ date: 2026-06-29
 tags: ["後端", "系統設計"]
 lang: zh
 draft: true
-source: https://www.threads.com/@joanvisual/post/DaLCD5GmS65
 ---
 
 > 草稿，內容擷取自 Threads，尚未潤稿。

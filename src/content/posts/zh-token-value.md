@@ -5,7 +5,6 @@ date: 2026-07-31
 tags: ["Web3", "金融"]
 lang: zh
 draft: false
-source: 英文課 W9 備課稿（What makes a token valuable）
 ---
 
 ## 1. Token 的價值，說到底是需求支撐出來的

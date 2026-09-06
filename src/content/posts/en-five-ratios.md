@@ -5,7 +5,6 @@ date: 2026-06-25
 tags: ["Finance", "Web3"]
 lang: en
 draft: false
-source: Threads @joanvisual (DaAsRo-GVXO)
 ---
 
 ## 1. "Good" only shows up when you compare

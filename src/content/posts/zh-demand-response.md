@@ -5,7 +5,6 @@ date: 2026-08-21
 tags: ["能源", "AI"]
 lang: zh
 draft: false
-source: 英文課 W12 備課稿（Energy Fundamentals）
 ---
 
 ## 1. 機制：用誘因把用電時間搬開

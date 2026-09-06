@@ -5,7 +5,6 @@ date: 2026-05-20
 tags: ["Web3", "金融"]
 lang: zh
 draft: false
-source: https://www.threads.com/@joanvisual/post/DYkH_pXmUaq
 ---
 
 ## CEX：幣圈版的「交易所 + 券商」，抽走每一個環節的手續費

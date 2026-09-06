@@ -5,7 +5,6 @@ date: 2026-06-25
 tags: ["金融", "Web3"]
 lang: zh
 draft: false
-source: https://www.threads.com/@joanvisual/post/DaAsRo-GVXO
 ---
 
 ## 1. 優秀是比較出來的

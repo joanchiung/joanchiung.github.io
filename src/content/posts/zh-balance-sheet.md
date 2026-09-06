@@ -5,7 +5,6 @@ date: 2026-06-11
 tags: ["金融", "Web3"]
 lang: zh
 draft: false
-source: https://www.threads.com/@joanvisual/post/DZcuGaPmc2y
 ---
 
 ## 1. 資產負債表是什麼？

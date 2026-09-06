@@ -5,7 +5,6 @@ date: 2026-05-20
 tags: ["Web3", "Finance"]
 lang: en
 draft: false
-source: Threads @joanvisual (DYkH_pXmUaq)
 ---
 
 ## CEX: the crypto version of an "exchange plus brokerage", taking a cut at every step

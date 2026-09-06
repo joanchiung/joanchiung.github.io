@@ -7,7 +7,6 @@ lang: zh
 draft: false
 featured: true
 order: 30
-source: https://www.threads.com/@joanvisual/post/DbqTBdtmdON
 ---
 
 ## 1. 電力沒辦法保存，計價永遠跟著當下最貴的那台機組走

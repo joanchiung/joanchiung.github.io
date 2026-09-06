@@ -5,7 +5,6 @@ date: 2026-07-31
 tags: ["Web3", "Finance"]
 lang: en
 draft: false
-source: English-class prep, week 9 (What makes a token valuable)
 ---
 
 ## 1. A token's value ultimately comes down to demand

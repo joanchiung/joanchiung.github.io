@@ -7,7 +7,6 @@ lang: zh
 draft: false
 featured: true
 order: 20
-source: 英文課 W6 備課稿（DeFi Fundamentals）
 ---
 
 ## 1. DeFi 沒有一間公司在背後運作，只有一份合約

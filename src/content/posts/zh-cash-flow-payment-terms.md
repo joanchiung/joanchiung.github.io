@@ -5,7 +5,6 @@ date: 2026-06-16
 tags: ["金融"]
 lang: zh
 draft: false
-source: https://www.threads.com/@joanvisual/post/DZplYummUn8
 ---
 
 ## 1. 現金流量表是什麼？

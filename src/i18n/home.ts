@@ -1,15 +1,15 @@
-// 首頁文案（雙語）。首頁結構已定案，兩種語言共用 HomePage.astro，文字從這裡取。
+// Home page copy (bilingual). Layout is fixed; both languages share HomePage.astro and pull text from here.
 import type { Locale } from './ui';
 
 interface HomeCopy {
   metaTitle: string;
   metaDescription: string;
   name: string;
-  nameLatin: string; // '' = 不顯示拉丁副名
+  nameLatin: string; // '' = hide the Latin subname
   roleLine: string;
-  whyLine: string[]; // 每個元素一行，中間以 <br /> 斷行
+  whyLine: string[]; // one line per element, joined with <br />
   trackCaption: string;
-  ghost: string[]; // hero 背景裝飾字
+  ghost: string[]; // decorative text behind the hero
   workEyebrow: string;
   workMore: string;
   resumeEyebrow: string;

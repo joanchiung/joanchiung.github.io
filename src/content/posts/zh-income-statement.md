@@ -5,7 +5,6 @@ date: 2026-06-03
 tags: ["金融", "Web3"]
 lang: zh
 draft: false
-source: https://www.threads.com/@joanvisual/post/DZIHH5oGSwi
 ---
 
 ## 損益表是什麼？

@@ -5,7 +5,6 @@ date: 2026-08-21
 tags: ["Energy", "AI"]
 lang: en
 draft: false
-source: English-class prep, week 12 (Energy Fundamentals)
 ---
 
 ## 1. Mechanism: use incentives to move consumption in time

@@ -5,7 +5,6 @@ date: 2026-08-28
 tags: ["能源", "Web3", "金融"]
 lang: zh
 draft: false
-source: 英文課 W13 備課稿（Energy Fundamentals）
 ---
 
 ## 1. 機制是什麼

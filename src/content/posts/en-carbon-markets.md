@@ -5,7 +5,6 @@ date: 2026-08-28
 tags: ["Energy", "Web3", "Finance"]
 lang: en
 draft: false
-source: English-class prep, week 13 (Energy Fundamentals)
 ---
 
 ## 1. What the mechanism is

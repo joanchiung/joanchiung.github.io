@@ -12,9 +12,9 @@ Joan Chang 的個人網站。Astro 靜態站，部署在 GitHub Pages（`joanchi
 - **`/about/`**：`AboutPage.astro` + `src/content/pages/{zh,en}-about.md`
 - **`/writing/`**：精選卡（`featured: true`，`order` 越大越前）+ 全部時間軸，每頁 10 篇；第 2 頁起 `/writing/page/N/`。單篇 `/writing/<slug>/`，底部上一篇／下一篇（依日期）。共用邏輯在 `src/lib/writing.ts` + `src/components/WritingList.astro`。
   - 公開網址 slug 會拿掉檔名的語言前綴：`zh-balance-sheet.md` → `/writing/balance-sheet/`（`slugOf()`）。zh／en 同 slug 時，單篇的語言切換可直接互跳。
-  - 文章列表／單篇不顯示 draft 標籤，也不顯示 `source`（欄位保留供參考）。
+  - 文章列表／單篇不顯示 draft 標籤。
 - **tag 詞彙**（控制用）：前端 / 後端 / Web3 / 金融 / 能源 / AI / 工作流程 / 設計 / 系統設計
-- **履歷**：`public/joan-chang-cv.pdf`。主頁文件卡（下載／線上看）+ footer btn。
+- **履歷**：依語系下載對應 PDF —— `public/joan-chang-cv-zh.pdf` / `-en.pdf`。對應表在 `src/i18n/ui.ts` 的 `resume`（`href` + 下載檔名）。主頁文件卡（下載／線上看）+ footer btn。
 - **footer**：GitHub / LinkedIn（inline 品牌 SVG）+ Mail（Lucide）+ 下載履歷 btn。border-top 在 `.site-footer-inner`。
 - **圖示**：`@lucide/astro`（`import X from '@lucide/astro/icons/x'`）；品牌 logo 用 inline SVG。
 - **深淺色**：預設跟隨系統；nav toggle 存 localStorage，`<head>` inline script 防閃爍。
@@ -35,7 +35,7 @@ Joan Chang 的個人網站。Astro 靜態站，部署在 GitHub Pages（`joanchi
 ## 上稿一篇文章
 
 `src/content/posts/` 放 `.md`，frontmatter schema 見 `src/content.config.ts`：
-`title, description?, date, tags[], lang(zh|en), draft(bool), featured(bool), order(number), source?`
+`title, description?, date, tags[], lang(zh|en), draft(bool), featured(bool), order(number)`
 `draft: true` = 只在本機 `npm run dev` 顯示，`npm run build` 不輸出。
 
 ## 作品集合

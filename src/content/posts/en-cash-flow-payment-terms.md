@@ -5,7 +5,6 @@ date: 2026-06-16
 tags: ["Finance"]
 lang: en
 draft: false
-source: Threads @joanvisual (DZplYummUn8)
 ---
 
 ## 1. What is a cash flow statement?

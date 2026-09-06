@@ -4,8 +4,8 @@ import { useT, base as localeBase, type Locale } from '../i18n/ui';
 
 interface Props {
   lang: Locale;
-  featured?: Post[];      // 只在第 1 頁傳
-  posts: Post[];          // 當頁的時間軸文章
+  featured?: Post[];      // passed on page 1 only
+  posts: Post[];          // this page's timeline posts
   pager?: { current: number; last: number; prevUrl: string | null; nextUrl: string | null };
 }
 const { lang, featured, posts, pager } = Astro.props;

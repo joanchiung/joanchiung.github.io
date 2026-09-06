@@ -18,7 +18,7 @@ export async function getWriting(lang: 'zh' | 'en', isDev: boolean) {
   };
 }
 
-/** 某一頁的文章列表 + 分頁資料（第 1 頁附精選）。route 檔只要呼叫這個。 */
+/** Posts + pager data for one page (page 1 also carries featured). Route files just call this. */
 export async function getWritingPage(lang: 'zh' | 'en', num: number, isDev: boolean) {
   const { featured, timeline } = await getWriting(lang, isDev);
   const last = Math.max(1, Math.ceil(timeline.length / PAGE_SIZE));
@@ -34,7 +34,7 @@ export async function getWritingPage(lang: 'zh' | 'en', num: number, isDev: bool
   };
 }
 
-/** /writing/page/[num] 的靜態路徑（第 2 頁起） */
+/** Static paths for /writing/page/[num] (from page 2 on) */
 export async function writingPagePaths(lang: 'zh' | 'en', isDev: boolean) {
   const { timeline } = await getWriting(lang, isDev);
   const last = Math.max(1, Math.ceil(timeline.length / PAGE_SIZE));
@@ -43,13 +43,13 @@ export async function writingPagePaths(lang: 'zh' | 'en', isDev: boolean) {
   return paths;
 }
 
-/** 公開網址用的 slug：拿掉檔名的語言前綴（zh-/en-），例如 zh-balance-sheet → balance-sheet */
+/** Public-URL slug: strip the filename's language prefix (zh-/en-), e.g. zh-balance-sheet → balance-sheet */
 export const slugOf = (p: Post) => p.id.replace(/^(zh|en)-/, '');
 
 export const fmtDate = (d: Date) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
-/** 依單篇文章在「全部（依日期新到舊）」清單中的位置，回傳上一篇（較新）與下一篇（較舊） */
+/** From a post's position in the all-posts list (newest first), return prev (newer) and next (older) */
 export function neighbours(all: Post[], id: string) {
   const i = all.findIndex((p) => p.id === id);
   return { prev: i > 0 ? all[i - 1] : null, next: i >= 0 && i < all.length - 1 ? all[i + 1] : null };

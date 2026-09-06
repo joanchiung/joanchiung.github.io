@@ -5,7 +5,6 @@ date: 2026-08-14
 tags: ["Energy", "AI"]
 lang: en
 draft: false
-source: English-class prep, week 11 (Energy Fundamentals)
 ---
 
 ## 1. You cannot decide when renewables generate

@@ -23,7 +23,7 @@ npm run preview  # 本機預覽 build 結果
 | 關於我 | `src/content/pages/{zh,en}-about.md` | |
 | UI 字串 | `src/i18n/ui.ts` | nav / footer / 分頁等介面文字 |
 | 首頁文案 | `src/i18n/home.ts` | hero、區塊標題 |
-| 履歷 PDF | `public/joan-chang-cv.pdf` | |
+| 履歷 PDF | `public/joan-chang-cv-{zh,en}.pdf` | 依語系下載；對應表在 `src/i18n/ui.ts` 的 `resume` |
 
 `draft: true` 的文章只在 `npm run dev` 顯示，`npm run build` 不輸出。
 

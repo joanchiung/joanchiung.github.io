@@ -5,7 +5,6 @@ date: 2026-06-11
 tags: ["Finance", "Web3"]
 lang: en
 draft: false
-source: Threads @joanvisual (DZcuGaPmc2y)
 ---
 
 ## 1. What is a balance sheet?

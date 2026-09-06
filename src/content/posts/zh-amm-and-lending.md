@@ -7,7 +7,6 @@ lang: zh
 draft: false
 featured: true
 order: 10
-source: 英文課 W7+W8 備課稿（AMM 流動性風險 + 借貸清算）
 ---
 
 ## 銜接：沒有公司、只有合約，這個原則套用在不同活動上

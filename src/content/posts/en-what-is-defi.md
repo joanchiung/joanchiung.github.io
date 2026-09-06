@@ -7,7 +7,6 @@ lang: en
 draft: false
 featured: true
 order: 20
-source: English-class prep, week 6 (DeFi Fundamentals)
 ---
 
 ## 1. DeFi has no company running things behind the scenes, just a contract
