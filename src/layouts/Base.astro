@@ -24,6 +24,7 @@ const t = useT(lang);
 const base = localeBase(lang);
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og.png', Astro.site).href;
 
 // 語言選單：當前語言指向本頁；另一語言用 altPath（若有）或自動換前綴
 const path = Astro.url.pathname;
@@ -44,7 +45,11 @@ const enHref = lang === 'en' ? path : otherHref;
     {description && <meta property="og:description" content={description} />}
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={htmlLang[lang]} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
