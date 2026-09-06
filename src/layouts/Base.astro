@@ -23,6 +23,8 @@ const { title, description, lang = 'zh', page, reading = false, bleed = false, a
 const t = useT(lang);
 const base = localeBase(lang);
 
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
 // 語言選單：當前語言指向本頁；另一語言用 altPath（若有）或自動換前綴
 const path = Astro.url.pathname;
 const otherHref = altPath ?? pathForLocale(path, lang === 'en' ? 'zh' : 'en');
@@ -36,6 +38,13 @@ const enHref = lang === 'en' ? path : otherHref;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={htmlLang[lang]} />
+    <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

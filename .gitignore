@@ -11,6 +11,7 @@ dist/
 .DS_Store
 .vscode/
 *.log
+.claude/settings.local.json
 
 # 規劃 / 原始素材：含隱私內容（履歷草稿、HR 回饋、財務筆記），永遠不進版控、不發佈
 _source/
