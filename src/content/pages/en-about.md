@@ -4,10 +4,58 @@ description: Frontend engineer building bank-grade crypto custody and fintech sy
 lang: en
 ---
 
-Currently a frontend engineer on projects in fintech\
+Hi, I'm Joan. Currently a frontend engineer on projects in fintech\
 Before that, 11 years in brand and UX/UI design — five of them freelance
 
-Where I'm most useful is stepping in before a requirement is defined:\
-take a one-line ask, work out who it's for, the goal and the edges, then narrow it into an interface and a direction the team can build
+Risk-aware, plan before act:\
+a clear blueprint first, then a workable plan, then systematize it step by step
 
-The [writing](/en/writing/) here is how I think through frontend, finance, and energy
+<div class="about-cards">
+
+<div class="about-card span-3">
+
+### What I Write About
+
+The writing here focuses on:
+
+- Frontend
+- Finance
+- Energy
+
+</div>
+
+<div class="about-card span-3">
+
+### Working with AI
+
+- Working out a clear blueprint and reasoning backward from the end goal to something workable
+- Letting it systematize the repetitive, easy-to-lose-track-of parts of life, trading memory for data on things like bookkeeping and the annual budget
+
+</div>
+
+<div class="about-card span-4">
+
+### Currently
+
+- **Simplify**: practicing explaining specialized, jargon-heavy work in language anyone can follow
+- **Data Budgeting**: using AI for bookkeeping, then using that ledger data to work out a budget
+
+</div>
+
+<div class="about-card">
+
+### Skills
+
+<div class="ascii-tree">
+✦ Claude ✦<br>
+✦ Figma · ChatGPT ✦<br>
+✦ React · Illustrator · Next.js ✦<br>
+✦ TypeScript · Photoshop ✦<br>
+‖<br>
+‖<br>
+_____________
+</div>
+
+</div>
+
+</div>

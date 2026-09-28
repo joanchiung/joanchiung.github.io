@@ -24,10 +24,11 @@ const altPath = `${localeBase(lang === 'en' ? 'zh' : 'en')}/about/`;
   description={entry.data.description}
   lang={lang}
   page="about"
-  reading
   altPath={altPath}
 >
   <h1>{entry.data.title}</h1>
-  <Content />
+  <div class="article">
+    <Content />
+  </div>
   <a class="back" href={`${b}/`}>{t('about.back')}</a>
 </Base>

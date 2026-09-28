@@ -1,7 +1,7 @@
 ---
-title: "Merging a verification service back into the main app: the whitelist has to recognize the old URLs"
-description: The verification service used to be a separately maintained project, with its own routes and backend detached from the main system, so every logic change needed cross-team coordination. After folding it into the Next.js main app's monorepo, the URLs were still an interface hardcoded by an external system, not a single character could change, so only a rewrite could map the old URLs to the new pages. Next.js middleware runs before rewrites, so the whitelist has to recognize the pre-migration raw paths. Once the service was split, page requests and verification API requests under the same path prefix also had to be routed separately.
-date: 2026-08-30
+title: "Merging verification back into the main app: the whitelist still expects the old URL"
+description: The URL was hardcoded by an external system and couldn't change, so only a rewrite could map it to the new page, and the whitelist still had to recognize the pre-migration path.
+date: 2026-09-28
 tags: ["Frontend", "System Design"]
 lang: en
 draft: false
